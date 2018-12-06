@@ -1,4 +1,4 @@
-package com.example.redes.lovefood;
+package com.webbi.redes.lovefood;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.redes.lovefood", appContext.getPackageName());
+        assertEquals("com.webbi.redes.lovefood", appContext.getPackageName());
     }
 }

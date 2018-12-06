@@ -1,4 +1,4 @@
-package com.example.redes.lovefood;
+package com.webbi.redes.lovefood;
 
 import org.junit.Test;
 
