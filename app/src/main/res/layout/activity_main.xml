@@ -7,5 +7,4 @@
     android:background="@drawable/lovefoodnavidad"
     tools:context=".MainActivity">
 
-
 </android.support.constraint.ConstraintLayout>
