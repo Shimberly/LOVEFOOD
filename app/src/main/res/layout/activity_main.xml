@@ -1,10 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/lovefoodnavidad"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="#C72727"
     tools:context=".MainActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="238dp"
+        android:layout_marginTop="0dp"
+        app:srcCompat="@drawable/icono2"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="30dp" />
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="1dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Usuario"
+            android:textSize="14sp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            android:textSize="14sp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="146dp"
+        android:layout_height="38dp"
+        android:layout_centerHorizontal="true"
+        android:background="#FFFFFF"
+        android:text="Iniciar Sesión"
+        android:textColor="#C72727"
+        android:textSize="16sp"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="ò"
+        android:textColor="#FFF"
+        android:layout_marginTop="9dp"/>
+
+    <Button
+        android:id="@+id/btnRegistro"
+        android:layout_width="146dp"
+        android:layout_height="38dp"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/transparent"
+        android:text="Registrate"
+        android:layout_marginTop="5dp"/>
+
+</LinearLayout>
