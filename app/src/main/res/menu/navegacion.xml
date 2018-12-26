@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/match"
+        android:icon="@drawable/icono"
+        android:title="Match"/>
+
+    <item
+        android:id="@+id/encuesta"
+        android:icon="@drawable/icono"
+        android:title="Encuesta"/>
+
+    <item
+        android:id="@+id/perfil"
+        android:icon="@drawable/icono"
+        android:title="Perfil"/>
+
+</menu>

@@ -16,11 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Registrarse" />
+        <activity
+            android:name=".Registrarse"
+            android:label="REGISTRO"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Principal"
-            android:label="@string/title_activity_principal"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:label="LOVEFOOD"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".configuracion"
+            android:label="Configuraciones"></activity>
     </application>
 
 </manifest>
