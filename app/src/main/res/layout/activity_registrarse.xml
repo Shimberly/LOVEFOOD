@@ -28,19 +28,22 @@
 
     <EditText
         android:id="@+id/txtUser"
-        android:layout_width="286dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="14"
         android:hint="Usuario"
+        android:backgroundTint="#C72727"
         android:inputType="text"
         android:textColor="#C72727"
         android:textColorHint="#000"
-        android:textColorLink="#C72727" />
+        android:textColorLink="#C72727"
+        android:layout_marginHorizontal="30dp"
+        />
 
     <EditText
         android:id="@+id/txtPass"
-        android:layout_width="286dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:backgroundTint="#C72727"
@@ -49,11 +52,12 @@
         android:inputType="textPassword"
         android:textColor="#C72727"
         android:textColorHint="#000"
-        android:textColorLink="#C72727" />
+        android:textColorLink="#C72727"
+        android:layout_marginHorizontal="30dp"/>
 
     <EditText
         android:id="@+id/txtEmail"
-        android:layout_width="286dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:backgroundTint="#C72727"
@@ -62,11 +66,12 @@
         android:inputType="textEmailAddress"
         android:textColor="#C72727"
         android:textColorHint="#000"
-        android:textColorLink="#C72727" />
+        android:textColorLink="#C72727"
+        android:layout_marginHorizontal="30dp"/>
 
     <EditText
         android:id="@+id/txtDate"
-        android:layout_width="286dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:backgroundTint="#C72727"
@@ -78,18 +83,20 @@
         android:textColorLink="#C72727"
         android:focusable="false"
         android:clickable="true"
-        android:maxLines="1" />/>
+        android:maxLines="1"
+        android:layout_marginHorizontal="30dp"/>
 
     <Button
         android:id="@+id/btnRegistrarse"
-        android:layout_width="146dp"
-        android:layout_height="38dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:background="#C72727"
         android:text="REGISTRARSE"
         android:textColor="#FFF"
         android:textSize="16sp"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="20dp"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -102,12 +109,24 @@
 
     <Button
         android:id="@+id/btnRegistroFb"
-        android:layout_width="294dp"
-        android:layout_height="38dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:background="#3B5998"
+        android:background="@drawable/btnborderfb"
         android:text="REGISTRARSE CON FACEBOOK"
-        android:textColor="#FFF"
-        android:textSize="16sp" />
+        android:textColor="#3B5998"
+        android:textSize="16sp"
+        android:layout_marginHorizontal="20dp"/>
+    <Button
+        android:id="@+id/btnRegistroGoogle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btnborder"
+        android:text="REGISTRARSE CON GOOGLE"
+        android:textColor="#C72727"
+        android:textSize="16sp"
+        android:layout_marginHorizontal="20dp"/>
 </LinearLayout>

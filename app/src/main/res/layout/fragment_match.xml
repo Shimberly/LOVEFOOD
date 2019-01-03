@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MatchFragment">
+    android:orientation="vertical"
+    tools:context=".MatchFragment"
+    android:background="#FFF">
 
     <TextView
+        android:id="@+id/txtNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Miau, estoy en Match!"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#C72727"
-        android:textStyle="bold"/>
+        android:text="Yander Santana"
+        android:textSize="20sp"
+        android:textColor="#000"/>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="246dp"
+        android:layout_height="245dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/icon" />
+
+    <TextView
+        android:id="@+id/txtDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Hola, me gusta salir mucho"
+        android:textSize="20sp"
+        android:textColor="#000"/>
 
 </LinearLayout>

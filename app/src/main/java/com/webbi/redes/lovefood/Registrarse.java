@@ -37,7 +37,7 @@ public class Registrarse extends AppCompatActivity {
         IrAInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent itemintent = new Intent(Registrarse.this, MainActivity.class);
+                Intent itemintent = new Intent(Registrarse.this, Principal.class);
                 Registrarse.this.startActivity(itemintent);
             }
         });
@@ -46,7 +46,16 @@ public class Registrarse extends AppCompatActivity {
         IrAInicio2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent itemintent = new Intent(Registrarse.this, MainActivity.class);
+                Intent itemintent = new Intent(Registrarse.this, Principal.class);
+                Registrarse.this.startActivity(itemintent);
+            }
+        });
+
+        Button IrAInicio3 = (Button) findViewById(R.id.btnRegistroGoogle);
+        IrAInicio3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent itemintent = new Intent(Registrarse.this, Principal.class);
                 Registrarse.this.startActivity(itemintent);
             }
         });

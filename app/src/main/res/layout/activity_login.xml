@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="#FFF"
+    tools:context=".Login">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0"
+        app:srcCompat="@drawable/banner" />
+
+    <EditText
+        android:id="@+id/txtUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#000"
+        android:ems="14"
+        android:hint="Usuario"
+        android:inputType="text"
+        android:textColor="#000"
+        android:textColorHint="#C72727"
+        android:textColorLink="#000"
+        android:paddingVertical="25dp"/>
+
+    <EditText
+        android:id="@+id/txtPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#000"
+        android:ems="14"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:textColor="#000"
+        android:textColorHint="#C72727"
+        android:textColorLink="#000"
+        android:paddingVertical="25dp"/>
+
+    <TextView
+        android:id="@+id/btnOlvidarPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="5dp"
+        android:text="¿Olvidaste la contraseña?"
+        android:textColor="#000"
+        android:textSize="11sp" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="#C72727"
+        android:text="Ingresar"
+        android:textColor="#FFF"
+        android:textSize="16sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="30dp"/>
+
+    <Button
+        android:id="@+id/btnIrRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btnborder"
+        android:text="Registrate"
+        android:textColor="#C72727"
+        android:layout_marginTop="6dp"
+        android:layout_marginHorizontal="30dp"/>
+
+</LinearLayout>

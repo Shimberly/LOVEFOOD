@@ -24,8 +24,10 @@
             android:name=".Principal"
             android:label="LOVEFOOD"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".configuracion"
-            android:label="Configuraciones"></activity>
+        <activity
+            android:name=".configuracion"
+            android:label="Configuraciones" />
+        <activity android:name=".Login"></activity>
     </application>
 
 </manifest>

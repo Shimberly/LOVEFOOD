@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.support.design.widget.BottomNavigationView;
 
 public class Principal extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
