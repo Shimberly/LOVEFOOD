@@ -7,6 +7,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:background="#FFF"
+    android:layout_weight="1"
     tools:context=".Login">
 
     <ImageView
@@ -15,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
         android:layout_marginTop="20dp"
-        android:layout_weight="0"
+        android:layout_weight=".50"
         app:srcCompat="@drawable/banner" />
 
     <EditText
@@ -30,6 +31,7 @@
         android:textColor="#000"
         android:textColorHint="#C72727"
         android:textColorLink="#000"
+        android:layout_weight=".10"
         android:paddingVertical="25dp"/>
 
     <EditText
@@ -44,6 +46,7 @@
         android:textColor="#000"
         android:textColorHint="#C72727"
         android:textColorLink="#000"
+        android:layout_weight=".10"
         android:paddingVertical="25dp"/>
 
     <TextView
@@ -54,7 +57,9 @@
         android:layout_marginTop="5dp"
         android:text="¿Olvidaste la contraseña?"
         android:textColor="#000"
-        android:textSize="11sp" />
+        android:layout_weight=".5"
+        android:textSize="12sp"
+        android:layout_marginRight="25dp"/>
 
     <Button
         android:id="@+id/btnLogin"
@@ -65,7 +70,8 @@
         android:text="Ingresar"
         android:textColor="#FFF"
         android:textSize="16sp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight=".10"
         android:layout_marginHorizontal="30dp"/>
 
     <Button
@@ -76,7 +82,9 @@
         android:background="@drawable/btnborder"
         android:text="Registrate"
         android:textColor="#C72727"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="25dp"
+        android:layout_weight=".10"
         android:layout_marginHorizontal="30dp"/>
 
 </LinearLayout>

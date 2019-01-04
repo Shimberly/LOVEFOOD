@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_weight="1"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:background="#FFF"
@@ -30,14 +31,15 @@
         android:id="@+id/txtUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:ems="14"
         android:hint="Usuario"
         android:backgroundTint="#C72727"
         android:inputType="text"
-        android:textColor="#C72727"
+        android:textColor="#000"
         android:textColorHint="#000"
         android:textColorLink="#C72727"
+        android:layout_weight=".10"
         android:layout_marginHorizontal="30dp"
         />
 
@@ -45,13 +47,14 @@
         android:id="@+id/txtPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:backgroundTint="#C72727"
         android:ems="14"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        android:textColor="#C72727"
+        android:textColor="#000"
         android:textColorHint="#000"
+        android:layout_weight=".10"
         android:textColorLink="#C72727"
         android:layout_marginHorizontal="30dp"/>
 
@@ -59,30 +62,32 @@
         android:id="@+id/txtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:backgroundTint="#C72727"
         android:ems="14"
         android:hint="Correo"
         android:inputType="textEmailAddress"
-        android:textColor="#C72727"
+        android:textColor="#000"
         android:textColorHint="#000"
         android:textColorLink="#C72727"
+        android:layout_weight=".10"
         android:layout_marginHorizontal="30dp"/>
 
     <EditText
         android:id="@+id/txtDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:backgroundTint="#C72727"
         android:ems="14"
         android:hint="Fecha de Nacimiento"
         android:inputType="date"
-        android:textColor="#C72727"
+        android:textColor="#000"
         android:textColorHint="#000"
         android:textColorLink="#C72727"
         android:focusable="false"
         android:clickable="true"
+        android:layout_weight=".10"
         android:maxLines="1"
         android:layout_marginHorizontal="30dp"/>
 
@@ -95,7 +100,8 @@
         android:text="REGISTRARSE"
         android:textColor="#FFF"
         android:textSize="16sp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight=".15"
         android:layout_marginHorizontal="20dp"/>
 
     <TextView
@@ -104,6 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="9dp"
+        android:layout_weight=".10"
         android:text="ò"
         android:textColor="#000" />
 
@@ -116,6 +123,7 @@
         android:background="@drawable/btnborderfb"
         android:text="REGISTRARSE CON FACEBOOK"
         android:textColor="#3B5998"
+        android:layout_weight=".15"
         android:textSize="16sp"
         android:layout_marginHorizontal="20dp"/>
     <Button
@@ -123,10 +131,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/btnborder"
         android:text="REGISTRARSE CON GOOGLE"
         android:textColor="#C72727"
+        android:layout_weight=".10"
+        android:layout_marginBottom="35dp"
         android:textSize="16sp"
         android:layout_marginHorizontal="20dp"/>
 </LinearLayout>
