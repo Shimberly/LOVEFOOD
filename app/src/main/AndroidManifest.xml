@@ -25,9 +25,11 @@
             android:label="LOVEFOOD"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".configuracion"
+            android:name=".Configuracion"
             android:label="Configuraciones" />
-        <activity android:name=".Login"></activity>
+        <activity android:name=".Login" />
+        <activity android:name=".LocalizarAmigo"
+            android:label="Localizar Amigo"></activity>
     </application>
 
 </manifest>

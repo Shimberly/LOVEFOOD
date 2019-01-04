@@ -8,12 +8,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.design.widget.BottomNavigationView;
 import android.view.View;
-import android.widget.Button;
 
 public class Principal extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
@@ -74,7 +72,7 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
 
         switch (item.getItemId()){
             case R.id.configuracion:
-                Intent intent = new Intent(getApplicationContext(), configuracion.class);
+                Intent intent = new Intent(getApplicationContext(), Configuracion.class);
                 startActivity(intent);
                 return true;
             case R.id.salir:
@@ -111,4 +109,16 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
 
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
     }
+    public void accionmsj(View v){
+
+        String urlPage = "https://www.instagram.com/webbi_ec/?hl=es-la";
+
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
+    }
+    public void acciongeo(View v){
+
+        Intent itemintent = new Intent(Principal.this, LocalizarAmigo.class);
+        startActivity(itemintent);
+    }
+
 }

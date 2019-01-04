@@ -3,16 +3,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PerfilFragment">
+    android:layout_weight="1"
+    android:orientation="vertical"
+    tools:context=".PerfilFragment"
+    android:layout_marginVertical="70dp">
 
     <TextView
+        android:id="@+id/txtNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Miau, estoy en Perfil!"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#C72727"
-        android:textStyle="bold"/>
+        android:text="Paola Ortiz"
+        android:textSize="24sp"
+        android:textColor="#000"
+        android:layout_weight=".10"
+        android:textFontWeight="Bold"/>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight=".40"
+        android:src="@drawable/paola" />
+
+    <TextView
+        android:id="@+id/txtDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Me llamo Chibi y soy troncaleña. Me gusta romper el corazón de los chicos. Escríbeme, igual no te responderé."
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:layout_weight=".25"
+        android:background="@drawable/btnborder"/>
+
+    <TextView
+        android:id="@+id/txtLugar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Troncal, Ecuador"
+        android:textColor="#000"
+        android:layout_marginTop="10dp"
+        android:layout_weight=".5"
+        android:textSize="17sp" />
+    <TextView
+        android:id="@+id/txtEstudio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="ESPOL"
+        android:textColor="#000"
+        android:textFontWeight="Bold"
+        android:layout_weight=".5"
+        android:textSize="18sp" />
+
 
 </LinearLayout>

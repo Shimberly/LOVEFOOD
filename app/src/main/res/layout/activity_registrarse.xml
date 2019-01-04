@@ -72,25 +72,46 @@
         android:textColorLink="#C72727"
         android:layout_weight=".10"
         android:layout_marginHorizontal="30dp"/>
-
-    <EditText
-        android:id="@+id/txtDate"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:backgroundTint="#C72727"
-        android:ems="14"
-        android:hint="Fecha de Nacimiento"
-        android:inputType="date"
-        android:textColor="#000"
-        android:textColorHint="#000"
-        android:textColorLink="#C72727"
-        android:focusable="false"
-        android:clickable="true"
         android:layout_weight=".10"
-        android:maxLines="1"
-        android:layout_marginHorizontal="30dp"/>
+        android:gravity="center_horizontal"
+        android:layout_marginHorizontal="30dp"
+        android:orientation="horizontal">
 
+        <Spinner
+            android:id="@+id/spinSe"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_weight=".30"
+            android:backgroundTint="#C72727"
+            android:ems="14"
+            android:hint="Género"
+            android:inputType="text"
+            android:textColor="#000"
+            android:textColorHint="#000"
+            android:textColorLink="#C72727" />
+
+        <EditText
+            android:id="@+id/txtDate"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#C72727"
+            android:ems="14"
+            android:hint="Fecha de Nacimiento"
+            android:inputType="date"
+            android:textColor="#000"
+            android:textColorHint="#000"
+            android:textColorLink="#C72727"
+            android:focusable="false"
+            android:clickable="true"
+            android:layout_weight=".70"
+            android:maxLines="1"
+            android:layout_marginLeft="20dp"/>
+    </LinearLayout>
     <Button
         android:id="@+id/btnRegistrarse"
         android:layout_width="match_parent"

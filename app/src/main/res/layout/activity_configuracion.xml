@@ -7,7 +7,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:background="#FFF"
-    tools:context=".configuracion">
+    tools:context=".LocalizarAmigo">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

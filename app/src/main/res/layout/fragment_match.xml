@@ -65,7 +65,6 @@
         android:gravity="center"
         android:text="ESPOL"
         android:textColor="#000"
-        android:layout_marginTop="5dp"
         android:textFontWeight="Bold"
         android:layout_weight=".5"
         android:textSize="18sp" />
