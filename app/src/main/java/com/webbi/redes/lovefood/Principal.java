@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.support.design.widget.BottomNavigationView;
 import android.view.View;
+import android.widget.RadioButton;
 
 public class Principal extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
@@ -88,7 +89,7 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
 
     public void accionfb(View v){
 
-        String urlPage = "https://www.facebook.com/lobesna";
+        String urlPage = "https://www.facebook.com/lobesna?lang=es";
 
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
 
@@ -114,6 +115,22 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
 
         Intent itemintent = new Intent(Principal.this, LocalizarAmigo.class);
         startActivity(itemintent);
+    }
+    public void desayunoSaladoClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.radio_pirates:
+                if (checked)
+                    // Pirates are the best
+                    break;
+            case R.id.radio_ninjas:
+                if (checked)
+                    // Ninjas rule
+                    break;
+        }
     }
 
 }

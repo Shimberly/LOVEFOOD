@@ -27,7 +27,7 @@
         android:layout_gravity="center"
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="10dp"
-        android:layout_weight=".40"
+        android:layout_weight=".30"
         android:src="@drawable/paola" />
 
     <TextView
@@ -68,5 +68,73 @@
         android:layout_weight=".5"
         android:textSize="18sp" />
 
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/Tabla"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
+        android:layout_weight=".25"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:stretchColumns="1">
+
+    <TableRow
+        android:id="@+id/Cabecera"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/ColumnaAnio"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:padding="5px"
+            android:gravity="center"
+            android:text="Interés en chicos"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/ColumnaCiudad"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="5px"
+            android:text="22 años"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+    </TableRow>
+        <TableRow
+            android:id="@+id/Cabeceraas"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/ColumnaAniaso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5px"
+                android:text="0992937424"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/ColumnaCiudsdad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="5px"
+                android:text="chibi@gmail.com"
+                android:textColor="#000"
+                android:textSize="14sp" />
+
+        </TableRow>
+    </TableLayout>
 </LinearLayout>

@@ -3,16 +3,196 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_weight="1"
+    android:layout_marginVertical="70dp"
     tools:context=".EncuestaFragment">
 
     <TextView
+        android:id="@+id/txtDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Miau, estoy en Encuesta!"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#C72727"
-        android:textStyle="bold"/>
+        android:text="Responde las preguntas y obtén tus 5 personas más compatibles"
+        android:textSize="18sp"
+        android:paddingHorizontal="15dp"
 
+        android:textColor="#000"
+        android:layout_weight=".25"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="0.70"
+        android:layout_margin="20dp"
+        android:padding="15dp"
+        android:background="#f2f3f4">
+
+        <TextView
+            android:id="@+id/prg1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Desayuno Salado"
+            android:textSize="16sp"
+            android:paddingHorizontal="15dp"
+            android:textColor="#000"
+            android:layout_marginTop="10dp"
+            android:textFontWeight="Bold"/>
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppThemeMyLight"
+            android:layout_marginVertical="10dp"
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/radio_pirates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bolon"
+                android:textSize="12sp"
+                android:textColor="#000"
+                android:onClick="desayunoSaladoClicked"/>
+            <RadioButton android:id="@+id/radio_ninjas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Tigrillo"
+                android:textColor="#000"
+                android:onClick="desayunoSaladoClicked"/>
+            <RadioButton android:id="@+id/radio_bollo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Bollo"
+                android:textColor="#000"
+                android:onClick="desayunoSaladoClicked"/>
+            <RadioButton android:id="@+id/radio_sanduche"
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:layout_height="wrap_content"
+                android:text="Sanduche"
+                android:textColor="#000"
+                android:onClick="desayunoSaladoClicked"/>
+        </RadioGroup>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#C72727"/>
+
+        <TextView
+            android:id="@+id/prg2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. Desayuno Dulce"
+            android:textSize="16sp"
+            android:paddingHorizontal="15dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textFontWeight="Bold"/>
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:theme="@style/AppThemeMyLight"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/radio_panqueque"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Panqueque"
+                android:textColor="#000"
+                android:onClick="desayunoSaladoClicked"/>
+            <RadioButton android:id="@+id/radio_cereal"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cereal"
+                android:textColor="#000"
+                android:onClick="desayunoSaladoClicked"/>
+            <RadioButton android:id="@+id/radio_crepe"
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:layout_height="wrap_content"
+                android:text="Crepe"
+                android:textColor="#000"
+                android:onClick="desayunoSaladoClicked"/>
+            <RadioButton android:id="@+id/radio_batido"
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:layout_height="wrap_content"
+                android:text="Batidos"
+                android:textColor="#000"
+                android:onClick="desayunoSaladoClicked"/>
+        </RadioGroup>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#C72727"/>
+
+        <TextView
+            android:id="@+id/prg3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. Comidas Extranjeras"
+            android:textSize="16sp"
+            android:paddingHorizontal="15dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textFontWeight="Bold"/>
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:theme="@style/AppThemeMyLight"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/radio_japonesa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Japonesa"
+                android:textColor="#000"
+                android:onClick="desayunoSaladoClicked"/>
+            <RadioButton android:id="@+id/radio_china"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="China"
+                android:textColor="#000"
+                android:onClick="desayunoSaladoClicked"/>
+            <RadioButton android:id="@+id/radio_italiana"
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:layout_height="wrap_content"
+                android:text="Italiana"
+                android:textColor="#000"
+                android:onClick="desayunoSaladoClicked"/>
+            <RadioButton android:id="@+id/radio_colombia"
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:layout_height="wrap_content"
+                android:text="Colombia"
+                android:textColor="#000"
+                android:onClick="desayunoSaladoClicked"/>
+        </RadioGroup>
+
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="#C72727"
+        android:text="Guardar"
+        android:textColor="#FFF"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:layout_weight=".10"
+        android:layout_marginHorizontal="30dp"/>
 </LinearLayout>

@@ -20,6 +20,7 @@
         <item name="android:textColorHint">#000</item>
     </style>
 
+
     <style name="MyDatePickerSpinnerStyle" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:calendarViewShown">false</item>
         <item name="colorControlNormal">#C72727</item>
@@ -36,4 +37,11 @@
         <!--title and message color-->
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>
+
+    <style name="AppThemeMyLight" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">#C72727</item>
+        <item name="android:colorActivatedHighlight">#C72727</item>
+        <item name="android:textColorPrimaryDisableOnly">#f44336</item>
+    </style>
+
 </resources>

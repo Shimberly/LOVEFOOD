@@ -9,6 +9,16 @@
     tools:context=".MatchFragment"
     android:layout_marginVertical="70dp">
 
+    <ImageView
+        android:id="@+id/imagematch"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="8dp"
+        android:layout_weight=".15"
+        android:src="@drawable/corazon" />
+
     <TextView
         android:id="@+id/txtNombre"
         android:layout_width="match_parent"
@@ -76,7 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight=".15"
+        android:layout_weight=".10"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingHorizontal="30dp"
@@ -86,46 +96,46 @@
 
         <Button
             android:id="@+id/btnFb"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginHorizontal="8dp"
-            android:background="@drawable/icono"
+            android:background="@drawable/fb"
             android:padding="8dp"
             android:onClick="accionfb"/>
 
         <Button
             android:id="@+id/btnTw"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginHorizontal="8dp"
-            android:background="@drawable/icono"
+            android:background="@drawable/tw"
             android:padding="8dp"
             android:onClick="acciontw"/>
 
         <Button
             android:id="@+id/btnIg"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginHorizontal="8dp"
-            android:background="@drawable/icono"
+            android:background="@drawable/instagram"
             android:padding="8dp"
             android:onClick="accionig"/>
 
         <Button
             android:id="@+id/btnMsj"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginHorizontal="8dp"
-            android:background="@drawable/icono"
+            android:background="@drawable/msj"
             android:padding="8dp"
             android:onClick="accionmsj"/>
 
         <Button
             android:id="@+id/btnUb"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginHorizontal="8dp"
-            android:background="@drawable/icono"
+            android:background="@drawable/ubicacion"
             android:padding="8dp"
             android:onClick="acciongeo"/>
     </LinearLayout>
