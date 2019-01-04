@@ -42,6 +42,7 @@
         app:itemBackground="@color/colorPrimary"
         app:itemIconTint="#FFF"
         app:itemTextColor="#FFF"
+        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/navegacion"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -87,20 +87,18 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
     }
 
     public void accionfb(View v){
-        String facebookId = "fb://page/1513094186";
+
         String urlPage = "https://www.facebook.com/lobesna";
 
-        try {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(facebookId )));
-        } catch (Exception e) {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
 
-            //Abre url de pagina.
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
-        }
     }
 
     public void acciontw(View v){
 
+        String urlPage = "https://twitter.com/YANDERSANTANA96?lang=es";
+
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
     }
 
     public void accionig(View v){
@@ -111,9 +109,6 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
     }
     public void accionmsj(View v){
 
-        String urlPage = "https://www.instagram.com/webbi_ec/?hl=es-la";
-
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
     }
     public void acciongeo(View v){
 

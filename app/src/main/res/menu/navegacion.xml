@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/match"
-        android:icon="@drawable/icono"
-        android:title="Match"/>
+        android:title=""
+        android:icon="@drawable/logohome"/>
 
     <item
         android:id="@+id/encuesta"
-        android:icon="@drawable/icono"
-        android:title="Encuesta"/>
+        android:title=""
+        android:icon="@drawable/logoencuesta"/>
 
     <item
         android:id="@+id/perfil"
-        android:icon="@drawable/icono"
-        android:title="Perfil"/>
+        android:title=""
+        android:icon="@drawable/logoperfil" />
 
 </menu>
