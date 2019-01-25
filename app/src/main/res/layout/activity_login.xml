@@ -20,14 +20,14 @@
         app:srcCompat="@drawable/banner" />
 
     <EditText
-        android:id="@+id/txtUser"
+        android:id="@+id/txtCorreo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:backgroundTint="#000"
         android:ems="14"
-        android:hint="Usuario"
-        android:inputType="text"
+        android:hint="Correo"
+        android:inputType="textEmailAddress"
         android:textColor="#000"
         android:textColorHint="#C72727"
         android:textColorLink="#000"

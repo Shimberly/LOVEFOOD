@@ -125,39 +125,4 @@
         android:layout_weight=".15"
         android:layout_marginHorizontal="20dp"/>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="9dp"
-        android:layout_weight=".10"
-        android:text="ò"
-        android:textColor="#000" />
-
-    <Button
-        android:id="@+id/btnRegistroFb"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/btnborderfb"
-        android:text="REGISTRARSE CON FACEBOOK"
-        android:textColor="#3B5998"
-        android:layout_weight=".15"
-        android:textSize="16sp"
-        android:layout_marginHorizontal="20dp"/>
-    <Button
-        android:id="@+id/btnRegistroGoogle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/btnborder"
-        android:text="REGISTRARSE CON GOOGLE"
-        android:textColor="#C72727"
-        android:layout_weight=".10"
-        android:layout_marginBottom="35dp"
-        android:textSize="16sp"
-        android:layout_marginHorizontal="20dp"/>
 </LinearLayout>
