@@ -35,7 +35,7 @@
         <!--buttons color-->
         <item name="colorAccent">#C72727</item>
         <!--title and message color-->
-        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorPrimary">#C72727</item>
     </style>
 
     <style name="AppThemeMyLight" parent="Theme.AppCompat.Light">
