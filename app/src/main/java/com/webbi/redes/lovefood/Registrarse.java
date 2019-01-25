@@ -53,7 +53,7 @@ public class Registrarse extends AppCompatActivity {
             }
         });
 
-        Button IrAInicio2 = (Button) findViewById(R.id.btnRegistroFb);
+       /* Button IrAInicio2 = (Button) findViewById(R.id.btnRegistroFb);
         IrAInicio2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +69,7 @@ public class Registrarse extends AppCompatActivity {
                 Intent itemintent = new Intent(Registrarse.this, Principal.class);
                 Registrarse.this.startActivity(itemintent);
             }
-        });
+        });*/
     }
     private void showDatePickerDialog() {
 

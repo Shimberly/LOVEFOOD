@@ -40,14 +40,14 @@ public class Login extends AppCompatActivity {
         txtCorreo=(TextView) findViewById(R.id.txtCorreo);
         txtPass=(TextView) findViewById(R.id.txtPass);
 
-        Button IrARegistroBtn = (Button) findViewById(R.id.btnIrRegistro);
+        /*Button IrARegistroBtn = (Button) findViewById(R.id.btnIrRegistro);
         IrARegistroBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent itemintent = new Intent(Login.this, Registrarse.class);
                 Login.this.startActivity(itemintent);
             }
-        });
+        });*/
 
         TextView IrAOlvidarPass = (TextView) findViewById(R.id.btnOlvidarPass);
         IrAOlvidarPass.setOnClickListener(new View.OnClickListener() {
