@@ -74,17 +74,26 @@
         android:layout_weight=".10"
         android:layout_marginHorizontal="30dp"/>
 
-    <Button
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingVertical="15dp"
+        android:layout_weight=".10"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:text="Sign Up via Facebook"/>
+
+    <TextView
         android:id="@+id/btnIrRegistro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/btnborder"
-        android:text="Registrate"
-        android:textColor="#C72727"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="25dp"
         android:layout_weight=".10"
-        android:layout_marginHorizontal="30dp"/>
+        android:text="¿No tienes cuenta?"
+        android:textColor="#000"
+        android:gravity="center"/>
 
 </LinearLayout>

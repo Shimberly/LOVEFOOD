@@ -40,7 +40,7 @@ public class Login extends AppCompatActivity {
         txtCorreo=(TextView) findViewById(R.id.txtCorreo);
         txtPass=(TextView) findViewById(R.id.txtPass);
 
-        Button IrARegistroBtn = (Button) findViewById(R.id.btnIrRegistro);
+        TextView IrARegistroBtn = (TextView) findViewById(R.id.btnIrRegistro);
         IrARegistroBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
