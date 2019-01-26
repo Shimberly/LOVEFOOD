@@ -23,14 +23,6 @@ public class Registrarse extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinSe);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.genero_array, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
 
         EditText etPlannedDate = (EditText) findViewById(R.id.txtDate);
         etPlannedDate.setOnClickListener(new View.OnClickListener() {
@@ -53,23 +45,6 @@ public class Registrarse extends AppCompatActivity {
             }
         });
 
-        Button IrAInicio2 = (Button) findViewById(R.id.btnRegistroFb);
-        IrAInicio2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent itemintent = new Intent(Registrarse.this, Principal.class);
-                Registrarse.this.startActivity(itemintent);
-            }
-        });
-
-        Button IrAInicio3 = (Button) findViewById(R.id.btnRegistroGoogle);
-        IrAInicio3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent itemintent = new Intent(Registrarse.this, Principal.class);
-                Registrarse.this.startActivity(itemintent);
-            }
-        });
     }
     private void showDatePickerDialog() {
 

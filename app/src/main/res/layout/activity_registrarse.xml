@@ -10,9 +10,6 @@
     android:background="#FFF"
     tools:context=".Registrarse">
 
-
-
-
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,35 +25,35 @@
     </android.support.design.widget.AppBarLayout>
 
     <EditText
-        android:id="@+id/txtUser"
+        android:id="@+id/txtNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:ems="14"
-        android:hint="Usuario"
+        android:hint="Nombre"
         android:backgroundTint="#C72727"
         android:inputType="text"
         android:textColor="#000"
         android:textColorHint="#000"
         android:textColorLink="#C72727"
         android:layout_weight=".10"
-        android:layout_marginHorizontal="30dp"
-        />
+        android:layout_marginHorizontal="40dp"
+    />
 
     <EditText
-        android:id="@+id/txtPass"
+        android:id="@+id/txtApellido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:backgroundTint="#C72727"
         android:ems="14"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
+        android:hint="Apellido"
+        android:backgroundTint="#C72727"
+        android:inputType="text"
         android:textColor="#000"
         android:textColorHint="#000"
-        android:layout_weight=".10"
         android:textColorLink="#C72727"
-        android:layout_marginHorizontal="30dp"/>
+        android:layout_weight=".10"
+        android:layout_marginHorizontal="40dp" />
 
     <EditText
         android:id="@+id/txtEmail"
@@ -71,47 +68,87 @@
         android:textColorHint="#000"
         android:textColorLink="#C72727"
         android:layout_weight=".10"
-        android:layout_marginHorizontal="30dp"/>
-    <LinearLayout
+        android:layout_marginHorizontal="40dp"/>
+
+    <EditText
+        android:id="@+id/txtPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#C72727"
+        android:ems="14"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:textColor="#000"
+        android:textColorHint="#000"
+        android:layout_weight=".10"
+        android:textColorLink="#C72727"
+        android:layout_marginHorizontal="40dp"/>
+
+    <TextView
+        android:id="@+id/txtGen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="25dp"
+        android:text="Género"
+        android:textColor="#000"
+        android:layout_weight=".10"
+        android:textSize="18sp"
+        android:layout_marginHorizontal="40dp"/>
+
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight=".10"
+        android:theme="@style/AppThemeMyLight"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#C72727"
+        android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp"
         android:orientation="horizontal">
-
-        <Spinner
-            android:id="@+id/spinSe"
-            android:layout_width="180dp"
+        <RadioButton android:id="@+id/radio_pirates"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_weight=".30"
-            android:backgroundTint="#C72727"
-            android:ems="14"
-            android:hint="Género"
-            android:inputType="text"
-            android:textColor="#000"
-            android:textColorHint="#000"
-            android:textColorLink="#C72727" />
+            android:text="Mujer"
+            android:layout_marginHorizontal="40dp"
+            android:textSize="17sp"
+            android:textColor="#000"/>
 
-        <EditText
-            android:id="@+id/txtDate"
-            android:layout_width="400dp"
+        <RadioButton android:id="@+id/radio_ninjas"
+            android:layout_width="wrap_content"
+            android:layout_marginHorizontal="40dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:backgroundTint="#C72727"
-            android:ems="14"
-            android:hint="Fecha de Nacimiento"
-            android:inputType="date"
-            android:textColor="#000"
-            android:textColorHint="#000"
-            android:textColorLink="#C72727"
-            android:focusable="false"
-            android:clickable="true"
-            android:layout_weight=".70"
-            android:maxLines="1"
-            android:layout_marginLeft="20dp"/>
-    </LinearLayout>
+            android:textSize="17sp"
+            android:text="Hombre"
+            android:textColor="#000"/>
+    </RadioGroup>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="40dp"
+        android:background="#C72727"/>
+
+    <EditText
+        android:id="@+id/txtDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#C72727"
+        android:ems="14"
+        android:hint="Fecha de Nacimiento"
+        android:inputType="date"
+        android:textColor="#000"
+        android:textColorHint="#000"
+        android:textColorLink="#C72727"
+        android:focusable="false"
+        android:clickable="true"
+        android:layout_weight=".10"
+        android:maxLines="1"
+        android:layout_marginHorizontal="40dp"/>
+
     <Button
         android:id="@+id/btnRegistrarse"
         android:layout_width="match_parent"
@@ -121,8 +158,8 @@
         android:text="REGISTRARSE"
         android:textColor="#FFF"
         android:textSize="16sp"
-        android:layout_marginTop="20dp"
-        android:layout_weight=".15"
-        android:layout_marginHorizontal="20dp"/>
+        android:layout_marginVertical="60dp"
+        android:layout_weight=".30"
+        android:layout_marginHorizontal="40dp"/>
 
 </LinearLayout>
