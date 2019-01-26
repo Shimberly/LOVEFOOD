@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/camposRegistro"
     android:layout_height="match_parent"
     android:layout_weight="1"
     android:gravity="center_horizontal"
@@ -99,6 +100,7 @@
 
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/radio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight=".10"
@@ -109,7 +111,7 @@
         android:gravity="center_horizontal"
         android:layout_marginVertical="10dp"
         android:orientation="horizontal">
-        <RadioButton android:id="@+id/radio_pirates"
+        <RadioButton android:id="@+id/radio_mujer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mujer"
@@ -117,7 +119,7 @@
             android:textSize="17sp"
             android:textColor="#000"/>
 
-        <RadioButton android:id="@+id/radio_ninjas"
+        <RadioButton android:id="@+id/radio_hombre"
             android:layout_width="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_height="wrap_content"

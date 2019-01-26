@@ -2,6 +2,7 @@ package com.webbi.redes.lovefood;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -25,6 +26,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class Login extends AppCompatActivity {
     private static final String TAG = "AsyncTaskActivity";
+    public final static String PREFS_KEY = "mispreferencias";
 
     public final static String path = "https://lovefoodservices.herokuapp.com/listarUsuarios";
     java.net.URL url;
@@ -32,6 +34,7 @@ public class Login extends AppCompatActivity {
     StringBuffer response;
     TextView txtCorreo;
     TextView txtPass;
+    ServicioWeb servicio;
     String nombre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +67,7 @@ public class Login extends AppCompatActivity {
                 if(isConnectedToInternet())
                 {
                     // Run AsyncTask
-                    new ServicioWeb().execute();
+                    servicio = (ServicioWeb) new ServicioWeb().execute();
                 }
                 else
                 {
@@ -109,6 +112,7 @@ public class Login extends AppCompatActivity {
 
             try {
                 url=new URL(path);
+                nombre="";
                 Log.d(TAG, "ServerData: " + path);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(15000);
@@ -134,7 +138,18 @@ public class Login extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            responseText = response.toString();
+            try {
+                responseText = response.toString();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Bundle args = new Bundle();
+                args.putString("titulo", "Advertencia");
+                args.putString("texto", "Problema al conectar con el servidor de LOVEFOOD");
+                ProblemaConexion f=new ProblemaConexion();
+                f.setArguments(args);
+                f.show(getSupportFragmentManager(), "ProblemaConexión");
+                servicio.cancel(true);
+            }
             //Call ServerData() method to call webservice and store result in response
             //  response = service.ServerData(path, postDataParams);
             Log.d(TAG, "data:" + responseText);
@@ -149,19 +164,16 @@ public class Login extends AppCompatActivity {
                         Log.d(TAG,"ENTRO");
                         if (String.valueOf(txtPass.getText()).equals(String.valueOf(pass))){
                             nombre="ok";
-                            Log.d(TAG, "OK:" + "ok");
+                            //Log.d(TAG, "OK:" + "ok");
                         }else{
-                            Log.d(TAG, "Error Pass 1:" + pass+".");
-                            Log.d(TAG, "Error Pass 2:" + txtPass.getText()+".");
+                            //.d(TAG, "Error Pass 1:" + pass+".");
+                            //Log.d(TAG, "Error Pass 2:" + txtPass.getText()+".");
                         }
                     }else{
-                        Log.d(TAG, "Error Correo 1:" + mail+".");
-                        Log.d(TAG, "Error Correo 2:" + txtCorreo.getText()+".");
+                        //Log.d(TAG, "Error Correo 1:" + mail+".");
+                        //Log.d(TAG, "Error Correo 2:" + txtCorreo.getText()+".");
                     }
                 }
-
-                Log.d(TAG, "country:" + nombre);
-
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -176,6 +188,9 @@ public class Login extends AppCompatActivity {
             if (nombre=="ok"){
                 Intent itemintent = new Intent(Login.this, Principal.class);
                 Login.this.startActivity(itemintent);
+                guardarValor(Login.this,"correo", String.valueOf(txtCorreo.getText()));
+
+
             }else{
                 Log.d(TAG, "Login fail:" + nombre);
                 Bundle args = new Bundle();
@@ -188,5 +203,17 @@ public class Login extends AppCompatActivity {
 
         }
 
+    }
+    public static void guardarValor(Context context, String keyPref, String valor) {
+        SharedPreferences settings = context.getSharedPreferences(PREFS_KEY, MODE_PRIVATE);
+        SharedPreferences.Editor editor;
+        editor = settings.edit();
+        editor.putString(keyPref, valor);
+        editor.commit();
+    }
+
+    public static String leerValor(Context context, String keyPref) {
+        SharedPreferences preferences = context.getSharedPreferences(PREFS_KEY, MODE_PRIVATE);
+        return  preferences.getString(keyPref, "");
     }
 }
