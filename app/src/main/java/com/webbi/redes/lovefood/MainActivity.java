@@ -16,7 +16,7 @@ import com.facebook.appevents.AppEventsLogger;
 public class MainActivity extends AppCompatActivity {
 
     CallbackManager callbackManager;
-    private static final int splash=3000;
+    private static final int splash=2000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

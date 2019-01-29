@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.support.design.widget.BottomNavigationView;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 public class Principal extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
@@ -27,6 +28,7 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
         nav.setOnNavigationItemSelectedListener(this);
 
         setInitialFragment();
+
     }
     @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;
@@ -88,7 +90,8 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
         }
     }
     public void accionEditar(View v){
-
+        Intent intent2 = new Intent(this, EditarPerfil.class);
+        startActivity(intent2);
 
     }
     public void accionfb(View v){

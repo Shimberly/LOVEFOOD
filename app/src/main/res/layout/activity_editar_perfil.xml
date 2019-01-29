@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/camposRegistro"
     android:layout_height="match_parent"
     android:layout_weight="1"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".PerfilFragment"
-    android:layout_marginVertical="70dp">
+    android:background="#FFF"
+    tools:context=".EditarPerfil">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#C72727"
+            app:popupTheme="@style/PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,19 +35,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
             android:gravity="center"
+            android:text="Paola Ortiz"
             android:textSize="24sp"
             android:textColor="#000"
             android:layout_marginLeft="15dp"
             android:layout_weight=".90"
             android:textFontWeight="Bold"/>
         <Button
-            android:id="@+id/btnEditar"
+            android:id="@+id/accionGuardarEditar"
             android:layout_width="8dp"
             android:layout_height="30dp"
-            android:background="@drawable/editar"
-            android:layout_weight=".10"
-            android:onClick="accionEditar"/>
+            android:background="@drawable/checking"
+            android:layout_weight=".10"/>
     </LinearLayout>
     <TextView
         android:id="@+id/txtEdad"
@@ -64,7 +82,7 @@
         android:layout_marginTop="10dp"
         android:layout_weight=".25"
         android:src="@drawable/girl" />
-    <TextView
+    <EditText
         android:id="@+id/txtUniversidad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,7 +95,7 @@
         android:layout_weight=".05"
         android:textSize="18sp" />
 
-    <TextView
+    <EditText
         android:id="@+id/txtLugar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,7 +115,7 @@
         android:layout_marginVertical="12dp"
         android:background="@drawable/btnborder">
 
-        <TextView
+        <EditText
             android:id="@+id/txtDescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -108,7 +126,7 @@
             android:textColor="#000"
             android:layout_marginHorizontal="10dp"
             android:layout_marginVertical="8dp"
-            android:layout_weight=".25" />
+            android:layout_weight=".65" />
         <TextView
             android:id="@+id/txtPreferencia"
             android:layout_width="wrap_content"
@@ -117,10 +135,38 @@
             android:layout_marginVertical="3dp"
             android:padding="5px"
             android:gravity="center"
-            android:layout_weight=".75"
-            android:text="Interés en chicos"
+            android:layout_weight=".15"
+            android:text="Interés en:"
             android:textColor="#797979"
             android:textSize="16sp" />
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/radio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".20"
+            android:theme="@style/AppThemeMyLight"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#C72727"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginVertical="10dp"
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/radio_mujer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mujer"
+                android:layout_marginHorizontal="40dp"
+                android:textSize="17sp"
+                android:textColor="#000"/>
+
+            <RadioButton android:id="@+id/radio_hombre"
+                android:layout_width="wrap_content"
+                android:layout_marginHorizontal="40dp"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:text="Hombre"
+                android:textColor="#000"/>
+        </RadioGroup>
 
     </LinearLayout>
     <LinearLayout
@@ -148,7 +194,7 @@
                 android:width="45dp"
                 android:background="@drawable/whatsapplogo"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/txtWa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -176,7 +222,7 @@
                 android:width="45dp"
                 android:background="@drawable/instagramlogo"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/txtIg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
