@@ -169,7 +169,7 @@ public class EditarPerfil extends AppCompatActivity {
 
                 Log.i("MainActivity", "onCreate -> else -> Todos los EditText estan llenos.");
                 Integer idusuario=1;
-                stringMap.put("universidad", String.valueOf(txtUniversidad));
+                stringMap.put("universidad", String.valueOf(txtUniversidad.getText()));
                 stringMap.put("ciudad", String.valueOf(txtCiudad.getText()));
                 stringMap.put("descripcion", String.valueOf(txtDescripcion.getText()));
                 stringMap.put("instagram", String.valueOf(txtInstagram.getText()));

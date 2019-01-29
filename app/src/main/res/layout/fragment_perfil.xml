@@ -19,7 +19,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:text="Paola Ortiz"
             android:textSize="24sp"
             android:textColor="#000"
             android:layout_marginLeft="15dp"
