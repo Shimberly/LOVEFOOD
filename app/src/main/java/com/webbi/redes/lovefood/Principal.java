@@ -88,7 +88,8 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
         }
     }
     public void accionEditar(View v){
-
+        Intent intent2 = new Intent(this, EditarPerfil.class);
+        startActivity(intent2);
 
     }
     public void accionfb(View v){

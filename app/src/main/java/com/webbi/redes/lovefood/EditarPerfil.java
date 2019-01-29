@@ -1,6 +1,5 @@
 package com.webbi.redes.lovefood;
 
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -11,20 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedOutputStream;
@@ -42,64 +35,47 @@ import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.regex.Pattern;
 
-import javax.net.ssl.HttpsURLConnection;
-
-public class Registrarse extends AppCompatActivity {
-
+public class EditarPerfil extends AppCompatActivity {
+    Button GuardarEditar;
     private static final String TAG = "AsyncTaskActivity";
 
-    public final static String path = "https://lovefoodservices.herokuapp.com/GuardarUsuario";
+    public final static String path = "https://lovefoodservices.herokuapp.com/actualizarInformacion";
 
-    EditText txtNombre;
-    EditText txtApellido;
-    EditText txtCorreo;
-    EditText txtPass;
+    EditText txtUniversidad;
+    EditText txtCiudad;
+    EditText txtDescripcion;
     RadioGroup radioGroup;
-    RadioButton genero;
-    EditText txtEdad;
+    RadioButton interes;
+    EditText txtInstagram;
+    EditText txtWhatsapp;
 
     HttpURLConnection conn;
     String query;
-    Button IrAInicio;
     ServicioWeb servicio;
     String nombre;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registrarse);
+        setContentView(R.layout.activity_editar_perfil);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        txtNombre=(EditText) findViewById(R.id.txtNombre);
-        txtApellido=(EditText) findViewById(R.id.txtApellido);
-        txtCorreo=(EditText) findViewById(R.id.txtEmail);
-        txtPass=(EditText) findViewById(R.id.txtPass);
-        txtEdad=(EditText) findViewById(R.id.txtDate);
+        txtUniversidad=(EditText) findViewById(R.id.txtUniversidad);
+        txtCiudad=(EditText) findViewById(R.id.txtLugar);
+        txtDescripcion=(EditText) findViewById(R.id.txtDescripcion);
+        txtInstagram=(EditText) findViewById(R.id.txtIg);
+        txtWhatsapp=(EditText) findViewById(R.id.txtWa);
         radioGroup = (RadioGroup) findViewById(R.id.radio);
 
-        EditText etPlannedDate = (EditText) findViewById(R.id.txtDate);
-        etPlannedDate.setOnClickListener(new View.OnClickListener() {
+        GuardarEditar = (Button) findViewById(R.id.accionGuardarEditar);
+        //GuardarEditar.setEnabled(true);
+        GuardarEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch (view.getId()) {
-                    case R.id.txtDate:
-                        showDatePickerDialog();
-                        break;
-                }
-            }
-        });
-
-        IrAInicio = (Button) findViewById(R.id.btnRegistrarse);
-        IrAInicio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!validarEmail(String.valueOf(txtCorreo.getText()))){
-                    txtCorreo.setError("Email no válido");
-                }else{
                     if(isConnectedToInternet())
                     {
                         // Run AsyncTask
@@ -107,7 +83,7 @@ public class Registrarse extends AppCompatActivity {
                     }
                     else
                     {
-                        Log.d(TAG, "Error Conexion");
+                        Log.d("d", "Error Conexion");
                         Bundle args = new Bundle();
                         args.putString("titulo", "Advertencia");
                         args.putString("texto", "No hay conexión de Internet");
@@ -116,12 +92,9 @@ public class Registrarse extends AppCompatActivity {
                         f.show(getSupportFragmentManager(), "ProblemaConexión");
                     }
                 }
-            }
         });
 
-
     }
-
     public boolean isConnectedToInternet(){
         ConnectivityManager connectivity = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivity != null)
@@ -137,20 +110,6 @@ public class Registrarse extends AppCompatActivity {
         }
         return false;
     }
-    private void showDatePickerDialog() {
-
-        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                // +1 because january is zero
-                final String selectedDate = day + " / " + (month+1) + " / " + year;
-                EditText etPlannedDate = (EditText) findViewById(R.id.txtDate);
-                etPlannedDate.setText(selectedDate);
-            }
-        });
-        newFragment.show(getSupportFragmentManager(), "datePicker");
-    }
-
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
@@ -162,7 +121,7 @@ public class Registrarse extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            IrAInicio.setEnabled(false);
+            //GuardarEditar.setEnabled(false);
         }
         @Override
         protected String doInBackground(Integer... params) {
@@ -177,7 +136,7 @@ public class Registrarse extends AppCompatActivity {
             int selectedId = radioGroup.getCheckedRadioButtonId();
 
             // find the radiobutton by returned id
-            genero = (RadioButton) findViewById(selectedId);
+            interes = (RadioButton) findViewById(selectedId);
             // Obtienes el layout que contiene los EditText
             LinearLayout linearLayout = findViewById(R.id.camposRegistro);
 
@@ -206,19 +165,20 @@ public class Registrarse extends AppCompatActivity {
 
             }
 
-            if (isAllFill && genero != null) {
+            if (isAllFill && interes != null) {
 
                 Log.i("MainActivity", "onCreate -> else -> Todos los EditText estan llenos.");
-
-                stringMap.put("nombre", String.valueOf(txtNombre.getText()));
-                stringMap.put("apellido", String.valueOf(txtApellido.getText()));
-                stringMap.put("correo", String.valueOf(txtCorreo.getText()));
-                stringMap.put("clave", String.valueOf(txtPass.getText()));
-                stringMap.put("sexo", String.valueOf(genero.getText()));
-                stringMap.put("fecha_nacimiento", String.valueOf(txtEdad.getText()));
-                String requestBody = Utils.buildPostParameters(stringMap);
+                Integer idusuario=1;
+                stringMap.put("universidad", String.valueOf(txtUniversidad));
+                stringMap.put("ciudad", String.valueOf(txtCiudad.getText()));
+                stringMap.put("descripcion", String.valueOf(txtDescripcion.getText()));
+                stringMap.put("instagram", String.valueOf(txtInstagram.getText()));
+                stringMap.put("preferencia", String.valueOf(interes.getText()));
+                stringMap.put("numero", String.valueOf(txtWhatsapp.getText()));
+                stringMap.put("idusuario", String.valueOf(idusuario));
+                String requestBody = Registrarse.Utils.buildPostParameters(stringMap);
                 try {
-                    urlConnection = (HttpURLConnection) Utils.makeRequest("POST", path, null, "application/x-www-form-urlencoded", requestBody);
+                    urlConnection = (HttpURLConnection) Registrarse.Utils.makeRequest("PUT", path, null, "application/x-www-form-urlencoded", requestBody);
                     InputStream inputStream;
                     // get stream
                     if (urlConnection.getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST) {
@@ -257,14 +217,15 @@ public class Registrarse extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String nombre) {
-
+            //GuardarEditar.setEnabled(true);
             super.onPostExecute(nombre);
             Log.d(TAG, "onPostExecute");
             if (nombre=="ok"){
-                Intent itemintent = new Intent(Registrarse.this, Principal.class);
-                Registrarse.this.startActivity(itemintent);
+                Intent itemintent = new Intent(EditarPerfil.this, Principal.class);
+                EditarPerfil.this.startActivity(itemintent);
+                Log.d(TAG, "ok");
             }else{
-                IrAInicio.setEnabled(true);
+
                 Log.d(TAG, "Registro fail:" + nombre);
                 Bundle args = new Bundle();
                 args.putString("titulo", "Advertencia");
@@ -308,32 +269,28 @@ public class Registrarse extends AppCompatActivity {
             try {
                 url = new URL(apiAddress);
 
-            urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection = (HttpURLConnection) url.openConnection();
 
-            urlConnection.setDoInput(true);
-            urlConnection.setDoOutput(!method.equals("GET"));
-            urlConnection.setRequestMethod(method);
+                urlConnection.setDoInput(true);
+                urlConnection.setDoOutput(!method.equals("GET"));
+                urlConnection.setRequestMethod(method);
 
-            urlConnection.setRequestProperty("Authorization", "Bearer " + accessToken);
+                urlConnection.setRequestProperty("Authorization", "Bearer " + accessToken);
 
-            urlConnection.setRequestProperty("Content-Type", mimeType);
-            OutputStream outputStream = new BufferedOutputStream(urlConnection.getOutputStream());
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream, "utf-8"));
-            writer.write(requestBody);
-            writer.flush();
-            writer.close();
-            outputStream.close();
+                urlConnection.setRequestProperty("Content-Type", mimeType);
+                OutputStream outputStream = new BufferedOutputStream(urlConnection.getOutputStream());
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream, "utf-8"));
+                writer.write(requestBody);
+                writer.flush();
+                writer.close();
+                outputStream.close();
 
-            urlConnection.connect();
+                urlConnection.connect();
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
             return urlConnection;
         }
-    }
-    private boolean validarEmail(String email) {
-        Pattern pattern = Patterns.EMAIL_ADDRESS;
-        return pattern.matcher(email).matches();
     }
 }

@@ -8,7 +8,8 @@
         <item>Hombre</item>
     </string-array>
 
-    <string name="facebook_app_id">294156307911911</string> <string name="fb_login_protocol_scheme">fb294156307911911</string>
+    <string name="facebook_app_id">294156307911911</string>
+    <string name="fb_login_protocol_scheme">fb294156307911911</string>
 
 
 </resources>
