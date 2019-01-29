@@ -21,9 +21,10 @@
 
     <EditText
         android:id="@+id/txtCorreo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="40dp"
         android:backgroundTint="#000"
         android:ems="14"
         android:hint="Correo"
@@ -31,33 +32,36 @@
         android:textColor="#000"
         android:textColorHint="#C72727"
         android:textColorLink="#000"
-        android:layout_weight=".10"
+        android:layout_weight=".15"
         android:paddingVertical="25dp"/>
 
     <EditText
         android:id="@+id/txtPass"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:backgroundTint="#000"
         android:ems="14"
         android:hint="Contraseña"
+        android:layout_marginHorizontal="40dp"
         android:inputType="textPassword"
         android:textColor="#000"
         android:textColorHint="#C72727"
         android:textColorLink="#000"
-        android:layout_weight=".10"
+        android:layout_weight=".15"
         android:paddingVertical="25dp"/>
 
     <TextView
         android:id="@+id/btnOlvidarPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
         android:layout_gravity="right"
         android:layout_marginTop="5dp"
         android:text="¿Olvidaste la contraseña?"
         android:textColor="#000"
         android:layout_weight=".5"
+        android:layout_marginVertical="10dp"
         android:textSize="12sp"
         android:layout_marginRight="25dp"/>
 
@@ -71,29 +75,19 @@
         android:textColor="#FFF"
         android:textSize="16sp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_weight=".10"
-        android:layout_marginHorizontal="30dp"/>
-
-
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/login_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingVertical="15dp"
-        android:layout_weight=".10"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginHorizontal="30dp"
-        android:text="Sign Up via Facebook"/>
+        android:layout_marginHorizontal="40dp"/>
 
     <TextView
         android:id="@+id/btnIrRegistro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight=".10"
-        android:text="¿No tienes cuenta?"
+        android:layout_weight=".5"
+        android:text="¿No tienes cuenta? Registrate"
         android:textColor="#000"
+        android:layout_marginVertical="2dp"
+        android:layout_marginBottom="20dp"
         android:gravity="center"/>
 
 </LinearLayout>

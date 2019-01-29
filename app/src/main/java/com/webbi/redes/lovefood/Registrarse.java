@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -41,6 +42,7 @@ import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -63,7 +65,7 @@ public class Registrarse extends AppCompatActivity {
 
     HttpURLConnection conn;
     String query;
-
+    Button IrAInicio;
     ServicioWeb servicio;
     String nombre;
     @Override
@@ -94,24 +96,28 @@ public class Registrarse extends AppCompatActivity {
             }
         });
 
-        Button IrAInicio = (Button) findViewById(R.id.btnRegistrarse);
+        IrAInicio = (Button) findViewById(R.id.btnRegistrarse);
         IrAInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isConnectedToInternet())
-                {
-                    // Run AsyncTask
-                    servicio = (ServicioWeb) new ServicioWeb().execute();
-                }
-                else
-                {
-                    Log.d(TAG, "Error Conexion");
-                    Bundle args = new Bundle();
-                    args.putString("titulo", "Advertencia");
-                    args.putString("texto", "No hay conexión de Internet");
-                    ProblemaConexion f=new ProblemaConexion();
-                    f.setArguments(args);
-                    f.show(getSupportFragmentManager(), "ProblemaConexión");
+                if (!validarEmail(String.valueOf(txtCorreo.getText()))){
+                    txtCorreo.setError("Email no válido");
+                }else{
+                    if(isConnectedToInternet())
+                    {
+                        // Run AsyncTask
+                        servicio = (ServicioWeb) new ServicioWeb().execute();
+                    }
+                    else
+                    {
+                        Log.d(TAG, "Error Conexion");
+                        Bundle args = new Bundle();
+                        args.putString("titulo", "Advertencia");
+                        args.putString("texto", "No hay conexión de Internet");
+                        ProblemaConexion f=new ProblemaConexion();
+                        f.setArguments(args);
+                        f.show(getSupportFragmentManager(), "ProblemaConexión");
+                    }
                 }
             }
         });
@@ -157,7 +163,10 @@ public class Registrarse extends AppCompatActivity {
     private class ServicioWeb extends AsyncTask<Integer, Integer, String> {
 
 
-
+        @Override
+        protected void onPreExecute() {
+            IrAInicio.setEnabled(false);
+        }
         @Override
         protected String doInBackground(Integer... params) {
             return getWebServiceResponseData();
@@ -201,6 +210,7 @@ public class Registrarse extends AppCompatActivity {
             }
 
             if (isAllFill && genero != null) {
+
                 Log.i("MainActivity", "onCreate -> else -> Todos los EditText estan llenos.");
 
                 stringMap.put("nombre", String.valueOf(txtNombre.getText()));
@@ -239,7 +249,7 @@ public class Registrarse extends AppCompatActivity {
                 Log.i("MainActivity", "onCreate -> if -> Hay EditText vacios.");
                 Bundle args = new Bundle();
                 args.putString("titulo", "Advertencia");
-                args.putString("texto", "Llena todos los campos");
+                args.putString("texto", "Completa todos los campos");
                 ProblemaConexion f=new ProblemaConexion();
                 f.setArguments(args);
                 f.show(getSupportFragmentManager(), "ProblemaConexión");
@@ -250,12 +260,14 @@ public class Registrarse extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String nombre) {
+
             super.onPostExecute(nombre);
             Log.d(TAG, "onPostExecute");
             if (nombre=="ok"){
                 Intent itemintent = new Intent(Registrarse.this, Principal.class);
                 Registrarse.this.startActivity(itemintent);
             }else{
+                IrAInicio.setEnabled(true);
                 Log.d(TAG, "Registro fail:" + nombre);
                 Bundle args = new Bundle();
                 args.putString("titulo", "Advertencia");
@@ -322,5 +334,9 @@ public class Registrarse extends AppCompatActivity {
             }
             return urlConnection;
         }
+    }
+    private boolean validarEmail(String email) {
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
     }
 }

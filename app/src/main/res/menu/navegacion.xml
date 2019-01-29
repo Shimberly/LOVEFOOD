@@ -4,11 +4,13 @@
     <item
         android:id="@+id/match"
         android:title=""
-        android:icon="@drawable/home"/>
+        android:icon="@drawable/home"
+        android:enabled="false"/>
 
     <item
         android:id="@+id/encuesta"
         android:title=""
+        android:enabled="false"
         android:icon="@drawable/like"/>
 
     <item

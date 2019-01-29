@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.regex.Pattern;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -64,20 +66,24 @@ public class Login extends AppCompatActivity {
         Logear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isConnectedToInternet())
-                {
-                    // Run AsyncTask
-                    servicio = (ServicioWeb) new ServicioWeb().execute();
-                }
-                else
-                {
-                    Log.d(TAG, "Error Conexion");
-                    Bundle args = new Bundle();
-                    args.putString("titulo", "Advertencia");
-                    args.putString("texto", "No hay conexión de Internet");
-                    ProblemaConexion f=new ProblemaConexion();
-                    f.setArguments(args);
-                    f.show(getSupportFragmentManager(), "ProblemaConexión");
+                if (!validarEmail(String.valueOf(txtCorreo.getText()))){
+                    txtCorreo.setError("Email no válido");
+                }else{
+                    if(isConnectedToInternet())
+                    {
+                        // Run AsyncTask
+                        servicio = (ServicioWeb) new ServicioWeb().execute();
+                    }
+                    else
+                    {
+                        Log.d(TAG, "Error Conexion");
+                        Bundle args = new Bundle();
+                        args.putString("titulo", "Advertencia");
+                        args.putString("texto", "No hay conexión de Internet");
+                        ProblemaConexion f=new ProblemaConexion();
+                        f.setArguments(args);
+                        f.show(getSupportFragmentManager(), "ProblemaConexión");
+                    }
                 }
             }
         });
@@ -215,5 +221,9 @@ public class Login extends AppCompatActivity {
     public static String leerValor(Context context, String keyPref) {
         SharedPreferences preferences = context.getSharedPreferences(PREFS_KEY, MODE_PRIVATE);
         return  preferences.getString(keyPref, "");
+    }
+    private boolean validarEmail(String email) {
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
     }
 }

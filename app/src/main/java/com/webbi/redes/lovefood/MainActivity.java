@@ -1,6 +1,7 @@
 package com.webbi.redes.lovefood;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +15,7 @@ import com.facebook.appevents.AppEventsLogger;
 public class MainActivity extends AppCompatActivity {
 
     CallbackManager callbackManager;
-
+    private static final int splash=3000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         printKeyHash();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent itemintent = new Intent(MainActivity.this, Login.class);
+                MainActivity.this.startActivity(itemintent);
+                finish();
+            }
+        },splash);
     }
 
     private void printKeyHash(){

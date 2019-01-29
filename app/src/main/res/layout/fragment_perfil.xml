@@ -7,43 +7,76 @@
     android:orientation="vertical"
     tools:context=".PerfilFragment"
     android:layout_marginVertical="70dp">
-
-    <TextView
-        android:id="@+id/txtNombre"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Paola Ortiz"
-        android:textSize="24sp"
-        android:textColor="#000"
+        android:layout_marginRight="10dp"
         android:layout_weight=".10"
-        android:textFontWeight="Bold"/>
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/txtNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="Paola Ortiz"
+            android:textSize="24sp"
+            android:textColor="#000"
+            android:layout_marginLeft="15dp"
+            android:layout_weight=".90"
+            android:textFontWeight="Bold"/>
+        <Button
+            android:id="@+id/btnEditar"
+            android:layout_width="8dp"
+            android:layout_height="30dp"
+            android:background="@drawable/editar"
+            android:layout_weight=".10"
+            android:onClick="accionEditar"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/txtEdad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:padding="5px"
+        android:text="22 años"
+        android:textColor="#C72727"
+        android:layout_weight=".05"
+        android:textSize="14sp" />
+    <TextView
+        android:id="@+id/txtCorreo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:padding="5px"
+        android:text="chibi@gmail.com"
+        android:textColor="#797979"
+        android:layout_weight=".05"
+        android:textSize="14sp" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/fotoPerfil"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="10dp"
-        android:layout_weight=".30"
-        android:src="@drawable/paola" />
-
+        android:layout_weight=".25"
+        android:src="@drawable/girl" />
     <TextView
-        android:id="@+id/txtDescripcion"
+        android:id="@+id/txtUniversidad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="5dp"
         android:gravity="center"
-        android:text="Me llamo Chibi y soy troncaleña. Me gusta romper el corazón de los chicos. Escríbeme, igual no te responderé."
-        android:textSize="16sp"
+        android:text="ESPOL"
         android:textColor="#000"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:layout_weight=".25"
-        android:background="@drawable/btnborder"/>
+        android:textFontWeight="Bold"
+        android:layout_weight=".05"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/txtLugar"
@@ -52,89 +85,108 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="Troncal, Ecuador"
-        android:textColor="#000"
-        android:layout_marginTop="10dp"
-        android:layout_weight=".5"
+        android:textColor="#797979"
+        android:layout_weight=".05"
         android:textSize="17sp" />
-    <TextView
-        android:id="@+id/txtEstudio"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="ESPOL"
-        android:textColor="#000"
-        android:textFontWeight="Bold"
-        android:layout_weight=".5"
-        android:textSize="18sp" />
-
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/Tabla"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_weight=".25"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:stretchColumns="1">
-
-    <TableRow
-        android:id="@+id/Cabecera"
-        android:layout_width="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_height="wrap_content" >
+        android:layout_weight=".30"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="12dp"
+        android:background="@drawable/btnborder">
 
         <TextView
-            android:id="@+id/ColumnaAnio"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:id="@+id/txtDescripcion"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5px"
-            android:gravity="center"
-            android:text="Interés en chicos"
-            android:textColor="#000"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/ColumnaCiudad"
-            android:layout_width="wrap_content"
-
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:padding="5px"
-            android:text="22 años"
-            android:textColor="#000"
-            android:textSize="14sp" />
-
-    </TableRow>
-        <TableRow
-            android:id="@+id/Cabeceraas"
             android:layout_gravity="center"
             android:gravity="center"
+            android:text="Me llamo Chibi y soy Troncaleña. Me gusta romper el corazón de los chicos. Escríbeme, igual no te responderé."
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="8dp"
+            android:layout_weight=".25" />
+        <TextView
+            android:id="@+id/txtPreferencia"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="3dp"
+            android:padding="5px"
+            android:gravity="center"
+            android:layout_weight=".75"
+            android:text="Interés en chicos"
+            android:textColor="#797979"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".15"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginVertical="8dp">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_weight=".50"
+            android:orientation="horizontal"
+            android:layout_marginLeft="35dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center">
+            <Button
+                android:id="@+id/iconWa"
+                android:layout_width="45dp"
+                android:layout_height="25dp"
+                android:padding="5px"
+                android:layout_weight=".50"
+                android:width="45dp"
+                android:background="@drawable/whatsapplogo"/>
 
             <TextView
-                android:id="@+id/ColumnaAniaso"
-                android:layout_width="wrap_content"
+                android:id="@+id/txtWa"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5px"
+                android:layout_marginHorizontal="15dp"
+                android:layout_weight=".50"
                 android:text="0992937424"
-                android:layout_gravity="center_horizontal"
                 android:textColor="#000"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center">
+            <Button
+                android:id="@+id/iconIg"
+                android:layout_width="45dp"
+                android:layout_height="25dp"
+                android:padding="5px"
+                android:layout_weight=".50"
+                android:width="45dp"
+                android:background="@drawable/instagramlogo"/>
 
             <TextView
-                android:id="@+id/ColumnaCiudsdad"
-                android:layout_width="wrap_content"
+                android:id="@+id/txtIg"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:padding="5px"
-                android:text="chibi@gmail.com"
+                android:layout_marginHorizontal="15dp"
+                android:layout_weight=".50"
+                android:text="chibi"
                 android:textColor="#000"
-                android:textSize="14sp" />
-
-        </TableRow>
-    </TableLayout>
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

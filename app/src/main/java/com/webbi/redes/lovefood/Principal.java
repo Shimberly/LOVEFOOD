@@ -48,7 +48,7 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
 
     private void setInitialFragment() {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.mainFrame, new MatchFragment());
+        fragmentTransaction.add(R.id.mainFrame, new PerfilFragment());
         fragmentTransaction.commit();
     }
 
@@ -61,8 +61,12 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menusuperior, menu);
+
         return true;
     }
+
+            // You can also use something like:
+            // menu.findItem(R.id.example_foobar).setEnabled(false);
 
 
     @Override
@@ -72,10 +76,7 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
         // as you specify a parent activity in AndroidManifest.xml.
 
         switch (item.getItemId()){
-            case R.id.configuracion:
-                Intent intent = new Intent(getApplicationContext(), Configuracion.class);
-                startActivity(intent);
-                return true;
+
             case R.id.salir:
                 Intent intent2 = new Intent(this, MainActivity.class);
                 startActivity(intent2);
@@ -86,7 +87,10 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
 
         }
     }
+    public void accionEditar(View v){
 
+
+    }
     public void accionfb(View v){
 
         String urlPage = "https://www.facebook.com/lobesna?lang=es";
