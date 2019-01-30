@@ -39,7 +39,6 @@
         android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
         android:padding="5px"
-        android:text="22 años"
         android:textColor="#C72727"
         android:layout_weight=".05"
         android:textSize="14sp" />
@@ -50,7 +49,6 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:padding="5px"
-        android:text="chibi@gmail.com"
         android:textColor="#797979"
         android:layout_weight=".05"
         android:textSize="14sp" />
@@ -71,7 +69,6 @@
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:text="ESPOL"
         android:textColor="#000"
         android:textFontWeight="Bold"
         android:layout_weight=".05"
@@ -83,7 +80,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Troncal, Ecuador"
         android:textColor="#797979"
         android:layout_weight=".05"
         android:textSize="17sp" />
@@ -103,7 +99,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="Me llamo Chibi y soy Troncaleña. Me gusta romper el corazón de los chicos. Escríbeme, igual no te responderé."
             android:textSize="16sp"
             android:textColor="#000"
             android:layout_marginHorizontal="10dp"
@@ -118,7 +113,6 @@
             android:padding="5px"
             android:gravity="center"
             android:layout_weight=".75"
-            android:text="Interés en chicos"
             android:textColor="#797979"
             android:textSize="16sp" />
 
@@ -155,7 +149,6 @@
                 android:padding="5px"
                 android:layout_marginHorizontal="15dp"
                 android:layout_weight=".50"
-                android:text="0992937424"
                 android:textColor="#000"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -183,7 +176,6 @@
                 android:padding="5px"
                 android:layout_marginHorizontal="15dp"
                 android:layout_weight=".50"
-                android:text="chibi"
                 android:textColor="#000"
                 android:textSize="16sp" />
         </LinearLayout>

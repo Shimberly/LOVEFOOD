@@ -3,6 +3,7 @@ package com.webbi.redes.lovefood;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -46,12 +47,16 @@ import java.util.regex.Pattern;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import static com.webbi.redes.lovefood.Login.PREFS_KEY;
+
 public class Registrarse extends AppCompatActivity {
 
     private static final String TAG = "AsyncTaskActivity";
 
     public final static String path = "https://lovefoodservices.herokuapp.com/GuardarUsuario";
-
+    public final static String pathUltimo = "https://lovefoodservices.herokuapp.com/ultimoidusuario";
+    String responseText;
+    StringBuffer response;
     EditText txtNombre;
     EditText txtApellido;
     EditText txtCorreo;
@@ -59,7 +64,7 @@ public class Registrarse extends AppCompatActivity {
     RadioGroup radioGroup;
     RadioButton genero;
     EditText txtEdad;
-
+    String idusuario;
     HttpURLConnection conn;
     String query;
     Button IrAInicio;
@@ -102,8 +107,49 @@ public class Registrarse extends AppCompatActivity {
                 }else{
                     if(isConnectedToInternet())
                     {
+                        int selectedId = radioGroup.getCheckedRadioButtonId();
+
+                        // find the radiobutton by returned id
+                        genero = (RadioButton) findViewById(selectedId);
+                        // Obtienes el layout que contiene los EditText
+                        LinearLayout linearLayout = findViewById(R.id.camposRegistro);
+
+                        // Obtiene el numero de EditText que contiene el layout
+                        int count = linearLayout.getChildCount();
+
+                        // Recorres todos los editText y si hay alguno vacio cambias el valor de la
+                        // variable isAllFill a false, lo que indica que aun hay editText vacios.
+                        boolean isAllFill = true;
+                        for (int i = 0; i < count; i++) {
+
+                            // En cada iteración obtienes uno de los editText que se encuentran el
+                            // layout.
+                            try {
+                                EditText editText = (EditText) linearLayout.getChildAt(i);
+                                // Compruebas su el editText esta vacio.
+                                if (editText.getText().toString().isEmpty()) {
+                                    isAllFill = false;
+                                    break;
+                                }
+                            }catch (Exception e){
+
+                            }
+
+
+
+                        }
+                        if (isAllFill && genero != null) {
                         // Run AsyncTask
-                        servicio = (ServicioWeb) new ServicioWeb().execute();
+                            servicio = (ServicioWeb) new ServicioWeb().execute();
+                        } else {
+                            Log.i("MainActivity", "onCreate -> if -> Hay EditText vacios.");
+                            Bundle args = new Bundle();
+                            args.putString("titulo", "Advertencia");
+                            args.putString("texto", "Completa todos los campos");
+                            ProblemaConexion f=new ProblemaConexion();
+                            f.setArguments(args);
+                            f.show(getSupportFragmentManager(), "ProblemaConexión");
+                        }
                     }
                     else
                     {
@@ -143,7 +189,18 @@ public class Registrarse extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 // +1 because january is zero
-                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                month=month+1;
+                String formattedMonth= String.valueOf(month);
+                String formattedDayOfMonth= String.valueOf(day);
+                if(month < 10){
+
+                    formattedMonth = "0" + month;
+                }
+                if(day < 10){
+
+                    formattedDayOfMonth = "0" + day;
+                }
+                final String selectedDate = formattedDayOfMonth + "/" + formattedMonth + "/" + year;
                 EditText etPlannedDate = (EditText) findViewById(R.id.txtDate);
                 etPlannedDate.setText(selectedDate);
             }
@@ -170,87 +227,107 @@ public class Registrarse extends AppCompatActivity {
         }
 
         protected String getWebServiceResponseData() {
-            nombre="";
+            nombre=null;
             //String url = "http://10.0.2.2/api/token";
             HttpURLConnection urlConnection = null;
             Map<String, String> stringMap = new HashMap<>();
-            int selectedId = radioGroup.getCheckedRadioButtonId();
+            Log.i("MainActivity", "onCreate -> else -> Todos los EditText estan llenos.");
 
-            // find the radiobutton by returned id
-            genero = (RadioButton) findViewById(selectedId);
-            // Obtienes el layout que contiene los EditText
-            LinearLayout linearLayout = findViewById(R.id.camposRegistro);
-
-            // Obtiene el numero de EditText que contiene el layout
-            int count = linearLayout.getChildCount();
-
-            // Recorres todos los editText y si hay alguno vacio cambias el valor de la
-            // variable isAllFill a false, lo que indica que aun hay editText vacios.
-            boolean isAllFill = true;
-            for (int i = 0; i < count; i++) {
-
-                // En cada iteración obtienes uno de los editText que se encuentran el
-                // layout.
-                try {
-                    EditText editText = (EditText) linearLayout.getChildAt(i);
-                    // Compruebas su el editText esta vacio.
-                    if (editText.getText().toString().isEmpty()) {
-                        isAllFill = false;
-                        break;
-                    }
-                }catch (Exception e){
-
+            stringMap.put("nombre", String.valueOf(txtNombre.getText()));
+            stringMap.put("apellido", String.valueOf(txtApellido.getText()));
+            stringMap.put("correo", String.valueOf(txtCorreo.getText()));
+            stringMap.put("clave", String.valueOf(txtPass.getText()));
+            stringMap.put("sexo", String.valueOf(genero.getText()));
+            stringMap.put("fecha_nacimiento", String.valueOf(txtEdad.getText()));
+            String requestBody = Utils.buildPostParameters(stringMap);
+            try {
+                urlConnection = (HttpURLConnection) Utils.makeRequest("POST", path, null, "application/x-www-form-urlencoded", requestBody);
+                InputStream inputStream;
+                // get stream
+                if (urlConnection.getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST) {
+                    inputStream = urlConnection.getInputStream();
+                } else {
+                    inputStream = urlConnection.getErrorStream();
                 }
-
-
-
+                // parse stream
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String temp, response = "";
+                while ((temp = bufferedReader.readLine()) != null) {
+                    response += temp;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return e.toString();
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
             }
 
-            if (isAllFill && genero != null) {
+            try {
+                URL url=new URL(pathUltimo);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setReadTimeout(15000);
+                conn.setConnectTimeout(15000);
+                conn.setRequestMethod("GET");
+                int responseCode = conn.getResponseCode();
+                Log.d(TAG, "Response code: " + responseCode);
+                if (responseCode == HttpsURLConnection.HTTP_OK) {
+                    // Reading response from input Stream
+                    BufferedReader in = new BufferedReader(
+                            new InputStreamReader(conn.getInputStream()));
+                    String output;
+                    response = new StringBuffer();
 
-                Log.i("MainActivity", "onCreate -> else -> Todos los EditText estan llenos.");
-
-                stringMap.put("nombre", String.valueOf(txtNombre.getText()));
-                stringMap.put("apellido", String.valueOf(txtApellido.getText()));
-                stringMap.put("correo", String.valueOf(txtCorreo.getText()));
-                stringMap.put("clave", String.valueOf(txtPass.getText()));
-                stringMap.put("sexo", String.valueOf(genero.getText()));
-                stringMap.put("fecha_nacimiento", String.valueOf(txtEdad.getText()));
-                String requestBody = Utils.buildPostParameters(stringMap);
-                try {
-                    urlConnection = (HttpURLConnection) Utils.makeRequest("POST", path, null, "application/x-www-form-urlencoded", requestBody);
-                    InputStream inputStream;
-                    // get stream
-                    if (urlConnection.getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST) {
-                        inputStream = urlConnection.getInputStream();
-                    } else {
-                        inputStream = urlConnection.getErrorStream();
+                    while ((output = in.readLine()) != null) {
+                        response.append(output);
                     }
-                    // parse stream
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-                    String temp, response = "";
-                    while ((temp = bufferedReader.readLine()) != null) {
-                        response += temp;
-                    }
-                    nombre="ok";
-                    return nombre;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return e.toString();
-                } finally {
-                    if (urlConnection != null) {
-                        urlConnection.disconnect();
-                    }
+                    in.close();
                 }
-            } else {
-                Log.i("MainActivity", "onCreate -> if -> Hay EditText vacios.");
-                Bundle args = new Bundle();
-                args.putString("titulo", "Advertencia");
-                args.putString("texto", "Completa todos los campos");
-                ProblemaConexion f=new ProblemaConexion();
-                f.setArguments(args);
-                f.show(getSupportFragmentManager(), "ProblemaConexión");
-                servicio.cancel(true);
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+            try {
+                responseText = response.toString();
+            } catch (Exception e) {
+            }
+            try {
+                JSONArray jsonarray = new JSONArray(responseText);
+
+                for (int i=0;i<jsonarray.length();i++){
+                    JSONObject jsonobject = jsonarray.getJSONObject(0);
+                    idusuario = jsonobject.getString("id");
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
+                URL url=new URL("https://lovefoodservices.herokuapp.com/generarinformacion/"+Integer.valueOf(idusuario));
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setReadTimeout(15000);
+                conn.setConnectTimeout(15000);
+                conn.setRequestMethod("GET");
+                int responseCode = conn.getResponseCode();
+                Log.d(TAG, "Response code: " + responseCode);
+                if (responseCode == HttpsURLConnection.HTTP_OK) {
+                    // Reading response from input Stream
+                    BufferedReader in = new BufferedReader(
+                            new InputStreamReader(conn.getInputStream()));
+                    String output;
+                    response = new StringBuffer();
+
+                    while ((output = in.readLine()) != null) {
+                        response.append(output);
+                    }
+                    in.close();
+                }
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+            try {
+                responseText = response.toString();
+                nombre=idusuario;
+            } catch (Exception e) {
             }
             return nombre;
         }
@@ -260,7 +337,8 @@ public class Registrarse extends AppCompatActivity {
 
             super.onPostExecute(nombre);
             Log.d(TAG, "onPostExecute");
-            if (nombre=="ok"){
+            if (nombre!=null){
+                guardarValor(Registrarse.this,"idusuario", String.valueOf(nombre));
                 Intent itemintent = new Intent(Registrarse.this, Principal.class);
                 Registrarse.this.startActivity(itemintent);
             }else{
@@ -276,6 +354,14 @@ public class Registrarse extends AppCompatActivity {
 
         }
 
+    }
+
+    public static void guardarValor(Context context, String keyPref, String valor) {
+        SharedPreferences settings = context.getSharedPreferences(PREFS_KEY, MODE_PRIVATE);
+        SharedPreferences.Editor editor;
+        editor = settings.edit();
+        editor.putString(keyPref, valor);
+        editor.commit();
     }
 
     public static class Utils{

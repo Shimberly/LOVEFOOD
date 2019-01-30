@@ -1,6 +1,9 @@
 package com.webbi.redes.lovefood;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.design.widget.BottomNavigationView;
@@ -90,9 +94,38 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
         }
     }
     public void accionEditar(View v){
-        Intent intent2 = new Intent(this, EditarPerfil.class);
-        startActivity(intent2);
+        if(isConnectedToInternet())
+        {
+            Intent intent2 = new Intent(this, EditarPerfil.class);
+            startActivity(intent2);
+        }
+        else
+        {
+            Log.d("Prr", "Error Conexion");
+            Bundle args = new Bundle();
+            args.putString("titulo", "Advertencia");
+            args.putString("texto", "No hay conexión de Internet");
+            ProblemaConexion f=new ProblemaConexion();
+            f.setArguments(args);
+            f.show(getSupportFragmentManager(), "ProblemaConexión");
+        }
 
+
+    }
+    public boolean isConnectedToInternet(){
+        ConnectivityManager connectivity = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivity != null)
+        {
+            NetworkInfo[] info = connectivity.getAllNetworkInfo();
+            if (info != null)
+                for (int i = 0; i < info.length; i++)
+                    if (info[i].getState() == NetworkInfo.State.CONNECTED)
+                    {
+                        return true;
+                    }
+
+        }
+        return false;
     }
     public void accionfb(View v){
 

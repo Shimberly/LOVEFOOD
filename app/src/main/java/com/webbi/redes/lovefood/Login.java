@@ -38,6 +38,7 @@ public class Login extends AppCompatActivity {
     TextView txtPass;
     ServicioWeb servicio;
     String nombre;
+    Button Logear;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +63,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        Button Logear = (Button) findViewById(R.id.btnLogin);
+        Logear = (Button) findViewById(R.id.btnLogin);
         Logear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,7 +109,10 @@ public class Login extends AppCompatActivity {
     private class ServicioWeb extends AsyncTask<Integer, Integer, String> {
 
 
-
+        @Override
+        protected void onPreExecute() {
+            Logear.setEnabled(false);
+        }
         @Override
         protected String doInBackground(Integer... params) {
             return getWebServiceResponseData();
@@ -118,7 +122,7 @@ public class Login extends AppCompatActivity {
 
             try {
                 url=new URL(path);
-                nombre="";
+                nombre=null;
                 Log.d(TAG, "ServerData: " + path);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(15000);
@@ -169,7 +173,7 @@ public class Login extends AppCompatActivity {
                     if(String.valueOf(txtCorreo.getText()).equals(String.valueOf(mail))){
                         Log.d(TAG,"ENTRO");
                         if (String.valueOf(txtPass.getText()).equals(String.valueOf(pass))){
-                            nombre="ok";
+                            nombre=jsonobject.getString("id");;
                             //Log.d(TAG, "OK:" + "ok");
                         }else{
                             //.d(TAG, "Error Pass 1:" + pass+".");
@@ -190,11 +194,12 @@ public class Login extends AppCompatActivity {
         @Override
         protected void onPostExecute(String nombre) {
             super.onPostExecute(nombre);
+            Logear.setEnabled(true);
             Log.d(TAG, "onPostExecute");
-            if (nombre=="ok"){
+            if (nombre!=null){
                 Intent itemintent = new Intent(Login.this, Principal.class);
                 Login.this.startActivity(itemintent);
-                guardarValor(Login.this,"correo", String.valueOf(txtCorreo.getText()));
+                guardarValor(Login.this,"idusuario", String.valueOf(nombre));
 
 
             }else{

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         callbackManager = CallbackManager.Factory.create();
 
-
+/*
         ImageView IrALogin = (ImageView) findViewById(R.id.irALogin);
         IrALogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(itemintent);
 
             }
-        });
+        });*/
 
         printKeyHash();
 

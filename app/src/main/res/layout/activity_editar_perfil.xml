@@ -37,7 +37,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="Paola Ortiz"
             android:textSize="24sp"
             android:textColor="#000"
             android:layout_marginLeft="15dp"
@@ -57,7 +56,6 @@
         android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
         android:padding="5px"
-        android:text="22 años"
         android:textColor="#C72727"
         android:layout_weight=".05"
         android:textSize="14sp" />
@@ -68,7 +66,6 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:padding="5px"
-        android:text="chibi@gmail.com"
         android:textColor="#797979"
         android:layout_weight=".05"
         android:textSize="14sp" />
@@ -80,16 +77,16 @@
         android:layout_gravity="center"
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="10dp"
-        android:layout_weight=".25"
-        android:src="@drawable/girl" />
+        android:layout_weight=".25"/>
     <EditText
         android:id="@+id/txtUniversidad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
+        android:hint="Universidad"
+        android:textColorHint="#797979"
         android:gravity="center"
-        android:text="ESPOL"
         android:textColor="#000"
         android:textFontWeight="Bold"
         android:layout_weight=".05"
@@ -101,8 +98,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Troncal, Ecuador"
         android:textColor="#797979"
+        android:hint="Ciudad"
+        android:textColorHint="#797979"
         android:layout_weight=".05"
         android:textSize="17sp" />
 
@@ -121,8 +119,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="Me llamo Chibi y soy Troncaleña. Me gusta romper el corazón de los chicos. Escríbeme, igual no te responderé."
             android:textSize="16sp"
+            android:textColorHint="#797979"
+            android:hint="Descripcion"
             android:textColor="#000"
             android:layout_marginHorizontal="10dp"
             android:layout_marginVertical="8dp"
@@ -134,9 +133,9 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="3dp"
             android:padding="5px"
+            android:text="Interés en:"
             android:gravity="center"
             android:layout_weight=".15"
-            android:text="Interés en:"
             android:textColor="#797979"
             android:textSize="16sp" />
         <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
@@ -154,17 +153,17 @@
             <RadioButton android:id="@+id/radio_mujer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mujer"
+                android:text="Mujeres"
                 android:layout_marginHorizontal="40dp"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:textColor="#000"/>
 
             <RadioButton android:id="@+id/radio_hombre"
                 android:layout_width="wrap_content"
                 android:layout_marginHorizontal="40dp"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
-                android:text="Hombre"
+                android:textSize="15sp"
+                android:text="Hombres"
                 android:textColor="#000"/>
         </RadioGroup>
 
@@ -200,8 +199,9 @@
                 android:layout_height="wrap_content"
                 android:padding="5px"
                 android:layout_marginHorizontal="15dp"
+                android:textColorHint="#797979"
+                android:hint="Número"
                 android:layout_weight=".50"
-                android:text="0992937424"
                 android:textColor="#000"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -228,8 +228,9 @@
                 android:layout_height="wrap_content"
                 android:padding="5px"
                 android:layout_marginHorizontal="15dp"
+                android:textColorHint="#797979"
                 android:layout_weight=".50"
-                android:text="chibi"
+                android:hint="Usuario Instagram"
                 android:textColor="#000"
                 android:textSize="16sp" />
         </LinearLayout>
