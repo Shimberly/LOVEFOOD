@@ -69,7 +69,9 @@ public class Registrarse extends AppCompatActivity {
     String query;
     Button IrAInicio;
     ServicioWeb servicio;
+    ValidarCorreo validacion;
     String nombre;
+    Boolean validarEmailRepetido=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,24 +111,13 @@ public class Registrarse extends AppCompatActivity {
                     {
                         int selectedId = radioGroup.getCheckedRadioButtonId();
 
-                        // find the radiobutton by returned id
                         genero = (RadioButton) findViewById(selectedId);
-                        // Obtienes el layout que contiene los EditText
                         LinearLayout linearLayout = findViewById(R.id.camposRegistro);
-
-                        // Obtiene el numero de EditText que contiene el layout
                         int count = linearLayout.getChildCount();
-
-                        // Recorres todos los editText y si hay alguno vacio cambias el valor de la
-                        // variable isAllFill a false, lo que indica que aun hay editText vacios.
                         boolean isAllFill = true;
                         for (int i = 0; i < count; i++) {
-
-                            // En cada iteración obtienes uno de los editText que se encuentran el
-                            // layout.
                             try {
                                 EditText editText = (EditText) linearLayout.getChildAt(i);
-                                // Compruebas su el editText esta vacio.
                                 if (editText.getText().toString().isEmpty()) {
                                     isAllFill = false;
                                     break;
@@ -134,13 +125,22 @@ public class Registrarse extends AppCompatActivity {
                             }catch (Exception e){
 
                             }
-
-
-
                         }
                         if (isAllFill && genero != null) {
-                        // Run AsyncTask
-                            servicio = (ServicioWeb) new ServicioWeb().execute();
+                            validacion = (ValidarCorreo) new ValidarCorreo().execute();
+
+                            if (validarEmailRepetido){
+                                Log.i("MainActivity", "Si existe mail");
+                                Bundle args = new Bundle();
+                                args.putString("titulo", "Advertencia");
+                                args.putString("texto", "Ya existe una cuenta con ese correo");
+                                ProblemaConexion f=new ProblemaConexion();
+                                f.setArguments(args);
+                                f.show(getSupportFragmentManager(), "ProblemaConexión");
+                            }else{
+                                servicio = (ServicioWeb) new ServicioWeb().execute();
+                            }
+
                         } else {
                             Log.i("MainActivity", "onCreate -> if -> Hay EditText vacios.");
                             Bundle args = new Bundle();
@@ -231,7 +231,7 @@ public class Registrarse extends AppCompatActivity {
             //String url = "http://10.0.2.2/api/token";
             HttpURLConnection urlConnection = null;
             Map<String, String> stringMap = new HashMap<>();
-            Log.i("MainActivity", "onCreate -> else -> Todos los EditText estan llenos.");
+            //Log.i("MainActivity", "onCreate -> else -> Todos los EditText estan llenos.");
 
             stringMap.put("nombre", String.valueOf(txtNombre.getText()));
             stringMap.put("apellido", String.valueOf(txtApellido.getText()));
@@ -424,5 +424,89 @@ public class Registrarse extends AppCompatActivity {
     private boolean validarEmail(String email) {
         Pattern pattern = Patterns.EMAIL_ADDRESS;
         return pattern.matcher(email).matches();
+    }
+
+    private class ValidarCorreo extends AsyncTask<Integer, Integer, String> {
+
+
+        @Override
+        protected void onPreExecute() {
+        }
+        @Override
+        protected String doInBackground(Integer... params) {
+            return getWebServiceResponseData();
+        }
+
+        protected String getWebServiceResponseData() {
+
+            try {
+                URL url=new URL("https://lovefoodservices.herokuapp.com/listarUsuarios");
+                nombre=null;
+                validarEmailRepetido=false;
+                Log.d(TAG, "ServerData: " + "https://lovefoodservices.herokuapp.com/listarUsuarios");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setReadTimeout(15000);
+                conn.setConnectTimeout(15000);
+                conn.setRequestMethod("GET");
+
+                int responseCode = conn.getResponseCode();
+
+                Log.d(TAG, "Response code: " + responseCode);
+                if (responseCode == HttpsURLConnection.HTTP_OK) {
+                    // Reading response from input Stream
+                    BufferedReader in = new BufferedReader(
+                            new InputStreamReader(conn.getInputStream()));
+                    String output;
+                    response = new StringBuffer();
+
+                    while ((output = in.readLine()) != null) {
+                        response.append(output);
+                    }
+                    in.close();
+                }}
+            catch(Exception e){
+                e.printStackTrace();
+            }
+
+            try {
+                responseText = response.toString();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Bundle args = new Bundle();
+                args.putString("titulo", "Advertencia");
+                args.putString("texto", "Problema al conectar con el servidor de LOVEFOOD");
+                ProblemaConexion f=new ProblemaConexion();
+                f.setArguments(args);
+                f.show(getSupportFragmentManager(), "ProblemaConexión");
+                servicio.cancel(true);
+            }
+            //Call ServerData() method to call webservice and store result in response
+            //  response = service.ServerData(path, postDataParams);
+            Log.d(TAG, "data:" + responseText);
+            try {
+                JSONArray jsonarray = new JSONArray(responseText);
+
+                for (int i=0;i<jsonarray.length();i++){
+                    JSONObject jsonobject = jsonarray.getJSONObject(i);
+                    String mail = jsonobject.getString("correo");
+                    if(String.valueOf(txtCorreo.getText()).equals(String.valueOf(mail))){
+                        Log.d(TAG,"ENTRO");
+                        validarEmailRepetido=true;
+                    }
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return nombre;
+        }
+
+        @Override
+        protected void onPostExecute(String nombre) {
+            super.onPostExecute(nombre);
+
+
+        }
+
     }
 }

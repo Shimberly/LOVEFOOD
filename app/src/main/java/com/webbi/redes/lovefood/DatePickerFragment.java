@@ -34,7 +34,7 @@ public class DatePickerFragment extends DialogFragment {
         Calendar ca = Calendar.getInstance();
         ca.set(2002, 12, 31);//Year,Mounth -1,Day
 
-        DatePickerDialog dialog = new DatePickerDialog(getActivity(), R.style.MyDatePickerSpinnerStyle, listener, year, month, day);
+        DatePickerDialog dialog = new DatePickerDialog(getActivity(), AlertDialog.THEME_HOLO_LIGHT, listener, year, month, day);
         dialog.getDatePicker().setMaxDate(ca.getTimeInMillis());
         return dialog;
 

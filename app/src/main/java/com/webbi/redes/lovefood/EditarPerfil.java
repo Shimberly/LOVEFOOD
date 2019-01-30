@@ -470,7 +470,14 @@ public class EditarPerfil extends AppCompatActivity {
                     txtInstagram.setText(""+lista.get(8));
                     //txtInteres.setText("Interes en "+lista.get(9));
                     txtWhatsapp.setText(""+lista.get(10));
+                    if(lista.get(9).equals("Mujeres")){
+                        radioGroup.check(((RadioButton)radioGroup.getChildAt(0)).getId());
+                    }else{
+                        radioGroup.check(((RadioButton)radioGroup.getChildAt(1)).getId());
+                    }
+
                 }
+
 
 
                 Log.d("sexo",lista.get(3));

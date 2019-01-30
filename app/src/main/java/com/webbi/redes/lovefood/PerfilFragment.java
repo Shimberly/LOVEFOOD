@@ -285,7 +285,7 @@ public class PerfilFragment extends Fragment {
                     txtNumero.setText("" + lista.get(10));
                 }
                 Log.d("sexo",lista.get(3));
-                if (lista.get(3).equals("mujer")){
+                if (lista.get(3).equals("Mujer")){
                     fotoPerfil.setImageResource(R.drawable.girl);
                 }else{
                     fotoPerfil.setImageResource(R.drawable.boy);
