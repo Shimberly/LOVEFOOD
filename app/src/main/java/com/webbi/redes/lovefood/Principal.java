@@ -2,6 +2,7 @@ package com.webbi.redes.lovefood;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -19,6 +20,8 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import static com.webbi.redes.lovefood.Login.PREFS_KEY;
+
 public class Principal extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
     @Override
@@ -30,7 +33,17 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
 
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.navigationView);
         nav.setOnNavigationItemSelectedListener(this);
-
+        String flag=getIntent().getStringExtra("primero");
+        //Log.d("FLAG", flag);
+        if (flag!=null){
+            Log.d("FLAG entro", flag);
+            Bundle args = new Bundle();
+            args.putString("titulo", "BIENVENIDO A LOVEFOOD");
+            args.putString("texto", "¡No te olvides registrar tus datos! Muy pronto estarán todas las funcionalidades.");
+            ProblemaConexion f=new ProblemaConexion();
+            f.setArguments(args);
+            f.show(getSupportFragmentManager(), "ProblemaConexión");
+        }
         setInitialFragment();
 
     }
@@ -84,6 +97,11 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
         switch (item.getItemId()){
 
             case R.id.salir:
+                SharedPreferences settings = this.getSharedPreferences(PREFS_KEY, MODE_PRIVATE);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.clear();
+                editor.commit();
+                finish();
                 Intent intent2 = new Intent(this, MainActivity.class);
                 startActivity(intent2);
                 return true;

@@ -340,7 +340,9 @@ public class Registrarse extends AppCompatActivity {
             if (nombre!=null){
                 guardarValor(Registrarse.this,"idusuario", String.valueOf(nombre));
                 Intent itemintent = new Intent(Registrarse.this, Principal.class);
+                itemintent.putExtra("primero","true");
                 Registrarse.this.startActivity(itemintent);
+
             }else{
                 IrAInicio.setEnabled(true);
                 Log.d(TAG, "Registro fail:" + nombre);
@@ -362,6 +364,7 @@ public class Registrarse extends AppCompatActivity {
         editor = settings.edit();
         editor.putString(keyPref, valor);
         editor.commit();
+
     }
 
     public static class Utils{

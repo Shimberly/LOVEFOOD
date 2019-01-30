@@ -269,12 +269,21 @@ public class PerfilFragment extends Fragment {
 
                 txtNombre.setText(lista.get(0)+" "+lista.get(1));
                 txtCorreo.setText(""+lista.get(2));
-                txtUniversidad.setText(""+lista.get(5));
-                txtCiudad.setText(""+lista.get(6));
-                txtDescripcion.setText(""+lista.get(7));
-                txtInstagram.setText(""+lista.get(8));
-                txtInteres.setText("Interes en "+lista.get(9));
-                txtNumero.setText(""+lista.get(10));
+                if(lista.get(5)==""){
+                    txtUniversidad.setText("Universidad");
+                    txtCiudad.setText("Ciudad");
+                    txtDescripcion.setText("Descripcion");
+                    txtInstagram.setText("Usuario Ig");
+                    //txtInteres.setText("Interes en "+lista.get(9));
+                    txtNumero.setText("Número");
+                }else {
+                    txtUniversidad.setText("" + lista.get(5));
+                    txtCiudad.setText("" + lista.get(6));
+                    txtDescripcion.setText("" + lista.get(7));
+                    txtInstagram.setText("" + lista.get(8));
+                    txtInteres.setText("Interes en " + lista.get(9));
+                    txtNumero.setText("" + lista.get(10));
+                }
                 Log.d("sexo",lista.get(3));
                 if (lista.get(3).equals("mujer")){
                     fotoPerfil.setImageResource(R.drawable.girl);

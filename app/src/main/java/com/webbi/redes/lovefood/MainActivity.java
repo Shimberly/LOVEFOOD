@@ -1,6 +1,8 @@
 package com.webbi.redes.lovefood;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +14,8 @@ import android.widget.ImageView;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+
+import static com.webbi.redes.lovefood.Login.PREFS_KEY;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,9 +54,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent itemintent = new Intent(MainActivity.this, Login.class);
-                MainActivity.this.startActivity(itemintent);
-                finish();
+                verificarLogin();
             }
         },splash);
     }
@@ -60,5 +62,19 @@ public class MainActivity extends AppCompatActivity {
     private void printKeyHash(){
 
     }
+    public static String leerValor(Context context, String keyPref) {
+        SharedPreferences preferences = context.getSharedPreferences(PREFS_KEY, MODE_PRIVATE);
+        return  preferences.getString(keyPref, "");
+    }
+    public void verificarLogin(){
+        if (leerValor(this,"idusuario")!=""){
+            Intent itemintent = new Intent(MainActivity.this, Principal.class);
+            MainActivity.this.startActivity(itemintent);
+        }else{
+            Intent itemintent = new Intent(MainActivity.this, Login.class);
+            MainActivity.this.startActivity(itemintent);
+        }
 
+        finish();
+    }
 }

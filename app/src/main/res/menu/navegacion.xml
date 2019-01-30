@@ -5,7 +5,7 @@
         android:id="@+id/match"
         android:title=""
         android:icon="@drawable/home"
-        android:enabled="true"/>
+        android:enabled="false"/>
 
     <item
         android:id="@+id/encuesta"

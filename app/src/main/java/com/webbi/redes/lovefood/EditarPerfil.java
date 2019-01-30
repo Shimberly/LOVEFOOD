@@ -205,7 +205,6 @@ public class EditarPerfil extends AppCompatActivity {
 
 
             Log.i("MainActivity", "onCreate -> else -> Todos los EditText estan llenos.");
-            Integer idusuario=1;
             stringMap.put("universidad", String.valueOf(txtUniversidad.getText()));
             stringMap.put("ciudad", String.valueOf(txtCiudad.getText()));
             stringMap.put("descripcion", String.valueOf(txtDescripcion.getText()));
@@ -464,7 +463,7 @@ public class EditarPerfil extends AppCompatActivity {
                 txtNombre.setText(lista.get(0)+" "+lista.get(1));
                 txtCorreo.setText(""+lista.get(2));
 
-                if(lista.get(5)!=null){
+                if(lista.get(5)!=""){
                     txtUniversidad.setText(""+lista.get(5));
                     txtCiudad.setText(""+lista.get(6));
                     txtDescripcion.setText(""+lista.get(7));
