@@ -150,6 +150,19 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
     }
     public void accionmsj(View v){
 
+        try {
+            String text = "This is a test";// Replace with your message.
+
+            String toNumber = "593992937424"; // Replace with mobile phone number without +Sign or leading zeros.
+
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+toNumber +"&text="+text));
+            startActivity(intent);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
     public void acciongeo(View v){
 
