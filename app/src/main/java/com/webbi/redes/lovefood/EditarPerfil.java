@@ -121,7 +121,6 @@ public class EditarPerfil extends AppCompatActivity {
                     if(isConnectedToInternet())
                     {
                         int selectedId = radioGroup.getCheckedRadioButtonId();
-
                         interes = (RadioButton) findViewById(selectedId);
                         LinearLayout linearLayout = findViewById(R.id.camposRegistro);
                         int count = linearLayout.getChildCount();

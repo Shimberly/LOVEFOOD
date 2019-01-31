@@ -89,7 +89,7 @@ public class Registrarse extends AppCompatActivity {
         radioGroup = (RadioGroup) findViewById(R.id.radio);
         txtNombre.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         txtApellido.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
-        txtPass.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        //txtPass.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
         //txtPass.setFilters(new InputFilter[]{new CustomRangeInputFilter(0d, 15f)});
 
         EditText etPlannedDate = (EditText) findViewById(R.id.txtDate);
