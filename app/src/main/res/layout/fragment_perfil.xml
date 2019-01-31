@@ -21,8 +21,8 @@
             android:gravity="center"
             android:textSize="24sp"
             android:textColor="#000"
-            android:layout_marginLeft="15dp"
-            android:layout_weight=".90"
+            android:layout_marginLeft="8dp"
+            android:layout_weight=".85"
             android:textFontWeight="Bold"/>
         <Button
             android:id="@+id/btnEditar"
@@ -31,7 +31,7 @@
             android:background="#c72727"
             android:text="Editar"
             android:textColor="#FFF"
-            android:layout_weight=".10"
+            android:layout_weight=".15"
             android:onClick="accionEditar"/>
     </LinearLayout>
     <TextView
