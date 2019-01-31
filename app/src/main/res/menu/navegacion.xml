@@ -10,7 +10,7 @@
     <item
         android:id="@+id/encuesta"
         android:title=""
-        android:enabled="false"
+        android:enabled="true"
         android:icon="@drawable/like"/>
 
     <item

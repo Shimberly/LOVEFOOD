@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,191 +10,1414 @@
     android:layout_marginVertical="70dp"
     tools:context=".EncuestaFragment">
 
-    <TextView
-        android:id="@+id/txtDesc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Responde las preguntas y obtén tus 5 personas más compatibles"
-        android:textSize="18sp"
-        android:paddingHorizontal="15dp"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
 
-        android:textColor="#000"
-        android:layout_weight=".25"/>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="0.70"
-        android:layout_margin="20dp"
-        android:padding="15dp"
-        android:background="#f2f3f4">
-
-        <TextView
-            android:id="@+id/prg1"
-            android:layout_width="match_parent"
+        <TableLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1. Desayuno Salado"
-            android:textSize="16sp"
-            android:paddingHorizontal="15dp"
-            android:textColor="#000"
-            android:layout_marginTop="10dp"
-            android:textFontWeight="Bold"/>
+            android:stretchColumns="1">
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppThemeMyLight"
-            android:layout_marginVertical="10dp"
-            android:orientation="horizontal">
-            <RadioButton android:id="@+id/radio_pirates"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bolon"
-                android:textSize="12sp"
-                android:textColor="#000"
-                android:onClick="desayunoSaladoClicked"/>
-            <RadioButton android:id="@+id/radio_ninjas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="Tigrillo"
-                android:textColor="#000"
-                android:onClick="desayunoSaladoClicked"/>
-            <RadioButton android:id="@+id/radio_bollo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="Bollo"
-                android:textColor="#000"
-                android:onClick="desayunoSaladoClicked"/>
-            <RadioButton android:id="@+id/radio_sanduche"
-                android:layout_width="wrap_content"
-                android:textSize="12sp"
-                android:layout_height="wrap_content"
-                android:text="Sanduche"
-                android:textColor="#000"
-                android:onClick="desayunoSaladoClicked"/>
-        </RadioGroup>
+            <TableRow>
+                <TextView
+                    android:id="@+id/txtDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight=".25"
+                    android:gravity="center"
+                    android:paddingHorizontal="25dp"
+                    android:paddingBottom="25dp"
+                    android:text="Responde las preguntas y obtén tus 5 personas más compatibles"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="#808080"
+                    android:textSize="16sp" />
+            </TableRow>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#C72727"/>
+            //VERDE
+            <TableRow>
+                <TextView
+                    android:id="@+id/prg1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1. Verde"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
 
-        <TextView
-            android:id="@+id/prg2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="2. Desayuno Dulce"
-            android:textSize="16sp"
-            android:paddingHorizontal="15dp"
-            android:layout_marginTop="10dp"
-            android:textColor="#000"
-            android:textFontWeight="Bold"/>
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pregunta1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppThemeMyLight"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:theme="@style/AppThemeMyLight"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:orientation="horizontal">
-            <RadioButton android:id="@+id/radio_panqueque"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="Panqueque"
-                android:textColor="#000"
-                android:onClick="desayunoSaladoClicked"/>
-            <RadioButton android:id="@+id/radio_cereal"
-                android:textSize="12sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cereal"
-                android:textColor="#000"
-                android:onClick="desayunoSaladoClicked"/>
-            <RadioButton android:id="@+id/radio_crepe"
-                android:layout_width="wrap_content"
-                android:textSize="12sp"
-                android:layout_height="wrap_content"
-                android:text="Crepe"
-                android:textColor="#000"
-                android:onClick="desayunoSaladoClicked"/>
-            <RadioButton android:id="@+id/radio_batido"
-                android:layout_width="wrap_content"
-                android:textSize="12sp"
-                android:layout_height="wrap_content"
-                android:text="Batidos"
-                android:textColor="#000"
-                android:onClick="desayunoSaladoClicked"/>
-        </RadioGroup>
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TableRow
+                    android:gravity="center_horizontal">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#C72727"/>
+                    <RadioButton android:id="@+id/radio_pirates"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bolón"
+                        android:textSize="12sp"
+                        android:textColor="#000"
+                        android:onClick="desayunoSaladoClicked"/>
+                    <RadioButton android:id="@+id/radio_ninjas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="Tigrillo"
+                        android:textColor="#000"
+                        android:onClick="desayunoSaladoClicked"/>
+                    <RadioButton android:id="@+id/radio_bollo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="Tortilla"
+                        android:textColor="#000"
+                        android:onClick="desayunoSaladoClicked"/>
+                </TableRow>
 
-        <TextView
-            android:id="@+id/prg3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="2. Comidas Extranjeras"
-            android:textSize="16sp"
-            android:paddingHorizontal="15dp"
-            android:layout_marginTop="10dp"
-            android:textColor="#000"
-            android:textFontWeight="Bold"/>
+                <TableRow
+                    android:gravity="center_horizontal">
+                    <RadioButton android:id="@+id/radio_sanduche"
+                        android:layout_width="wrap_content"
+                        android:textSize="12sp"
+                        android:layout_height="wrap_content"
+                        android:text="Patacón"
+                        android:textColor="#000"
+                        android:onClick="desayunoSaladoClicked"/>
+                    <RadioButton android:id="@+id/radio_sanduche"
+                        android:layout_width="wrap_content"
+                        android:textSize="12sp"
+                        android:layout_height="wrap_content"
+                        android:text="Chifle"
+                        android:textColor="#000"
+                        android:onClick="desayunoSaladoClicked"/>
+                </TableRow>
+                </TableLayout>
+            </RadioGroup>
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:theme="@style/AppThemeMyLight"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:orientation="horizontal">
-            <RadioButton android:id="@+id/radio_japonesa"
-                android:layout_width="wrap_content"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+
+            //DESAYUNO SALADO
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/prg2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2. Desayuno Salado"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pregunta2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="Japonesa"
-                android:textColor="#000"
-                android:onClick="desayunoSaladoClicked"/>
-            <RadioButton android:id="@+id/radio_china"
-                android:textSize="12sp"
-                android:layout_width="wrap_content"
+                android:theme="@style/AppThemeMyLight"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:gravity="center_horizontal">
+
+                        <RadioButton android:id="@+id/radio_pirates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bollo"
+                            android:textSize="12sp"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Verde"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_bollo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Tortilla"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Empanada"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Sanduche"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Huevos"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                    </TableRow>
+                </TableLayout>
+            </RadioGroup>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+
+            //DESAYUNO DULCE
+            <TableRow>
+                <TextView
+                    android:id="@+id/prg2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3. Desayuno Dulce"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pregunta3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="China"
-                android:textColor="#000"
-                android:onClick="desayunoSaladoClicked"/>
-            <RadioButton android:id="@+id/radio_italiana"
-                android:layout_width="wrap_content"
-                android:textSize="12sp"
+                android:theme="@style/AppThemeMyLight"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:gravity="center_horizontal">
+
+                        <RadioButton android:id="@+id/radio_pirates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Waffles"
+                            android:textSize="12sp"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Panqueques"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_bollo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Cereal"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Galletas"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Batidos"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                    </TableRow>
+                </TableLayout>
+            </RadioGroup>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+            //ALMUERZO
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/prg4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4. Almuerzo"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pregunta4"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Italiana"
-                android:textColor="#000"
-                android:onClick="desayunoSaladoClicked"/>
-            <RadioButton android:id="@+id/radio_colombia"
-                android:layout_width="wrap_content"
-                android:textSize="12sp"
+                android:theme="@style/AppThemeMyLight"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:gravity="center_horizontal">
+
+                        <RadioButton android:id="@+id/radio_pirates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Yapingacho"
+                            android:textSize="12sp"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Pescado y Mariscos"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Menestra y carne"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Tallarines"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_bollo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Seco de Pollo"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Puré y carne"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                    </TableRow>
+                </TableLayout>
+            </RadioGroup>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+
+            //MARISCOS
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/prg5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="5. Mariscos"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pregunta5"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Colombia"
-                android:textColor="#000"
-                android:onClick="desayunoSaladoClicked"/>
-        </RadioGroup>
+                android:theme="@style/AppThemeMyLight"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:gravity="center_horizontal">
+
+                        <RadioButton android:id="@+id/radio_pirates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Camarones"
+                            android:textSize="12sp"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Cangrejos"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Langostas"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Pulpos"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Conchas"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Ninguno"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                </TableLayout>
+            </RadioGroup>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
 
 
-    </LinearLayout>
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:background="#C72727"
-        android:text="Guardar"
-        android:textColor="#FFF"
-        android:textSize="16sp"
-        android:layout_marginTop="10dp"
-        android:layout_weight=".10"
-        android:layout_marginHorizontal="30dp"/>
-</LinearLayout>
+            //SOPAS
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/prg6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="6. Sopas"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pregunta6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppThemeMyLight"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:gravity="center_horizontal">
+
+                        <RadioButton android:id="@+id/radio_pirates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Caldo de bola"
+                            android:textSize="12sp"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Crema"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Sopa de pollo"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Sopa de queso"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Menestrón"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Caldo de salchicha"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                </TableLayout>
+            </RadioGroup>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+
+
+            //CENA
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/prg7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="7. Cena"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pregunta7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppThemeMyLight"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:gravity="center_horizontal">
+
+                        <RadioButton android:id="@+id/radio_pirates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Carnes"
+                            android:textSize="12sp"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Mariscos"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Ensaladas"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Té con galletas"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Batidos"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                </TableLayout>
+            </RadioGroup>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+
+
+            //COMIDA TIPICA COSTA
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/prg8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="8. Comida Típica Costa"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pregunta8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppThemeMyLight"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:gravity="center_horizontal">
+
+                        <RadioButton android:id="@+id/radio_pirates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Arroz Marinero"
+                            android:textSize="12sp"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Encebollado"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Guatita"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Encocado"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Ceviches"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Seco de Pollo"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                </TableLayout>
+            </RadioGroup>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+
+            //COMIDA TIPICA SIERRA
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/prg9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="9. Comida Típica Sierra"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pregunta9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppThemeMyLight"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:gravity="center_horizontal">
+
+                        <RadioButton android:id="@+id/radio_pirates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fritada"
+                            android:textSize="12sp"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Churrasco"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Yaguarlocro"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Humita"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Cuy Asado"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Hornado"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                </TableLayout>
+            </RadioGroup>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+
+            //COMIDA TIPICA ORIENTE
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/prg10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="10. Comida Tpica Oriente"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/txtpreg10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Selecciona la comida que has probado"
+                    android:textSize="14sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#808080"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pregunta10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppThemeMyLight"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:gravity="center_horizontal">
+
+                        <RadioButton android:id="@+id/radio_pirates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Seco de Guanta"
+                            android:textSize="12sp"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Zarapatoca"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Uchumanga"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Chontacuro"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Maito"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Ninguna"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                </TableLayout>
+            </RadioGroup>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+
+
+            //PROTEINAS
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/prg11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="11. Proteínas"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
+
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pregunta11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppThemeMyLight"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:gravity="center_horizontal">
+
+                        <RadioButton android:id="@+id/radio_pirates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Carne de Res"
+                            android:textSize="12sp"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Pollo"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Chuleta"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Costilla"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Embutido"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Pescado"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                </TableLayout>
+            </RadioGroup>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+
+
+            //POSTRES
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/prg12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="12. Prostres"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
+
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pregunta12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppThemeMyLight"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:gravity="center_horizontal">
+
+                        <RadioButton android:id="@+id/radio_pirates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tiramisú"
+                            android:textSize="12sp"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Helado"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Flan"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Torta de Chocolate"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Cheesecake"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Brownies"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                </TableLayout>
+            </RadioGroup>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+
+            //SABORES DULCES
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/prg13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="13. Sabores Dulces"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
+
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pregunta13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppThemeMyLight"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:gravity="center_horizontal">
+
+                        <RadioButton android:id="@+id/radio_pirates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chocolate"
+                            android:textSize="12sp"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Vainilla"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Fresas"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Mora"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Rompasas"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Chicle"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                </TableLayout>
+            </RadioGroup>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+
+            //BEBIDAS
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/prg14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="14. Bebidas"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
+
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pregunta14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppThemeMyLight"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:gravity="center_horizontal">
+
+                        <RadioButton android:id="@+id/radio_pirates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Café"
+                            android:textSize="12sp"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Jugos Naturales"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Té"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Bebidas Alcohólicas"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Bebidas Gaseosas"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Agua"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                </TableLayout>
+            </RadioGroup>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+
+
+            //COMIDA EXTRANJERA
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/prg15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="15. Comida Extranjera"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
+
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pregunta15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppThemeMyLight"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:gravity="center_horizontal">
+
+                        <RadioButton android:id="@+id/radio_pirates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="China"
+                            android:textSize="12sp"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Italiana"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Mexicana"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Coreana"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Japonesa"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                </TableLayout>
+            </RadioGroup>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+
+
+            //COMIDA RÁPIDA
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/prg16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="16. Comida Rápida"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:textFontWeight="Bold"/>
+            </TableRow>
+
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pregunta16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppThemeMyLight"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:gravity="center_horizontal">
+
+                        <RadioButton android:id="@+id/radio_pirates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Salchipapa"
+                            android:textSize="12sp"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Papipollo"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_ninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:text="Hamburguesa"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:gravity="center_horizontal">
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Alitas"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Tacos"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+                        <RadioButton android:id="@+id/radio_sanduche"
+                            android:layout_width="wrap_content"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:text="Shawarma"
+                            android:textColor="#000"
+                            android:onClick="desayunoSaladoClicked"/>
+
+                    </TableRow>
+
+                </TableLayout>
+            </RadioGroup>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+
+
+            <Button
+                android:id="@+id/btnGuardarP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="#C72727"
+                android:text="Guardar"
+                android:textColor="#FFF"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:layout_weight=".10"
+                android:layout_marginHorizontal="30dp"/>
+        </TableLayout>
+    </RelativeLayout>
+
+</ScrollView>
