@@ -259,7 +259,7 @@ public class PerfilFragment extends Fragment {
             return list;
         }
 
-        @RequiresApi(api = Build.VERSION_CODES.O)
+       /* @RequiresApi(api = Build.VERSION_CODES.O)*/
         @Override
         protected void onPostExecute(List<String> lista) {
             super.onPostExecute(lista);
@@ -291,15 +291,15 @@ public class PerfilFragment extends Fragment {
                     fotoPerfil.setImageResource(R.drawable.boy);
                 }
 
-                DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+               /* DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 LocalDate fechaNac = LocalDate.parse(lista.get(4), fmt);
                 LocalDate ahora = LocalDate.now();
 
                 Period periodo = Period.between(fechaNac, ahora);
                 System.out.printf("Tu edad es: %s años, %s meses y %s días",
                         periodo.getYears(), periodo.getMonths(), periodo.getDays());
-                Log.d("edad", String.valueOf(periodo.getYears()));
-                txtEdad.setText(String.valueOf(periodo.getYears()));
+                Log.d("edad", String.valueOf(periodo.getYears()));*/
+               // txtEdad.setText(String.valueOf(periodo.getYears()));
             }else{
                 Log.d(TAG, "Login fail:" + nombre);
                 Bundle args = new Bundle();
