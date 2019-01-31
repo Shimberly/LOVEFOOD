@@ -1,4 +1,5 @@
 package com.webbi.redes.lovefood;
+
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -7,21 +8,21 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.InputFilter;
+import android.text.InputType;
+import android.text.Spanned;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -86,6 +87,10 @@ public class Registrarse extends AppCompatActivity {
         txtPass=(EditText) findViewById(R.id.txtPass);
         txtEdad=(EditText) findViewById(R.id.txtDate);
         radioGroup = (RadioGroup) findViewById(R.id.radio);
+        txtNombre.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        txtApellido.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        txtPass.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        //txtPass.setFilters(new InputFilter[]{new CustomRangeInputFilter(0d, 15f)});
 
         EditText etPlannedDate = (EditText) findViewById(R.id.txtDate);
         etPlannedDate.setOnClickListener(new View.OnClickListener() {
@@ -127,18 +132,6 @@ public class Registrarse extends AppCompatActivity {
                         }
                         if (isAllFill && genero != null) {
                             validacion = (ValidarCorreo) new ValidarCorreo().execute();
-
-                            if (validarEmailRepetido){
-                                Log.i("MainActivity", "Si existe mail");
-                                Bundle args = new Bundle();
-                                args.putString("titulo", "Advertencia");
-                                args.putString("texto", "Ya existe una cuenta con ese correo");
-                                ProblemaConexion f=new ProblemaConexion();
-                                f.setArguments(args);
-                                f.show(getSupportFragmentManager(), "ProblemaConexión");
-                            }else{
-                                servicio = (ServicioWeb) new ServicioWeb().execute();
-                            }
 
                         } else {
                             Log.i("MainActivity", "onCreate -> if -> Hay EditText vacios.");
@@ -503,9 +496,49 @@ public class Registrarse extends AppCompatActivity {
         @Override
         protected void onPostExecute(String nombre) {
             super.onPostExecute(nombre);
-
+            if (validarEmailRepetido){
+                Log.i("MainActivity", "Si existe mail");
+                Bundle args = new Bundle();
+                args.putString("titulo", "Advertencia");
+                args.putString("texto", "Ya existe una cuenta con ese correo");
+                ProblemaConexion f=new ProblemaConexion();
+                f.setArguments(args);
+                f.show(getSupportFragmentManager(), "ProblemaConexión");
+            }else{
+                servicio = (ServicioWeb) new ServicioWeb().execute();
+            }
 
         }
 
+    }
+    public class CustomRangeInputFilter implements InputFilter {
+        private double minValue;
+        private double maxValue;
+
+        public CustomRangeInputFilter(double minVal, double maxVal) {
+            this.minValue = minVal;
+            this.maxValue = maxVal;
+        }
+
+        @Override
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dStart, int dEnd) {
+            try {
+                // Remove the string out of destination that is to be replaced
+                String newVal = dest.toString().substring(0, dStart) + dest.toString().substring(dEnd, dest.toString().length());
+                newVal = newVal.substring(0, dStart) + source.toString() + newVal.substring(dStart, newVal.length());
+                double input = Double.parseDouble(newVal);
+
+                if (isInRange(minValue, maxValue, input)) {
+                    return null;
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+            return "";
+        }
+
+        private boolean isInRange(double a, double b, double c) {
+            return b > a ? c >= a && c <= b : c >= b && c <= a;
+        }
     }
 }

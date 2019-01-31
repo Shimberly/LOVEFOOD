@@ -1,21 +1,19 @@
 package com.webbi.redes.lovefood;
 
-import android.annotation.SuppressLint;
+//import android.annotation.SuppressLint;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,12 +33,10 @@ import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import static com.webbi.redes.lovefood.Login.PREFS_KEY;
-
-
 public class PerfilFragment extends Fragment {
     private static final String TAG = "AsyncTaskActivity";
 
+    public final static String PREFS_KEY = "mispreferencias";
     public String pathU = null;
     public String pathI = null;
     private static final int MODE_PRIVATE = 1;
@@ -107,8 +103,9 @@ public class PerfilFragment extends Fragment {
         return view;
     }
     public static String leerValor(Context context, String keyPref) {
-        @SuppressLint("WrongConstant") SharedPreferences preferences = context.getSharedPreferences(PREFS_KEY, MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE);
         return  preferences.getString(keyPref, "");
+        //return "1";
     }
     public boolean isConnectedToInternet(){
         ConnectivityManager connectivity = (ConnectivityManager)getActivity().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -269,21 +266,37 @@ public class PerfilFragment extends Fragment {
 
                 txtNombre.setText(lista.get(0)+" "+lista.get(1));
                 txtCorreo.setText(""+lista.get(2));
-                if(lista.get(5)==""){
+                if(lista.get(5).isEmpty()){
                     txtUniversidad.setText("Universidad");
-                    txtCiudad.setText("Ciudad");
-                    txtDescripcion.setText("Descripcion");
-                    txtInstagram.setText("Usuario Ig");
-                    //txtInteres.setText("Interes en "+lista.get(9));
-                    txtNumero.setText("Número");
                 }else {
                     txtUniversidad.setText("" + lista.get(5));
-                    txtCiudad.setText("" + lista.get(6));
+                }
+                if(lista.get(6).isEmpty()){
+                    txtCiudad.setText("Ciudad");
+                }else {
+                    txtCiudad.setText("" + lista.get(6));;
+                }
+                if(lista.get(7).isEmpty()){
+                    txtDescripcion.setText("Descripcion");
+                }else {
                     txtDescripcion.setText("" + lista.get(7));
+                }
+                if(lista.get(8).isEmpty()){
+                    txtInstagram.setText("Usuario Ig");
+                }else {
                     txtInstagram.setText("" + lista.get(8));
-                    txtInteres.setText("Interes en " + lista.get(9));
+                }
+                if(lista.get(9).isEmpty()){
+                    txtInteres.setText("Interés en ... ");
+                }else {
+                    txtInteres.setText("Interés en " + lista.get(9));
+                }
+                if(lista.get(10).isEmpty()){
+                    txtNumero.setText("Número");
+                }else {
                     txtNumero.setText("" + lista.get(10));
                 }
+                Log.d("instagram",lista.get(8));
                 Log.d("sexo",lista.get(3));
                 if (lista.get(3).equals("Mujer")){
                     fotoPerfil.setImageResource(R.drawable.girl);
@@ -291,16 +304,21 @@ public class PerfilFragment extends Fragment {
                     fotoPerfil.setImageResource(R.drawable.boy);
                 }
 
-               /* DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                LocalDate fechaNac = LocalDate.parse(lista.get(4), fmt);
-                LocalDate ahora = LocalDate.now();
+                DateTimeFormatter fmt = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    LocalDate fechaNac = LocalDate.parse(lista.get(4), fmt);
+                    LocalDate ahora = LocalDate.now();
 
-                Period periodo = Period.between(fechaNac, ahora);
-                System.out.printf("Tu edad es: %s años, %s meses y %s días",
-                        periodo.getYears(), periodo.getMonths(), periodo.getDays());
-                Log.d("edad", String.valueOf(periodo.getYears()));*/
-               // txtEdad.setText(String.valueOf(periodo.getYears()));
-            }else{
+                    Period periodo = Period.between(fechaNac, ahora);
+                    System.out.printf("Tu edad es: %s años, %s meses y %s días",
+                            periodo.getYears(), periodo.getMonths(), periodo.getDays());
+                    Log.d("edad", String.valueOf(periodo.getYears()));
+
+                    txtEdad.setText(String.valueOf(periodo.getYears()));
+                }
+
+                }else{
                 Log.d(TAG, "Login fail:" + nombre);
                 Bundle args = new Bundle();
                 args.putString("titulo", "Advertencia");

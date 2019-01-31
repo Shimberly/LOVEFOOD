@@ -1,6 +1,5 @@
 package com.webbi.redes.lovefood;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,11 +7,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -107,6 +105,12 @@ public class EditarPerfil extends AppCompatActivity {
         txtInstagram=(EditText) findViewById(R.id.txtIg);
         txtWhatsapp=(EditText) findViewById(R.id.txtWa);
         radioGroup = (RadioGroup) findViewById(R.id.radio);
+
+        txtUniversidad.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        txtCiudad.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        txtDescripcion.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        txtWhatsapp.setInputType(InputType.TYPE_CLASS_NUMBER);
+
         list = new ArrayList<String>();
         servicioLlenar = (ServicioWebLlenar) new ServicioWebLlenar().execute();
         GuardarEditar = (Button) findViewById(R.id.accionGuardarEditar);
@@ -128,12 +132,13 @@ public class EditarPerfil extends AppCompatActivity {
                                 if (editText.getText().toString().isEmpty()) {
                                     isAllFill = false;
                                     break;
+
                                 }
                             }catch (Exception e){
                             }
                         }
 
-                        if (isAllFill && interes != null) {
+                        if (isAllFill && interes != null && !txtWhatsapp.getText().toString().isEmpty()) {
                         // Run AsyncTask
                             servicio = (ServicioWeb) new ServicioWeb().execute();
                         } else {
@@ -452,7 +457,7 @@ public class EditarPerfil extends AppCompatActivity {
             return list;
         }
 
-        @RequiresApi(api = Build.VERSION_CODES.O)
+        //@RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected void onPostExecute(List<String> lista) {
             super.onPostExecute(lista);
@@ -481,21 +486,25 @@ public class EditarPerfil extends AppCompatActivity {
 
 
                 Log.d("sexo",lista.get(3));
-                if (lista.get(3).equals("mujer")){
+                if (lista.get(3).equals("Mujer")){
                     fotoPerfil.setImageResource(R.drawable.girl);
                 }else{
                     fotoPerfil.setImageResource(R.drawable.boy);
                 }
+                DateTimeFormatter fmt = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    LocalDate fechaNac = LocalDate.parse(lista.get(4), fmt);
+                    LocalDate ahora = LocalDate.now();
 
-                DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                LocalDate fechaNac = LocalDate.parse(lista.get(4), fmt);
-                LocalDate ahora = LocalDate.now();
+                    Period periodo = Period.between(fechaNac, ahora);
+                    System.out.printf("Tu edad es: %s años, %s meses y %s días",
+                            periodo.getYears(), periodo.getMonths(), periodo.getDays());
+                    Log.d("edad", String.valueOf(periodo.getYears()));
 
-                Period periodo = Period.between(fechaNac, ahora);
-                System.out.printf("Tu edad es: %s años, %s meses y %s días",
-                        periodo.getYears(), periodo.getMonths(), periodo.getDays());
-                Log.d("edad", String.valueOf(periodo.getYears()));
-                txtEdad.setText(String.valueOf(periodo.getYears()));
+                    txtEdad.setText(String.valueOf(periodo.getYears()));
+                }
+
             }else{
                 Log.d(TAG, "Login fail:" + nombre);
                 Bundle args = new Bundle();

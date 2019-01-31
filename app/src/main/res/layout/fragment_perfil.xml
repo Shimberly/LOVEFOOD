@@ -26,9 +26,11 @@
             android:textFontWeight="Bold"/>
         <Button
             android:id="@+id/btnEditar"
-            android:layout_width="8dp"
-            android:layout_height="30dp"
-            android:background="@drawable/editar"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:background="#c72727"
+            android:text="Editar"
+            android:textColor="#FFF"
             android:layout_weight=".10"
             android:onClick="accionEditar"/>
     </LinearLayout>
