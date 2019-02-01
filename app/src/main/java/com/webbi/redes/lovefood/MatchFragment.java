@@ -14,12 +14,10 @@ import android.widget.Button;
 public class MatchFragment extends Fragment {
 
 
-
     public MatchFragment() {
 
 
     }
-
 
 
 
@@ -28,10 +26,7 @@ public class MatchFragment extends Fragment {
       View view =  inflater.inflate(R.layout.fragment_match, container, false);
 
 
-
-
         return  view;
-
 
 
     }
