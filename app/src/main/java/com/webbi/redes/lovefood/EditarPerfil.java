@@ -122,6 +122,7 @@ public class EditarPerfil extends AppCompatActivity {
                     {
                         int selectedId = radioGroup.getCheckedRadioButtonId();
                         interes = (RadioButton) findViewById(selectedId);
+                        Log.i("MainActivity", String.valueOf(selectedId));
                         LinearLayout linearLayout = findViewById(R.id.camposRegistro);
                         int count = linearLayout.getChildCount();
                         boolean isAllFill = true;

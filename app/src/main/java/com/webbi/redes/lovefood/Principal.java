@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -15,10 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.design.widget.BottomNavigationView;
 import android.view.View;
-import android.widget.RadioButton;
-import android.widget.TextView;
 
 import static com.webbi.redes.lovefood.Login.PREFS_KEY;
 
@@ -186,22 +184,6 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
 
         Intent itemintent = new Intent(Principal.this, LocalizarAmigo.class);
         startActivity(itemintent);
-    }
-    public void desayunoSaladoClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.radio_pirates:
-                if (checked)
-                    // Pirates are the best
-                    break;
-            case R.id.radio_ninjas:
-                if (checked)
-                    // Ninjas rule
-                    break;
-        }
     }
 
 }

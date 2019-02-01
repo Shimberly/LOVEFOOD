@@ -1,7 +1,6 @@
 package com.webbi.redes.lovefood;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -53,7 +52,7 @@ public class EncuestaFragment extends Fragment {
     View view;
     String responseText;
     StringBuffer response;
-
+    RadioButton interes;
     GuardarPreguntas servicioweb;
     ActualizarPreguntas servicioActualizar;
     LeerRespuestas servicioLeer;
@@ -69,8 +68,9 @@ public class EncuestaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_encuesta, container, false);
+        listaPreguntas = new ArrayList<RadioGroup>();
 
-        listaPreguntas.add((RadioGroup) view.findViewById(R.id.pregunta1));
+        listaPreguntas.add((RadioGroup) view.findViewById(R.id.preguntauno));
         listaPreguntas.add((RadioGroup) view.findViewById(R.id.pregunta2));
         listaPreguntas.add((RadioGroup) view.findViewById(R.id.pregunta3));
         listaPreguntas.add((RadioGroup) view.findViewById(R.id.pregunta4));
@@ -113,17 +113,22 @@ public class EncuestaFragment extends Fragment {
             public void onClick(View view) {
                 if(isConnectedToInternet())
                 {
+                    listaRespuestas = new ArrayList<RadioButton>();
                     //int selectedId = radioGroup.getCheckedRadioButtonId();
                     //interes = (RadioButton) findViewById(selectedId);
                     int count = listaPreguntas.size();
+                    Log.i("MainActivity", String.valueOf(count));
                     boolean isAllFill = true;
                     for (int i = 0; i < count; i++) {
+                        Log.i("MainActivity", String.valueOf(i));
                         try {
                             int selectedId = listaPreguntas.get(i).getCheckedRadioButtonId();
-                            RadioButton interes = (RadioButton) view.findViewById(selectedId);
+                            interes = (RadioButton) getActivity().findViewById(selectedId);
+                            Log.i("MainActivity", String.valueOf(interes));
+                            Log.i("MainActivity", String.valueOf(selectedId));
                             if (interes == null) {
                                 isAllFill = false;
-                                break;
+                                //break;
 
                             }else{
                                 listaRespuestas.add(interes);
@@ -279,24 +284,31 @@ public class EncuestaFragment extends Fragment {
             super.onPostExecute(lista);
             Log.d(TAG, "onPostExecute");
             Log.d("lista", String.valueOf(lista));
-            if (lista!=null){
+            if (lista.size()>1){
                 Log.d(TAG, "existe");
                 existe=true;
+                Log.d("listaPreguntas size", String.valueOf(listaPreguntas.size()));
 
-                //listaPreguntas radiogroup
+                //Log.d("listaPreguntas size", String.valueOf(porfa.getText()));
                 for (int i=0;i<listaPreguntas.size();i++) {
-                    //Cojo cada radiogroup
-                    int count = listaPreguntas.get(i).getChildCount();
-                    ArrayList<RadioButton> listOfRadioButtons = new ArrayList<RadioButton>();
-                    for (int j=0;j<count;j++) {
+                    //Resources res = getResources();
+                    //int id = res.getIdentifier("Tor", "id", getContext().getPackageName());
+                    RadioButton porfa= view.findViewWithTag(lista.get(i));
+                    if(porfa!=null){
+                        listaPreguntas.get(i).check(porfa.getId());
+                    }
+                    //view.findViewsWithText(porfa,"sd",0);
+                    //int count = listaPreguntas.get(i).getChildCount();
+                    //ArrayList<RadioButton> listOfRadioButtons = new ArrayList<RadioButton>();
+                    /*for (int j=0;j<count;j++) {
                         View o = listaPreguntas.get(i).getChildAt(j);
                         if (o instanceof RadioButton) {
+                            Log.d("button", String.valueOf(o));
                             if(((RadioButton) o).getText().equals(llenarRespuestas.get(i))){
-
                                 listaPreguntas.get(i).check(o.getId());
                             }
                         }
-                    }
+                    }*/
                 }
 
                 //radioGroup.check(((RadioButton)radioGroup.getChildAt(0)).getId());
@@ -308,7 +320,6 @@ public class EncuestaFragment extends Fragment {
         }
 
     }
-
     private class GuardarPreguntas extends AsyncTask<Integer, Integer, String> {
 
 
@@ -330,22 +341,22 @@ public class EncuestaFragment extends Fragment {
 
             Log.i("MainActivity", "onCreate -> else -> Todos los EditText estan llenos.");
             stringMap.put("idusuario", String.valueOf(idusuario));
-            stringMap.put("rspverde", String.valueOf(listaRespuestas.get(0).getText()));
-            stringMap.put("rspdesayunosalado", String.valueOf(listaRespuestas.get(1).getText()));
-            stringMap.put("rspdesayunodulce", String.valueOf(listaRespuestas.get(2).getText()));
-            stringMap.put("rspalmuerzo", String.valueOf(listaRespuestas.get(3).getText()));
-            stringMap.put("rspmarisco", String.valueOf(listaRespuestas.get(4).getText()));
-            stringMap.put("rspsopa", String.valueOf(listaRespuestas.get(5).getText()));
-            stringMap.put("rspcena", String.valueOf(listaRespuestas.get(6).getText()));
-            stringMap.put("rspcomidatipicacosta", String.valueOf(listaRespuestas.get(7).getText()));
-            stringMap.put("rspcomidatipicasierra", String.valueOf(listaRespuestas.get(8).getText()));
-            stringMap.put("rspcomidatipicaoriente", String.valueOf(listaRespuestas.get(9).getText()));
-            stringMap.put("rspproteina", String.valueOf(listaRespuestas.get(10).getText()));
-            stringMap.put("rsppostres", String.valueOf(listaRespuestas.get(11).getText()));
-            stringMap.put("rspsaboresdulces", String.valueOf(listaRespuestas.get(12).getText()));
-            stringMap.put("rspbebida", String.valueOf(listaRespuestas.get(13).getText()));
-            stringMap.put("rspcomidaextranjera", String.valueOf(listaRespuestas.get(14).getText()));
-            stringMap.put("rspcomidarapida", String.valueOf(listaRespuestas.get(15).getText()));
+            stringMap.put("rspverde", String.valueOf(listaRespuestas.get(0).getTag()));
+            stringMap.put("rspdesayunosalado", String.valueOf(listaRespuestas.get(1).getTag()));
+            stringMap.put("rspdesayunodulce", String.valueOf(listaRespuestas.get(2).getTag()));
+            stringMap.put("rspalmuerzo", String.valueOf(listaRespuestas.get(3).getTag()));
+            stringMap.put("rspmarisco", String.valueOf(listaRespuestas.get(4).getTag()));
+            stringMap.put("rspsopa", String.valueOf(listaRespuestas.get(5).getTag()));
+            stringMap.put("rspcena", String.valueOf(listaRespuestas.get(6).getTag()));
+            stringMap.put("rspcomidatipicacosta", String.valueOf(listaRespuestas.get(7).getTag()));
+            stringMap.put("rspcomidatipicasierra", String.valueOf(listaRespuestas.get(8).getTag()));
+            stringMap.put("rspcomidatipicaoriente", String.valueOf(listaRespuestas.get(9).getTag()));
+            stringMap.put("rspproteina", String.valueOf(listaRespuestas.get(10).getTag()));
+            stringMap.put("rsppostres", String.valueOf(listaRespuestas.get(11).getTag()));
+            stringMap.put("rspsaboresdulces", String.valueOf(listaRespuestas.get(12).getTag()));
+            stringMap.put("rspbebida", String.valueOf(listaRespuestas.get(13).getTag()));
+            stringMap.put("rspcomidaextranjera", String.valueOf(listaRespuestas.get(14).getTag()));
+            stringMap.put("rspcomidarapida", String.valueOf(listaRespuestas.get(15).getTag()));
             String requestBody = Registrarse.Utils.buildPostParameters(stringMap);
             try {
                 urlConnection = (HttpURLConnection) Registrarse.Utils.makeRequest("POST", path, null, "application/x-www-form-urlencoded", requestBody);
@@ -381,6 +392,12 @@ public class EncuestaFragment extends Fragment {
             super.onPostExecute(nombre);
             Log.d(TAG, "onPostExecute");
             if (nombre=="ok"){
+                Bundle args = new Bundle();
+                args.putString("titulo", "LOVEFOOD");
+                args.putString("texto", "¡Se guardaron correctamente tus respuestas!");
+                ProblemaConexion f=new ProblemaConexion();
+                f.setArguments(args);
+                f.show(getFragmentManager(), "ProblemaConexión");
                 Fragment fragment= new MatchFragment();
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.mainFrame, fragment);
@@ -476,22 +493,22 @@ public class EncuestaFragment extends Fragment {
 
             Log.i("MainActivity", "onCreate -> else -> Todos los EditText estan llenos.");
             stringMap.put("idusuario", String.valueOf(idusuario));
-            stringMap.put("rspverde", String.valueOf(listaRespuestas.get(0).getText()));
-            stringMap.put("rspdesayunosalado", String.valueOf(listaRespuestas.get(1).getText()));
-            stringMap.put("rspdesayunodulce", String.valueOf(listaRespuestas.get(2).getText()));
-            stringMap.put("rspalmuerzo", String.valueOf(listaRespuestas.get(3).getText()));
-            stringMap.put("rspmarisco", String.valueOf(listaRespuestas.get(4).getText()));
-            stringMap.put("rspsopa", String.valueOf(listaRespuestas.get(5).getText()));
-            stringMap.put("rspcena", String.valueOf(listaRespuestas.get(6).getText()));
-            stringMap.put("rspcomidatipicacosta", String.valueOf(listaRespuestas.get(7).getText()));
-            stringMap.put("rspcomidatipicasierra", String.valueOf(listaRespuestas.get(8).getText()));
-            stringMap.put("rspcomidatipicaoriente", String.valueOf(listaRespuestas.get(9).getText()));
-            stringMap.put("rspproteina", String.valueOf(listaRespuestas.get(10).getText()));
-            stringMap.put("rsppostres", String.valueOf(listaRespuestas.get(11).getText()));
-            stringMap.put("rspsaboresdulces", String.valueOf(listaRespuestas.get(12).getText()));
-            stringMap.put("rspbebida", String.valueOf(listaRespuestas.get(13).getText()));
-            stringMap.put("rspcomidaextranjera", String.valueOf(listaRespuestas.get(14).getText()));
-            stringMap.put("rspcomidarapida", String.valueOf(listaRespuestas.get(15).getText()));
+            stringMap.put("rspverde", String.valueOf(listaRespuestas.get(0).getTag()));
+            stringMap.put("rspdesayunosalado", String.valueOf(listaRespuestas.get(1).getTag()));
+            stringMap.put("rspdesayunodulce", String.valueOf(listaRespuestas.get(2).getTag()));
+            stringMap.put("rspalmuerzo", String.valueOf(listaRespuestas.get(3).getTag()));
+            stringMap.put("rspmarisco", String.valueOf(listaRespuestas.get(4).getTag()));
+            stringMap.put("rspsopa", String.valueOf(listaRespuestas.get(5).getTag()));
+            stringMap.put("rspcena", String.valueOf(listaRespuestas.get(6).getTag()));
+            stringMap.put("rspcomidatipicacosta", String.valueOf(listaRespuestas.get(7).getTag()));
+            stringMap.put("rspcomidatipicasierra", String.valueOf(listaRespuestas.get(8).getTag()));
+            stringMap.put("rspcomidatipicaoriente", String.valueOf(listaRespuestas.get(9).getTag()));
+            stringMap.put("rspproteina", String.valueOf(listaRespuestas.get(10).getTag()));
+            stringMap.put("rsppostres", String.valueOf(listaRespuestas.get(11).getTag()));
+            stringMap.put("rspsaboresdulces", String.valueOf(listaRespuestas.get(12).getTag()));
+            stringMap.put("rspbebida", String.valueOf(listaRespuestas.get(13).getTag()));
+            stringMap.put("rspcomidaextranjera", String.valueOf(listaRespuestas.get(14).getTag()));
+            stringMap.put("rspcomidarapida", String.valueOf(listaRespuestas.get(15).getTag()));
             String requestBody = Registrarse.Utils.buildPostParameters(stringMap);
             try {
                 urlConnection = (HttpURLConnection) Registrarse.Utils.makeRequest("PUT", pathA, null, "application/x-www-form-urlencoded", requestBody);
@@ -529,7 +546,7 @@ public class EncuestaFragment extends Fragment {
             if (nombre=="ok"){
                 Bundle args = new Bundle();
                 args.putString("titulo", "LOVEFOOD");
-                args.putString("texto", "Se actualizaron correctamente tus respuestas.");
+                args.putString("texto", "¡Se actualizaron correctamente tus respuestas!");
                 ProblemaConexion f=new ProblemaConexion();
                 f.setArguments(args);
                 f.show(getFragmentManager(), "ProblemaConexión");
