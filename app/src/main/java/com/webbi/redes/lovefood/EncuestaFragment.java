@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -87,7 +88,20 @@ public class EncuestaFragment extends Fragment {
         listaPreguntas.add((RadioGroup) view.findViewById(R.id.pregunta15));
         listaPreguntas.add((RadioGroup) view.findViewById(R.id.pregunta16));
 
+        view.setFocusableInTouchMode(true);
+        view.requestFocus();
+        view.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK) {
 
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
         idusuario= Integer.valueOf(leerValor(getContext(),"idusuario"));
         Log.d("LOGEADO", leerValor(getContext(),"idusuario"));
 
@@ -478,12 +492,16 @@ public class EncuestaFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             guardarP.setEnabled(false);
+            //progressBar.setVisibility(View.VISIBLE);
         }
         @Override
         protected String doInBackground(Integer... params) {
             return getWebServiceResponseData();
         }
-
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            //progressBar.setProgress(values[0]);
+        }
         protected String getWebServiceResponseData() {
             nombre="";
             //String url = "http://10.0.2.2/api/token";
@@ -542,6 +560,7 @@ public class EncuestaFragment extends Fragment {
         protected void onPostExecute(String nombre) {
 
             super.onPostExecute(nombre);
+            //progressBar.setVisibility(View.INVISIBLE);
             Log.d(TAG, "onPostExecute");
             if (nombre=="ok"){
                 Bundle args = new Bundle();

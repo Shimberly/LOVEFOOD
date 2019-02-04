@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
         android:layout_marginTop="20dp"
-        android:layout_weight=".50"
+        android:layout_weight=".45"
         app:srcCompat="@drawable/banner" />
 
     <EditText
@@ -75,20 +75,24 @@
         android:text="Ingresar"
         android:textColor="#FFF"
         android:textSize="16sp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="10dp"
         android:layout_weight=".10"
         android:layout_marginHorizontal="40dp"/>
 
-    <TextView
+    <Button
         android:id="@+id/btnIrRegistro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight=".5"
-        android:text="¿No tienes cuenta? Registrate"
+        android:layout_weight=".10"
+        android:background="@drawable/btnborder"
+        android:text="Registrarse"
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"
         android:textColor="#000"
-        android:layout_marginVertical="2dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="18dp"
+        android:layout_marginHorizontal="40dp"
         android:gravity="center"/>
 
 </LinearLayout>

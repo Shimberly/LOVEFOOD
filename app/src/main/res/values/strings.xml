@@ -3,14 +3,35 @@
     <string name="title_activity_principal">Principal</string>
 
 
-    <string-array name="genero_array">
-        <item>Mujer</item>
-        <item>Hombre</item>
+    <string-array name="universidades">
+        <item>Espol</item>
+        <item>Estatal</item>
+        <item>Católica</item>
+        <item>UEES</item>
+        <item>Casa Gramde</item>
+        <item>Agraria</item>
+        <item>Andina</item>
+        <item>Salesiana</item>
+        <item>Politécnica Nacional</item>
+        <item>San Francisco</item>
+        <item>Técnica de Machala</item>
+        <item>Fuerzas Armadas</item>
+        <item>Central</item>
+        <item>Nacional de Loja</item>
+        <item>Nacional de Azuay</item>
+        <item>Estatal de Milagro</item>
+        <item>Técnica de Ambato</item>
+        <item>Nacional de Cuenca</item>
+        <item>Estatal Amazónica</item>
+        <item>Otra</item>
     </string-array>
 
     <string name="facebook_app_id">294156307911911</string>
     <string name="fb_login_protocol_scheme">fb294156307911911</string>
-
+    <string name="client_id">98af0afaba0f4adc8626a0a0e278f25a</string>
+    <string name="redirect_url">https://instagram.com/</string>
+    <string name="base_url">https://api.instagram.com/</string>
+    <string name="get_user_info_url">https://api.instagram.com/v1/users/self/?access_token=</string>
 
 </resources>
 

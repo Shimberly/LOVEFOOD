@@ -39,7 +39,7 @@
             android:text="Verde"
             android:textSize="16sp"
             android:paddingHorizontal="15dp"
-            android:textColor="#000"
+            android:textColor="#C72727"
             android:layout_marginVertical="10dp"
             android:textFontWeight="Bold"/>
         <TableLayout
@@ -162,7 +162,7 @@
             android:text="Desayuno Salado"
             android:textSize="16sp"
             android:paddingHorizontal="15dp"
-            android:textColor="#000"
+            android:textColor="#C72727"
             android:layout_marginVertical="10dp"></TextView>
         <TableLayout
             android:layout_width="match_parent"
@@ -300,7 +300,7 @@
             android:text="Desayuno Dulce"
             android:textSize="16sp"
             android:paddingHorizontal="15dp"
-            android:textColor="#000"
+            android:textColor="#C72727"
             android:layout_marginVertical="10dp"
             android:textFontWeight="Bold"/>
 
@@ -425,7 +425,7 @@
             android:text="Almuerzo"
             android:textSize="16sp"
             android:paddingHorizontal="15dp"
-            android:textColor="#000"
+            android:textColor="#C72727"
             android:layout_marginVertical="10dp"
             android:textFontWeight="Bold"/>
 
@@ -561,7 +561,7 @@
             android:text="Mariscos"
             android:textSize="16sp"
             android:paddingHorizontal="15dp"
-            android:textColor="#000"
+            android:textColor="#C72727"
             android:layout_marginVertical="10dp"
             android:textFontWeight="Bold"/>
 
@@ -699,7 +699,7 @@
             android:text="Sopas"
             android:textSize="16sp"
             android:paddingHorizontal="15dp"
-            android:textColor="#000"
+            android:textColor="#C72727"
             android:layout_marginVertical="10dp"
             android:textFontWeight="Bold"/>
         <TableLayout
@@ -837,7 +837,7 @@
             android:text="Cena"
             android:textSize="16sp"
             android:paddingHorizontal="15dp"
-            android:textColor="#000"
+            android:textColor="#C72727"
             android:layout_marginVertical="10dp"
             android:textFontWeight="Bold"/>
 
@@ -962,7 +962,7 @@
             android:text="Comida Típica Costa"
             android:textSize="16sp"
             android:paddingHorizontal="15dp"
-            android:textColor="#000"
+            android:textColor="#C72727"
             android:layout_marginVertical="10dp"
             android:textFontWeight="Bold"/>
 
@@ -1009,6 +1009,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="5. Ceviches"
+                    android:gravity="center_horizontal"
+                    android:textSize="12sp"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="#000"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="6. Arroz con menestra"
                     android:gravity="center_horizontal"
                     android:textSize="12sp"
                     android:paddingHorizontal="15dp"
@@ -1070,6 +1078,14 @@
                     android:text="5"
                     android:tag="Ceviches"
                     android:textColor="#000"/>
+                <RadioButton android:id="@+id/aroozmenestra"
+                    android:layout_width="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="6"
+                    android:tag="Arroz con menestra"
+                    android:textColor="#000"/>
             </RadioGroup>
         </LinearLayout>
 
@@ -1087,7 +1103,7 @@
             android:text="Comida Típica Sierra"
             android:textSize="16sp"
             android:paddingHorizontal="15dp"
-            android:textColor="#000"
+            android:textColor="#C72727"
             android:layout_marginVertical="10dp"
             android:textFontWeight="Bold"/>
 
@@ -1165,6 +1181,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1"
+                    android:tag="Fritada"
                     android:layout_weight="1"
                     android:textSize="12sp"
                     android:textColor="#000"/>
@@ -1225,7 +1242,7 @@
             android:text="Comida Típica Oriente"
             android:textSize="16sp"
             android:paddingHorizontal="15dp"
-            android:textColor="#000"
+            android:textColor="#C72727"
             android:layout_marginVertical="10dp"
             android:textFontWeight="Bold"/>
 
@@ -1376,7 +1393,7 @@
             android:text="Proteínas"
             android:textSize="16sp"
             android:paddingHorizontal="15dp"
-            android:textColor="#000"
+            android:textColor="#C72727"
             android:layout_marginVertical="10dp"
             android:textFontWeight="Bold"/>
         <TableLayout
@@ -1516,7 +1533,7 @@
             android:text="Postres"
             android:textSize="16sp"
             android:paddingHorizontal="15dp"
-            android:textColor="#000"
+            android:textColor="#C72727"
             android:layout_marginVertical="10dp"
             android:textFontWeight="Bold"/>
         <TableLayout
@@ -1654,7 +1671,7 @@
             android:text="Sabores Dulces"
             android:textSize="16sp"
             android:paddingHorizontal="15dp"
-            android:textColor="#000"
+            android:textColor="#C72727"
             android:layout_marginVertical="10dp"
             android:textFontWeight="bold"/>
 
@@ -1793,7 +1810,7 @@
             android:text="Bebidas"
             android:textSize="16sp"
             android:paddingHorizontal="15dp"
-            android:textColor="#000"
+            android:textColor="#C72727"
             android:layout_marginVertical="10dp"
             android:textFontWeight="Bold"/>
 
@@ -1930,7 +1947,7 @@
             android:text="Comida Extranjera"
             android:textSize="16sp"
             android:paddingHorizontal="15dp"
-            android:textColor="#000"
+            android:textColor="#C72727"
             android:layout_marginVertical="10dp"
             android:textFontWeight="Bold"/>
 
@@ -2070,7 +2087,7 @@
             android:text="Comida Rápida"
             android:textSize="16sp"
             android:paddingHorizontal="15dp"
-            android:textColor="#000"
+            android:textColor="#C72727"
             android:layout_marginVertical="10dp"
             android:textFontWeight="Bold"/>
 
@@ -2212,7 +2229,7 @@
             android:text="Guardar"
             android:textColor="#FFF"
             android:textSize="16sp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_weight=".10"
             android:layout_marginHorizontal="30dp"/>
     </LinearLayout>

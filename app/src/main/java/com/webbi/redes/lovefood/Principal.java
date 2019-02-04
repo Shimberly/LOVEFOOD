@@ -3,6 +3,7 @@ package com.webbi.redes.lovefood;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -28,7 +29,7 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
         setContentView(R.layout.activity_principal);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.navigationView);
         nav.setOnNavigationItemSelectedListener(this);
         String flag=getIntent().getStringExtra("primero");
@@ -158,12 +159,7 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
     }
 
-    public void accionig(View v){
 
-        String urlPage = "https://www.instagram.com/webbi_ec/?hl=es-la";
-
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
-    }
     public void accionmsj(View v){
 
         try {

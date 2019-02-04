@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight="1"
     android:orientation="vertical"
-    tools:context=".PerfilFragment"
-    android:layout_marginVertical="70dp">
+    android:layout_weight="1"
+    android:layout_marginVertical="70dp"
+    tools:context=".PerfilFragment">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_weight=".10"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
         <TextView
             android:id="@+id/txtNombre"
             android:layout_width="wrap_content"
@@ -21,126 +22,107 @@
             android:gravity="center"
             android:textSize="24sp"
             android:textColor="#000"
-            android:layout_marginLeft="8dp"
-            android:layout_weight=".85"
+            android:layout_weight=".10"
             android:textFontWeight="Bold"/>
-        <Button
-            android:id="@+id/btnEditar"
-            android:layout_width="30dp"
-            android:layout_height="20dp"
-            android:background="#c72727"
-            android:text="Editar"
-            android:textColor="#FFF"
-            android:layout_weight=".15"
-            android:onClick="accionEditar"/>
-    </LinearLayout>
-    <TextView
-        android:id="@+id/txtEdad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center_horizontal"
-        android:padding="5px"
-        android:textColor="#C72727"
-        android:layout_weight=".05"
-        android:textSize="14sp" />
-    <TextView
-        android:id="@+id/txtCorreo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:padding="5px"
-        android:textColor="#797979"
-        android:layout_weight=".05"
-        android:textSize="14sp" />
+        <TextView
+            android:id="@+id/txtEdad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
+            android:padding="5px"
+            android:textColor="#C72727"
+            android:layout_weight=".05"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/txtCorreo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:padding="5px"
+            android:textColor="#797979"
+            android:layout_weight=".05"
+            android:textSize="14sp" />
 
-    <ImageView
-        android:id="@+id/fotoPerfil"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight=".25"
-        android:src="@drawable/girl" />
-    <TextView
-        android:id="@+id/txtUniversidad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:textColor="#000"
-        android:textFontWeight="Bold"
-        android:layout_weight=".05"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/txtLugar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textColor="#797979"
-        android:layout_weight=".05"
-        android:textSize="17sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight=".30"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginVertical="12dp"
-        android:background="@drawable/btnborder">
+        <ImageView
+            android:id="@+id/fotoPerfil"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginVertical="20dp"
+            android:layout_weight=".25"
+            android:src="@drawable/girl" />
+        <TextView
+            android:id="@+id/txtUniversidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:textColor="#000"
+            android:textFontWeight="Bold"
+            android:layout_weight=".05"
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/txtDescripcion"
+            android:id="@+id/txtLugar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="#000"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="8dp"
-            android:layout_weight=".25" />
-        <TextView
-            android:id="@+id/txtPreferencia"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="3dp"
-            android:padding="5px"
-            android:gravity="center"
-            android:layout_weight=".75"
             android:textColor="#797979"
-            android:textSize="16sp" />
+            android:layout_weight=".05"
+            android:textSize="17sp" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight=".15"
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:layout_marginVertical="8dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight=".50"
+            android:layout_weight=".30"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginVertical="12dp"
+            android:background="@drawable/btnborder">
+
+            <TextView
+                android:id="@+id/txtDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="10dp"
+                android:layout_weight=".25" />
+            <TextView
+                android:id="@+id/txtPreferencia"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="3dp"
+                android:padding="5px"
+                android:gravity="center"
+                android:layout_weight=".75"
+                android:textColor="#797979"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".10"
+            android:layout_marginVertical="8dp"
             android:orientation="horizontal"
-            android:layout_marginLeft="35dp"
             android:layout_gravity="center_horizontal"
-            android:gravity="center">
+            android:gravity="center_horizontal">
             <Button
                 android:id="@+id/iconWa"
-                android:layout_width="45dp"
+                android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:padding="5px"
-                android:layout_weight=".50"
+                android:layout_weight="1"
                 android:width="45dp"
                 android:background="@drawable/whatsapplogo"/>
 
@@ -150,24 +132,25 @@
                 android:layout_height="wrap_content"
                 android:padding="5px"
                 android:layout_marginHorizontal="15dp"
-                android:layout_weight=".50"
+                android:layout_weight="1"
                 android:textColor="#000"
                 android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight=".50"
+            android:layout_weight=".10"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:gravity="center">
+            android:layout_marginVertical="8dp"
+            android:gravity="center_horizontal">
             <Button
                 android:id="@+id/iconIg"
-                android:layout_width="45dp"
+                android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:padding="5px"
-                android:layout_weight=".50"
+                android:layout_weight="1"
                 android:width="45dp"
                 android:background="@drawable/instagramlogo"/>
 
@@ -177,9 +160,20 @@
                 android:layout_height="wrap_content"
                 android:padding="5px"
                 android:layout_marginHorizontal="15dp"
-                android:layout_weight=".50"
+                android:layout_weight="1"
                 android:textColor="#000"
                 android:textSize="16sp" />
         </LinearLayout>
+        <Button
+            android:id="@+id/btnEditar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#c72727"
+            android:text="Editar perfil"
+            android:textColor="#FFF"
+            android:layout_weight=".10"
+            android:layout_marginVertical="15dp"
+            android:layout_marginHorizontal="50dp"
+            android:onClick="accionEditar"/>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

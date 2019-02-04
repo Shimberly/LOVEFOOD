@@ -7,15 +7,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -76,13 +80,38 @@ public class PerfilFragment extends Fragment {
         txtNumero= view.findViewById(R.id.txtWa);
         txtInstagram= view.findViewById(R.id.txtIg);
         fotoPerfil=view.findViewById(R.id.fotoPerfil);
+        txtInstagram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                if (txtInstagram.getText()!=""){
+                    String urlPage = "https://www.instagram.com/"+txtInstagram.getText();
+                    Log.d("link ig",urlPage);
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
+                }
+
+            }
+
+        });
         idusuario= Integer.valueOf(leerValor(getContext(),"idusuario"));
         Log.d("LOGEADO", leerValor(getContext(),"idusuario"));
         pathU = "https://lovefoodservices.herokuapp.com/mostrarUsuario/"+idusuario;
         pathI = "https://lovefoodservices.herokuapp.com/mostrarInformacion/"+idusuario;
+        view.setFocusableInTouchMode(true);
+        view.requestFocus();
+        view.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK) {
 
-        list = new ArrayList<String>();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+            list = new ArrayList<String>();
         if(isConnectedToInternet())
         {
             // Run AsyncTask
@@ -248,6 +277,7 @@ public class PerfilFragment extends Fragment {
                 list.add(jsonobjectI.getString("instagram"));
                 list.add(jsonobjectI.getString("preferencia"));
                 list.add(jsonobjectI.getString("numero"));
+                list.add(jsonobjectI.getString("foto"));
 
 
             } catch (JSONException e) {
@@ -269,20 +299,20 @@ public class PerfilFragment extends Fragment {
                 if(lista.get(5).isEmpty()){
                     txtUniversidad.setText("Universidad");
                 }else {
-                    txtUniversidad.setText("" + lista.get(5));
+                    txtUniversidad.setText("Estudio en: " + lista.get(5));
                 }
                 if(lista.get(6).isEmpty()){
                     txtCiudad.setText("Ciudad");
                 }else {
-                    txtCiudad.setText("" + lista.get(6));;
+                    txtCiudad.setText("Vivo en: " + lista.get(6));;
                 }
                 if(lista.get(7).isEmpty()){
-                    txtDescripcion.setText("Descripcion");
+                    txtDescripcion.setText("Escribe algo sobre ti");
                 }else {
                     txtDescripcion.setText("" + lista.get(7));
                 }
                 if(lista.get(8).isEmpty()){
-                    txtInstagram.setText("Usuario Ig");
+                    txtInstagram.setText("Usuario IG");
                 }else {
                     txtInstagram.setText("" + lista.get(8));
                 }
@@ -296,13 +326,31 @@ public class PerfilFragment extends Fragment {
                 }else {
                     txtNumero.setText("" + lista.get(10));
                 }
+                if(!lista.get(11).equals("")){
+                    Picasso.get().load(lista.get(11)).into(fotoPerfil);
+                }else{
+                    if (lista.get(3).equals("Mujer")){
+                        fotoPerfil.setImageResource(R.drawable.girl);
+
+                    }else{
+                        fotoPerfil.setImageResource(R.drawable.boy);
+                    }
+
+                }
                 Log.d("instagram",lista.get(8));
                 Log.d("sexo",lista.get(3));
-                if (lista.get(3).equals("Mujer")){
-                    fotoPerfil.setImageResource(R.drawable.girl);
-                }else{
-                    fotoPerfil.setImageResource(R.drawable.boy);
-                }
+              /*  try {
+                    AppPreferences appPreferences = null;
+                    appPreferences = new AppPreferences(getContext());
+                    Picasso.get().load(appPreferences.getString(AppPreferences.PROFILE_PIC)).into(fotoPerfil);
+                } catch (Exception e) {
+                    if (lista.get(3).equals("Mujer")){
+                        fotoPerfil.setImageResource(R.drawable.girl);
+                    }else{
+                        fotoPerfil.setImageResource(R.drawable.boy);
+                    }
+                }*/
+
 
                 DateTimeFormatter fmt = null;
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
@@ -316,7 +364,10 @@ public class PerfilFragment extends Fragment {
                     Log.d("edad", String.valueOf(periodo.getYears()));
 
                     txtEdad.setText(String.valueOf(periodo.getYears()));
+                }else{
+                    txtEdad.setText(String.valueOf(lista.get(4)));
                 }
+
 
                 }else{
                 Log.d(TAG, "Login fail:" + nombre);
@@ -333,6 +384,8 @@ public class PerfilFragment extends Fragment {
         }
 
     }
+
+
 
 
 }

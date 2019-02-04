@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:id="@+id/camposRegistro"
     android:layout_height="match_parent"
-    android:layout_weight="1"
-    android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:layout_weight="1"
     android:background="#FFF"
     tools:context=".EditarPerfil">
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#C72727"
-            app:popupTheme="@style/PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_weight=".10"
-        android:orientation="horizontal">
+        android:id="@+id/camposRegistro"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:background="#FFF">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#C72727"
+                app:popupTheme="@style/PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
         <TextView
             android:id="@+id/txtNombre"
             android:layout_width="wrap_content"
@@ -39,200 +41,220 @@
             android:gravity="center"
             android:textSize="24sp"
             android:textColor="#000"
-            android:layout_marginLeft="15dp"
-            android:layout_weight=".90"
+            android:layout_weight=".10"
             android:textFontWeight="Bold"/>
-        <Button
-            android:id="@+id/accionGuardarEditar"
-            android:layout_width="5dp"
-            android:layout_height="30dp"
-            android:background="@drawable/checking"
-            android:layout_weight=".10"/>
-    </LinearLayout>
-    <TextView
-        android:id="@+id/txtEdad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center_horizontal"
-        android:padding="5px"
-        android:textColor="#C72727"
-        android:layout_weight=".05"
-        android:textSize="14sp" />
-    <TextView
-        android:id="@+id/txtCorreo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:padding="5px"
-        android:textColor="#797979"
-        android:layout_weight=".05"
-        android:textSize="14sp" />
-
-    <ImageView
-        android:id="@+id/fotoPerfil"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight=".25"/>
-    <EditText
-        android:id="@+id/txtUniversidad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:hint="Universidad"
-        android:textColorHint="#797979"
-        android:gravity="center"
-        android:textColor="#000"
-        android:textFontWeight="Bold"
-        android:layout_weight=".05"
-        android:textSize="18sp" />
-
-    <EditText
-        android:id="@+id/txtLugar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textColor="#797979"
-        android:hint="Ciudad"
-        android:textColorHint="#797979"
-        android:layout_weight=".05"
-        android:textSize="17sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight=".30"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginVertical="12dp"
-        android:background="@drawable/btnborder">
-
-        <EditText
-            android:id="@+id/txtDescripcion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/fotoPerfil"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textColorHint="#797979"
-            android:hint="Escribe algo sobre ti"
-            android:textColor="#000"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="8dp"
-            android:layout_weight=".65" />
-        <TextView
-            android:id="@+id/txtPreferencia"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginVertical="20dp"
+            android:layout_weight=".25"
+            android:src="@drawable/girl" />
+        <!-- <EditText
+             android:id="@+id/txtUniversidad"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:layout_marginTop="5dp"
+             android:hint="Universidad"
+             android:textColorHint="#797979"
+             android:gravity="center"
+             android:textColor="#000"
+             android:textFontWeight="Bold"
+             android:layout_weight=".05"
+             android:textSize="18sp" />-->
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="3dp"
-            android:padding="5px"
-            android:text="Interés en:"
-            android:gravity="center"
-            android:layout_weight=".15"
-            android:textColor="#797979"
-            android:textSize="16sp" />
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/radio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight=".20"
-            android:theme="@style/AppThemeMyLight"
-            android:layout_marginTop="15dp"
-            android:backgroundTint="#C72727"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal"
+            android:layout_weight=".10"
             android:layout_marginVertical="10dp"
-            android:orientation="horizontal">
-            <RadioButton android:id="@+id/radio_mujer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mujeres"
-                android:layout_marginHorizontal="40dp"
-                android:textSize="15sp"
-                android:textColor="#000"/>
-
-            <RadioButton android:id="@+id/radio_hombre"
-                android:layout_width="wrap_content"
-                android:layout_marginHorizontal="40dp"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:text="Hombres"
-                android:textColor="#000"/>
-        </RadioGroup>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight=".15"
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:layout_marginVertical="8dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight=".50"
-            android:orientation="horizontal"
-            android:layout_marginLeft="35dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center">
-            <Button
-                android:id="@+id/iconWa"
-                android:layout_width="45dp"
-                android:layout_height="25dp"
-                android:padding="5px"
-                android:layout_weight=".50"
-                android:width="45dp"
-                android:background="@drawable/whatsapplogo"/>
-
-            <EditText
-                android:id="@+id/txtWa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5px"
-                android:layout_marginHorizontal="15dp"
-                android:textColorHint="#797979"
-                android:hint="Número"
-                android:layout_weight=".50"
-                android:textColor="#000"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight=".50"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:gravity="center">
-            <Button
-                android:id="@+id/iconIg"
-                android:layout_width="45dp"
-                android:layout_height="25dp"
-                android:padding="5px"
-                android:layout_weight=".50"
-                android:width="45dp"
-                android:background="@drawable/instagramlogo"/>
-
-            <EditText
-                android:id="@+id/txtIg"
-                android:layout_width="match_parent"
+            android:gravity="center_horizontal">
+            <TextView
+                android:id="@+id/txtU"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="3dp"
                 android:padding="5px"
-                android:layout_marginHorizontal="15dp"
-                android:textColorHint="#797979"
-                android:layout_weight=".50"
-                android:hint="Usuario Instagram"
-                android:textColor="#000"
+                android:text="Universidad:"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textColor="#797979"
                 android:textSize="16sp" />
+             <Spinner
+                 android:id="@+id/universidades"
+                 android:layout_width="wrap_content"
+                 android:layout_weight="1"
+                 android:layout_gravity="center_horizontal"
+                 android:gravity="center_horizontal"
+                 android:layout_marginHorizontal="20dp"
+                 android:autofillHints="Universidad"
+                 android:layout_marginVertical="5dp"
+                 android:layout_height="wrap_content"
+                 android:background="#C72727"/>
         </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+
+         <EditText
+             android:id="@+id/txtLugar"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:gravity="center"
+             android:textColor="#797979"
+             android:hint="Ciudad"
+             android:textColorHint="#797979"
+             android:layout_weight=".05"
+             android:textSize="17sp" />
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_weight=".30"
+             android:orientation="vertical"
+             android:layout_marginHorizontal="25dp"
+             android:layout_marginVertical="12dp"
+             android:background="@drawable/btnborder">
+
+             <EditText
+                 android:id="@+id/txtDescripcion"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 android:gravity="center"
+                 android:textSize="16sp"
+                 android:textColorHint="#797979"
+                 android:hint="Escribe algo sobre ti"
+                 android:textColor="#000"
+                 android:layout_marginHorizontal="10dp"
+                 android:layout_marginVertical="8dp"
+                 android:layout_weight=".65" />
+             <TextView
+                 android:id="@+id/txtPreferencia"
+                 android:layout_width="wrap_content"
+                 android:layout_gravity="center_horizontal"
+                 android:layout_height="wrap_content"
+                 android:layout_marginVertical="3dp"
+                 android:padding="5px"
+                 android:text="Interés en:"
+                 android:gravity="center"
+                 android:layout_weight=".15"
+                 android:textColor="#797979"
+                 android:textSize="16sp" />
+             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:id="@+id/radio"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_weight=".20"
+                 android:theme="@style/AppThemeMyLight"
+                 android:layout_marginTop="15dp"
+                 android:layout_marginLeft="8dp"
+                 android:backgroundTint="#C72727"
+                 android:layout_gravity="center_horizontal"
+                 android:gravity="center_horizontal"
+                 android:layout_marginVertical="10dp"
+                 android:orientation="horizontal">
+                 <RadioButton android:id="@+id/radio_mujer"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Mujeres"
+                     android:layout_weight="1"
+                     android:textSize="15sp"
+                     android:textColor="#000"/>
+
+                 <RadioButton android:id="@+id/radio_hombre"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:textSize="15sp"
+                     android:text="Hombres"
+                     android:layout_weight="1"
+                     android:textColor="#000"/>
+             </RadioGroup>
+
+         </LinearLayout>
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_weight=".10"
+             android:layout_marginVertical="10dp"
+             android:orientation="horizontal"
+             android:layout_gravity="center_horizontal"
+             android:gravity="center_horizontal">
+             <Button
+                 android:id="@+id/iconWa"
+                 android:layout_width="25dp"
+                 android:layout_height="25dp"
+                 android:padding="5px"
+                 android:layout_weight="1"
+                 android:width="45dp"
+                 android:background="@drawable/whatsapplogo"/>
+
+             <EditText
+                 android:id="@+id/txtWa"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:padding="5px"
+                 android:inputType="phone"
+                 android:textColorHint="#797979"
+                 android:layout_marginHorizontal="15dp"
+                 android:hint="Número celular"
+                 android:layout_weight="1"
+                 android:textColor="#000"
+                 android:textSize="16sp" />
+         </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:id="@+id/info"
+             android:layout_weight=".10"
+             android:orientation="horizontal"
+             android:layout_marginVertical="10dp"
+             android:layout_gravity="center_horizontal"
+             android:gravity="center_horizontal">
+             <Button
+                 android:id="@+id/iconIg"
+                 android:layout_width="25dp"
+                 android:layout_height="25dp"
+                 android:padding="5px"
+                 android:layout_weight=".50"
+                 android:width="45dp"
+                 android:background="@drawable/instagramlogo"/>
+
+             <TextView
+                 android:id="@+id/txtIg"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:padding="5px"
+                 android:layout_marginHorizontal="15dp"
+                 android:textColorHint="#797979"
+                 android:layout_weight=".50"
+                 android:hint="Usuario instagram"
+                 android:textColor="#000"
+                 android:textSize="16sp" />
+             <Button
+                 android:id="@+id/loginIG"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:onClick="loginIG"
+                 android:layout_centerHorizontal="true"
+                 android:textSize="12sp"
+                 android:textColor="#C72727"
+                 android:background="@drawable/btnborder"
+                 android:text="Vincular" />
+         </LinearLayout>
+         <Button
+             android:id="@+id/accionGuardarEditar"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="#c72727"
+             android:text="Guardar"
+             android:textColor="#FFF"
+             android:layout_weight=".10"
+             android:layout_marginVertical="15dp"
+             android:layout_marginHorizontal="50dp"/>
+     </LinearLayout>
+ </ScrollView>
