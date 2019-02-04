@@ -299,7 +299,7 @@ public class PerfilFragment extends Fragment {
                 if(lista.get(5).isEmpty()){
                     txtUniversidad.setText("Universidad");
                 }else {
-                    txtUniversidad.setText("Estudio en: " + lista.get(5));
+                    txtUniversidad.setText("Universidad: " + lista.get(5));
                 }
                 if(lista.get(6).isEmpty()){
                     txtCiudad.setText("Ciudad");

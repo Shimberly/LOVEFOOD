@@ -1,16 +1,21 @@
 package com.webbi.redes.lovefood;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telephony.TelephonyManager;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -77,7 +82,7 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
     EditText txtDescripcion;
     RadioGroup radioGroup;
     RadioButton interes;
-    TextView txtInstagram;
+    EditText txtInstagram;
     EditText txtWhatsapp;
     List<String> list;
     HttpURLConnection conn;
@@ -101,21 +106,21 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        idusuario= Integer.valueOf(leerValor(this,"idusuario"));
-        Log.d("LOGEADO", leerValor(this,"idusuario"));
-        pathU = "https://lovefoodservices.herokuapp.com/mostrarUsuario/"+idusuario;
-        pathI = "https://lovefoodservices.herokuapp.com/mostrarInformacion/"+idusuario;
+        idusuario = Integer.valueOf(leerValor(this, "idusuario"));
+        Log.d("LOGEADO", leerValor(this, "idusuario"));
+        pathU = "https://lovefoodservices.herokuapp.com/mostrarUsuario/" + idusuario;
+        pathI = "https://lovefoodservices.herokuapp.com/mostrarInformacion/" + idusuario;
 
-        txtNombre= findViewById(R.id.txtNombre);
-        txtCorreo= findViewById(R.id.txtCorreo);
-        txtEdad= findViewById(R.id.txtEdad);
-        fotoPerfil=findViewById(R.id.fotoPerfil);
+        txtNombre = findViewById(R.id.txtNombre);
+        txtCorreo = findViewById(R.id.txtCorreo);
+        txtEdad = findViewById(R.id.txtEdad);
+        fotoPerfil = findViewById(R.id.fotoPerfil);
         //txtUniversidad=(EditText) findViewById(R.id.txtUniversidad);
-        txtCiudad=(EditText) findViewById(R.id.txtLugar);
-        txtDescripcion=(EditText) findViewById(R.id.txtDescripcion);
-        txtInstagram=(TextView) findViewById(R.id.txtIg);
+        txtCiudad = (EditText) findViewById(R.id.txtLugar);
+        txtDescripcion = (EditText) findViewById(R.id.txtDescripcion);
+        txtInstagram = (EditText) findViewById(R.id.txtIg);
         //txtInstagram.setEnabled(false);
-        txtWhatsapp=(EditText) findViewById(R.id.txtWa);
+        txtWhatsapp = (EditText) findViewById(R.id.txtWa);
         radioGroup = (RadioGroup) findViewById(R.id.radio);
 
         //txtUniversidad.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
@@ -133,7 +138,7 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
         spinnerU.setAdapter(adapter);
         //
 
-        btnIG = findViewById(R.id.loginIG);
+        //btnIG = findViewById(R.id.loginIG);
         info = findViewById(R.id.info);
         appPreferences = new AppPreferences(this);
 
@@ -150,50 +155,59 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
         GuardarEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    if(isConnectedToInternet())
-                    {
-                        int selectedId = radioGroup.getCheckedRadioButtonId();
-                        interes = (RadioButton) findViewById(selectedId);
-                        Log.i("MainActivity", String.valueOf(selectedId));
-                        LinearLayout linearLayout = findViewById(R.id.camposRegistro);
-                        int count = linearLayout.getChildCount();
-                        boolean isAllFill = true;
-                        for (int i = 0; i < count; i++) {
-                            try {
-                                EditText editText = (EditText) linearLayout.getChildAt(i);
-                                if (editText.getText().toString().isEmpty()) {
-                                    isAllFill = false;
-                                    break;
+                if (isConnectedToInternet()) {
+                    int selectedId = radioGroup.getCheckedRadioButtonId();
+                    interes = (RadioButton) findViewById(selectedId);
+                    Log.i("MainActivity", String.valueOf(selectedId));
+                    LinearLayout linearLayout = findViewById(R.id.camposRegistro);
+                    int count = linearLayout.getChildCount();
+                    boolean isAllFill = true;
+                    for (int i = 0; i < count; i++) {
+                        try {
+                            EditText editText = (EditText) linearLayout.getChildAt(i);
+                            if (editText.getText().toString().isEmpty()) {
+                                isAllFill = false;
+                                break;
 
-                                }
-                            }catch (Exception e){
                             }
-                        }
-
-                        if (isAllFill && interes != null && !txtWhatsapp.getText().toString().isEmpty() && !txtDescripcion.getText().toString().isEmpty()) {
-                        // Run AsyncTask
-                            servicio = (ServicioWeb) new ServicioWeb().execute();
-                        } else {
-                            Log.i("MainActivity", "onCreate -> if -> Hay EditText vacios.");
-                            Bundle args = new Bundle();
-                            args.putString("titulo", "Advertencia");
-                            args.putString("texto", "Completa todos los campos");
-                            ProblemaConexion f=new ProblemaConexion();
-                            f.setArguments(args);
-                            f.show(getSupportFragmentManager(), "ProblemaConexión");
+                        } catch (Exception e) {
                         }
                     }
-                    else
-                    {
-                        Log.d("d", "Error Conexion");
+                    int maxLength = 10;
+                    txtWhatsapp.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength)});
+
+                    if (isAllFill && interes != null && !txtWhatsapp.getText().toString().isEmpty() && !txtDescripcion.getText().toString().isEmpty()) {
+                        // Run AsyncTask
+                        if (txtWhatsapp.getText().toString().length()<10){
+                            Bundle args = new Bundle();
+                            args.putString("titulo", "Advertencia");
+                            args.putString("texto", "Número no válido");
+                            ProblemaConexion f = new ProblemaConexion();
+                            f.setArguments(args);
+                            f.show(getSupportFragmentManager(), "ProblemaConexión");
+                        }else{
+                            servicio = (ServicioWeb) new ServicioWeb().execute();
+                        }
+
+                    } else {
+                        Log.i("MainActivity", "onCreate -> if -> Hay EditText vacios.");
                         Bundle args = new Bundle();
                         args.putString("titulo", "Advertencia");
-                        args.putString("texto", "No hay conexión de Internet");
-                        ProblemaConexion f=new ProblemaConexion();
+                        args.putString("texto", "Completa todos los campos");
+                        ProblemaConexion f = new ProblemaConexion();
                         f.setArguments(args);
                         f.show(getSupportFragmentManager(), "ProblemaConexión");
                     }
+                } else {
+                    Log.d("d", "Error Conexion");
+                    Bundle args = new Bundle();
+                    args.putString("titulo", "Advertencia");
+                    args.putString("texto", "No hay conexión de Internet");
+                    ProblemaConexion f = new ProblemaConexion();
+                    f.setArguments(args);
+                    f.show(getSupportFragmentManager(), "ProblemaConexión");
                 }
+            }
         });
 
     }
@@ -201,22 +215,22 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
 
     public static String leerValor(Context context, String keyPref) {
         SharedPreferences preferences = context.getSharedPreferences(PREFS_KEY, MODE_PRIVATE);
-        return  preferences.getString(keyPref, "");
+        return preferences.getString(keyPref, "");
     }
-    public boolean isConnectedToInternet(){
-        ConnectivityManager connectivity = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivity != null)
-        {
+
+    public boolean isConnectedToInternet() {
+        ConnectivityManager connectivity = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivity != null) {
             NetworkInfo[] info = connectivity.getAllNetworkInfo();
             if (info != null)
                 for (int i = 0; i < info.length; i++)
-                    if (info[i].getState() == NetworkInfo.State.CONNECTED)
-                    {
+                    if (info[i].getState() == NetworkInfo.State.CONNECTED) {
                         return true;
                     }
         }
         return false;
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
@@ -230,17 +244,18 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
         protected void onPreExecute() {
             //GuardarEditar.setEnabled(false);
         }
+
         @Override
         protected String doInBackground(Integer... params) {
             return getWebServiceResponseData();
         }
 
         protected String getWebServiceResponseData() {
-            nombre="";
+            nombre = "";
             //String url = "http://10.0.2.2/api/token";
             HttpURLConnection urlConnection = null;
             Map<String, String> stringMap = new HashMap<>();
-            Log.d("foto",fotoTag);
+            Log.d("foto", fotoTag);
             Log.d("ig", String.valueOf(txtInstagram.getText()));
 
 
@@ -269,7 +284,7 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
                 while ((temp = bufferedReader.readLine()) != null) {
                     response += temp;
                 }
-                nombre="ok";
+                nombre = "ok";
             } catch (Exception e) {
                 e.printStackTrace();
                 return e.toString();
@@ -287,17 +302,17 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
             //GuardarEditar.setEnabled(true);
             super.onPostExecute(nombre);
             Log.d(TAG, "onPostExecute");
-            if (nombre=="ok"){
+            if (nombre == "ok") {
                 Intent itemintent = new Intent(EditarPerfil.this, Principal.class);
                 EditarPerfil.this.startActivity(itemintent);
                 Log.d(TAG, "ok");
-            }else{
+            } else {
 
                 Log.d(TAG, "Registro fail:" + nombre);
                 Bundle args = new Bundle();
                 args.putString("titulo", "Advertencia");
                 args.putString("texto", "No se pudo registrar tus datos");
-                ProblemaConexion f=new ProblemaConexion();
+                ProblemaConexion f = new ProblemaConexion();
                 f.setArguments(args);
                 f.show(getSupportFragmentManager(), "ProblemaConexión");
             }
@@ -306,7 +321,7 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
 
     }
 
-    public static class Utils{
+    public static class Utils {
         public static String buildPostParameters(Object content) {
             String output = null;
             if ((content instanceof String) ||
@@ -364,7 +379,6 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
     private class ServicioWebLlenar extends AsyncTask<Integer, Integer, List<String>> {
 
 
-
         @Override
         protected List<String> doInBackground(Integer... params) {
             return getWebServiceResponseData();
@@ -373,8 +387,8 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
         protected List<String> getWebServiceResponseData() {
 
             try {
-                url=new URL(pathU);
-                nombre="";
+                url = new URL(pathU);
+                nombre = "";
                 Log.d(TAG, "ServerData: " + pathU);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(15000);
@@ -395,8 +409,8 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
                         response.append(output);
                     }
                     in.close();
-                }}
-            catch(Exception e){
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -407,7 +421,7 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
                 Bundle args = new Bundle();
                 args.putString("titulo", "Advertencia");
                 args.putString("texto", "Problema al conectar con el servidor de LOVEFOOD");
-                ProblemaConexion f=new ProblemaConexion();
+                ProblemaConexion f = new ProblemaConexion();
                 f.setArguments(args);
                 f.show(getSupportFragmentManager(), "ProblemaConexión");
                 servicio.cancel(true);
@@ -415,7 +429,7 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
             //Call ServerData() method to call webservice and store result in response
             //  response = service.ServerData(path, postDataParams);
             Log.d(TAG, "data:" + responseText);
-            JSONObject jsonobjectU=null;
+            JSONObject jsonobjectU = null;
             try {
                 JSONArray jsonarray = new JSONArray(responseText);
 
@@ -432,8 +446,8 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
             }
 //INFORMACION
             try {
-                url=new URL(pathI);
-                nombre="";
+                url = new URL(pathI);
+                nombre = "";
                 Log.d(TAG, "ServerData: " + pathI);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(15000);
@@ -454,8 +468,8 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
                         response.append(output);
                     }
                     in.close();
-                }}
-            catch(Exception e){
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -466,7 +480,7 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
                 Bundle args = new Bundle();
                 args.putString("titulo", "Advertencia");
                 args.putString("texto", "Problema al conectar con el servidor de LOVEFOOD");
-                ProblemaConexion f=new ProblemaConexion();
+                ProblemaConexion f = new ProblemaConexion();
                 f.setArguments(args);
                 f.show(getSupportFragmentManager(), "ProblemaConexión");
                 servicio.cancel(true);
@@ -474,7 +488,7 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
             //Call ServerData() method to call webservice and store result in response
             //  response = service.ServerData(path, postDataParams);
             Log.d(TAG, "data:" + responseText);
-            JSONObject jsonobjectI=null;
+            JSONObject jsonobjectI = null;
             try {
                 JSONArray jsonarray = new JSONArray(responseText);
 
@@ -499,31 +513,36 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
         protected void onPostExecute(List<String> lista) {
             super.onPostExecute(lista);
             Log.d(TAG, "onPostExecute");
-            if (lista!=null){
+            if (lista != null) {
                 Log.d("lista", String.valueOf(lista.size()));
 
-                txtNombre.setText(lista.get(0)+" "+lista.get(1));
+                txtNombre.setText(lista.get(0) + " " + lista.get(1));
                 //txtCorreo.setText(""+lista.get(2));
 
-                if(lista.get(5)!=""){
+                if (lista.get(5) != "") {
                     //txtUniversidad.setText(""+lista.get(5));
-                    txtCiudad.setText(""+lista.get(6));
-                    txtDescripcion.setText(""+lista.get(7));
-                    txtInstagram.setText(""+lista.get(8));
+                    txtCiudad.setText("" + lista.get(6));
+                    txtDescripcion.setText("" + lista.get(7));
+                    txtInstagram.setText("" + lista.get(8));
                     //txtInteres.setText("Interes en "+lista.get(9));
-                    txtWhatsapp.setText(""+lista.get(10));
-                    if(lista.get(9).equals("Mujeres")){
-                        radioGroup.check(((RadioButton)radioGroup.getChildAt(0)).getId());
+                    if (!lista.get(10).equals("")){
+                        txtWhatsapp.setText("" + lista.get(10));
                     }else{
-                        if(lista.get(9).equals("Hombres")){
-                            radioGroup.check(((RadioButton)radioGroup.getChildAt(1)).getId());
+                        txtWhatsapp.setText(getPhoneNumber());
+                    }
+
+                    if (lista.get(9).equals("Mujeres")) {
+                        radioGroup.check(((RadioButton) radioGroup.getChildAt(0)).getId());
+                    } else {
+                        if (lista.get(9).equals("Hombres")) {
+                            radioGroup.check(((RadioButton) radioGroup.getChildAt(1)).getId());
                         }
                     }
 
                     List<String> mTestArray;
                     mTestArray = Arrays.asList(getResources().getStringArray(R.array.universidades));
-                    for (int k=0;k < mTestArray.size();k++){
-                        if(mTestArray.get(k).equals(lista.get(5))){
+                    for (int k = 0; k < mTestArray.size(); k++) {
+                        if (mTestArray.get(k).equals(lista.get(5))) {
                             spinnerU.setSelection(k);
                             break;
                         }
@@ -531,27 +550,27 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
 
                 }
 
-                Log.d("sexo",lista.get(3));
-                if(!lista.get(11).equals("")){
+                Log.d("sexo", lista.get(3));
+                if (!lista.get(11).equals("")) {
                     Picasso.get().load(lista.get(11)).into(fotoPerfil);
-                    fotoTag=lista.get(11);
-                }else{
-                    if (lista.get(3).equals("Mujer")){
+                    fotoTag = lista.get(11);
+                } else {
+                    if (lista.get(3).equals("Mujer")) {
                         fotoPerfil.setImageResource(R.drawable.girl);
 
-                    }else{
+                    } else {
                         fotoPerfil.setImageResource(R.drawable.boy);
                     }
-                    fotoTag="";
+                    fotoTag = "";
                 }
-                sexo=lista.get(3);
+                sexo = lista.get(3);
 
-            }else{
+            } else {
                 Log.d(TAG, "Login fail:" + nombre);
                 Bundle args = new Bundle();
                 args.putString("titulo", "Advertencia");
                 args.putString("texto", "No se pudo cargar los datos");
-                ProblemaConexion f=new ProblemaConexion();
+                ProblemaConexion f = new ProblemaConexion();
                 f.setArguments(args);
                 f.show(getSupportFragmentManager(), "ProblemaConexión");
             }
@@ -566,8 +585,8 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
         //ImageView pic = findViewById(R.id.pic);
         //Picasso.with(this).load(appPreferences.getString(AppPreferences.PROFILE_PIC)).into(fotoPerfil);
         Picasso.get().load(appPreferences.getString(AppPreferences.PROFILE_PIC)).into(fotoPerfil);
-        fotoTag=appPreferences.getString(AppPreferences.PROFILE_PIC);
-        Log.d("foto",AppPreferences.PROFILE_PIC);
+        fotoTag = appPreferences.getString(AppPreferences.PROFILE_PIC);
+        Log.d("foto", AppPreferences.PROFILE_PIC);
         //TextView id = findViewById(R.id.id);
         //id.setText(appPreferences.getString(AppPreferences.USER_ID));
         TextView name = findViewById(R.id.txtIg);
@@ -576,13 +595,13 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
 
     public void logout() {
         btnIG.setText("Vincular");
-        if (sexo.equals("Mujer")){
+        if (sexo.equals("Mujer")) {
             fotoPerfil.setImageResource(R.drawable.girl);
 
-        }else{
+        } else {
             fotoPerfil.setImageResource(R.drawable.boy);
         }
-        fotoTag="";
+        fotoTag = "";
         token = null;
         txtInstagram.setText("");
         //info.setVisibility(View.GONE);
@@ -600,18 +619,27 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
     }
 
     public void loginIG(View view) {
-        if(token!=null)
-        {
+        if (token != null) {
             logout();
-        }
-        else {
+        } else {
             authenticationDialog = new AuthenticationDialog(this, this);
             authenticationDialog.setCancelable(true);
             authenticationDialog.show();
         }
     }
+
     private void getUserInfoByAccessToken(String token) {
         new RequestInstagramAPI().execute();
+    }
+    String wantPermission = Manifest.permission.READ_PHONE_STATE;
+    private static final int PERMISSION_REQUEST_CODE = 1;
+    private String getPhoneNumber() {
+        TelephonyManager phoneMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, wantPermission) != PackageManager.PERMISSION_GRANTED) {
+            return "";
+        }
+        return phoneMgr.getLine1Number();
+
     }
 
     private class RequestInstagramAPI extends AsyncTask<Void, String, String> {

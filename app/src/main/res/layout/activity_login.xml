@@ -91,7 +91,7 @@
         android:layout_centerHorizontal="true"
         android:textColor="#000"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="25dp"
         android:layout_marginHorizontal="40dp"
         android:gravity="center"/>
 

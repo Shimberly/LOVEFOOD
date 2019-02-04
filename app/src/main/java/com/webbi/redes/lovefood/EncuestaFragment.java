@@ -7,6 +7,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -60,7 +62,7 @@ public class EncuestaFragment extends Fragment {
     List<RadioGroup> listaPreguntas;
     List<RadioButton> listaRespuestas;
     List<String> llenarRespuestas;
-
+    private ProgressBar progressBar;
     Button guardarP;
     String nombre;
     Integer idusuario;
@@ -70,7 +72,7 @@ public class EncuestaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_encuesta, container, false);
         listaPreguntas = new ArrayList<RadioGroup>();
-
+        progressBar= (ProgressBar) view.findViewById(R.id.progressbar1);
         listaPreguntas.add((RadioGroup) view.findViewById(R.id.preguntauno));
         listaPreguntas.add((RadioGroup) view.findViewById(R.id.pregunta2));
         listaPreguntas.add((RadioGroup) view.findViewById(R.id.pregunta3));
@@ -492,15 +494,17 @@ public class EncuestaFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             guardarP.setEnabled(false);
-            //progressBar.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.VISIBLE);
         }
         @Override
         protected String doInBackground(Integer... params) {
+            progressBar.setProgress(5);
+
             return getWebServiceResponseData();
         }
         @Override
         protected void onProgressUpdate(Integer... values) {
-            //progressBar.setProgress(values[0]);
+            progressBar.setProgress(values[0]);
         }
         protected String getWebServiceResponseData() {
             nombre="";
@@ -544,6 +548,8 @@ public class EncuestaFragment extends Fragment {
                     response += temp;
                 }
                 nombre="ok";
+                progressBar.setProgress(100);
+                SystemClock.sleep(1000);
             } catch (Exception e) {
                 e.printStackTrace();
                 return e.toString();
@@ -560,7 +566,7 @@ public class EncuestaFragment extends Fragment {
         protected void onPostExecute(String nombre) {
 
             super.onPostExecute(nombre);
-            //progressBar.setVisibility(View.INVISIBLE);
+            progressBar.setVisibility(View.INVISIBLE);
             Log.d(TAG, "onPostExecute");
             if (nombre=="ok"){
                 Bundle args = new Bundle();
@@ -583,7 +589,9 @@ public class EncuestaFragment extends Fragment {
                 ProblemaConexion f=new ProblemaConexion();
                 f.setArguments(args);
                 f.show(getFragmentManager(), "ProblemaConexión");
+                progressBar.setProgress(0);
             }
+
 
         }
 
