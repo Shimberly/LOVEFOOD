@@ -525,11 +525,11 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
                     txtDescripcion.setText("" + lista.get(7));
                     txtInstagram.setText("" + lista.get(8));
                     //txtInteres.setText("Interes en "+lista.get(9));
-                    if (!lista.get(10).equals("")){
+                    //if (!lista.get(10).equals("")){
                         txtWhatsapp.setText("" + lista.get(10));
-                    }else{
-                        txtWhatsapp.setText(getPhoneNumber());
-                    }
+                    //}else{
+                    //    txtWhatsapp.setText(getPhoneNumber());
+                    //}
 
                     if (lista.get(9).equals("Mujeres")) {
                         radioGroup.check(((RadioButton) radioGroup.getChildAt(0)).getId());
