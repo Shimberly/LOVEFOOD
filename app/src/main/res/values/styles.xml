@@ -11,7 +11,9 @@
     <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
+    <style name="AppTheme.WhiteAccent">
+        <item name="colorAccent">#C72727</item> <!-- Whatever color you want-->
+    </style>
     <style name="AppTheme.TextFloatLabelAppearance" parent="TextAppearance.Design.Hint">
         <item name="android:textSize">18sp</item>
         <item name="android:color">#000</item>

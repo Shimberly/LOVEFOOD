@@ -10,6 +10,16 @@
     android:layout_marginVertical="70dp">
 
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:theme="@style/AppTheme.WhiteAccent"
+        android:focusable="true"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone">
+    </ProgressBar>
 
     <TextView
         android:id="@+id/txtNombre"

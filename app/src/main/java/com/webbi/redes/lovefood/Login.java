@@ -160,7 +160,10 @@ public class Login extends AppCompatActivity {
                 ProblemaConexion f=new ProblemaConexion();
                 f.setArguments(args);
                 f.show(getSupportFragmentManager(), "ProblemaConexión");
+                Logear.setEnabled(true);
+
                 servicio.cancel(true);
+
             }
             //Call ServerData() method to call webservice and store result in response
             //  response = service.ServerData(path, postDataParams);

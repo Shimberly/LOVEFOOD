@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -67,12 +68,15 @@ public class EncuestaFragment extends Fragment {
     String nombre;
     Integer idusuario;
 
+    //private ProgressBar progressBar;
+
     Boolean existe=false;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_encuesta, container, false);
         listaPreguntas = new ArrayList<RadioGroup>();
-        progressBar= (ProgressBar) view.findViewById(R.id.progressbar1);
+        progressBar= (ProgressBar) view.findViewById(R.id.progressBar);
+        progressBar.setMax(10);
         listaPreguntas.add((RadioGroup) view.findViewById(R.id.preguntauno));
         listaPreguntas.add((RadioGroup) view.findViewById(R.id.pregunta2));
         listaPreguntas.add((RadioGroup) view.findViewById(R.id.pregunta3));
@@ -157,6 +161,15 @@ public class EncuestaFragment extends Fragment {
                         if (existe){
                             servicioActualizar = (ActualizarPreguntas) new ActualizarPreguntas().execute();
                         }else{
+                            progressBar.setVisibility(View.VISIBLE);
+
+                            progressBar.setProgress(0);
+                            //progressBar.requestFocusInWindow();
+                            guardarP.requestFocus();
+                            //this.getFocusable(progressBar);
+                            guardarP.setFocusable(true);
+                            guardarP.setFocusableInTouchMode(true);
+                            guardarP.requestFocus();
                             servicioweb = (GuardarPreguntas) new GuardarPreguntas().execute();
                         }
 
@@ -209,6 +222,7 @@ public class EncuestaFragment extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             llenarRespuestas = new ArrayList<String>();
+
         }
 
         @Override
@@ -342,7 +356,15 @@ public class EncuestaFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             guardarP.setEnabled(false);
+
         }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+
+        }
+
         @Override
         protected String doInBackground(Integer... params) {
             return getWebServiceResponseData();
@@ -407,13 +429,10 @@ public class EncuestaFragment extends Fragment {
             //GuardarEditar.setEnabled(true);
             super.onPostExecute(nombre);
             Log.d(TAG, "onPostExecute");
+            progressBar.setVisibility(View.GONE);
             if (nombre=="ok"){
-                Bundle args = new Bundle();
-                args.putString("titulo", "LOVEFOOD");
-                args.putString("texto", "¡Se guardaron correctamente tus respuestas!");
-                ProblemaConexion f=new ProblemaConexion();
-                f.setArguments(args);
-                f.show(getFragmentManager(), "ProblemaConexión");
+                Toast.makeText(getActivity(), "¡Se guardaron correctamente tus respuestas!",
+                        Toast.LENGTH_LONG).show();
                 Fragment fragment= new MatchFragment();
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.mainFrame, fragment);
@@ -569,12 +588,14 @@ public class EncuestaFragment extends Fragment {
             progressBar.setVisibility(View.INVISIBLE);
             Log.d(TAG, "onPostExecute");
             if (nombre=="ok"){
-                Bundle args = new Bundle();
+                /*Bundle args = new Bundle();
                 args.putString("titulo", "LOVEFOOD");
                 args.putString("texto", "¡Se actualizaron correctamente tus respuestas!");
                 ProblemaConexion f=new ProblemaConexion();
                 f.setArguments(args);
-                f.show(getFragmentManager(), "ProblemaConexión");
+                f.show(getFragmentManager(), "ProblemaConexión");*/
+                Toast.makeText(getActivity(), "¡Se actualizaron correctamente tus respuestas!",
+                        Toast.LENGTH_LONG).show();
                 Fragment fragment= new MatchFragment();
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.mainFrame, fragment);

@@ -32,14 +32,6 @@
                 android:textColor="#808080"
                 android:textSize="16sp" />
 
-        <ProgressBar
-            android:max="100"
-            android:id="@+id/progressbar1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:visibility="invisible"/>
-
         //PREGUNTA 1
         <TextView
             android:id="@+id/prg1"
@@ -2227,7 +2219,16 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#C72727"/>
-
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:theme="@style/AppTheme.WhiteAccent"
+            android:focusable="true"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone">
+        </ProgressBar>
 
         <Button
             android:id="@+id/btnGuardarP"
