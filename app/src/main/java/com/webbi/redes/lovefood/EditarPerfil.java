@@ -18,6 +18,7 @@ import android.telephony.TelephonyManager;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -90,6 +91,7 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
     ServicioWeb servicio;
     ServicioWebLlenar servicioLlenar;
     String nombre;
+    String flag;
     Spinner spinnerU;
     private String token = null;
     private AppPreferences appPreferences = null;
@@ -103,13 +105,27 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
         setContentView(R.layout.activity_editar_perfil);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         idusuario = Integer.valueOf(leerValor(this, "idusuario"));
         Log.d("LOGEADO", leerValor(this, "idusuario"));
         pathU = "https://lovefoodservices.herokuapp.com/mostrarUsuario/" + idusuario;
         pathI = "https://lovefoodservices.herokuapp.com/mostrarInformacion/" + idusuario;
+
+        flag=getIntent().getStringExtra("primero");
+        //Log.d("FLAG", flag);
+        if (flag!=null){
+            Log.d("FLAG entro", flag);
+            Bundle args = new Bundle();
+            args.putString("titulo", "Bienvenido a LOVEFOOD");
+            args.putString("texto", "¡No te olvides registrar tus datos!");
+            ProblemaConexion f=new ProblemaConexion();
+            f.setArguments(args);
+            f.show(getSupportFragmentManager(), "ProblemaConexión");
+        }else{
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         txtNombre = findViewById(R.id.txtNombre);
         txtCorreo = findViewById(R.id.txtCorreo);
@@ -143,10 +159,10 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
         appPreferences = new AppPreferences(this);
 
         //check already have access token
-        token = appPreferences.getString(AppPreferences.TOKEN);
+        /*token = appPreferences.getString(AppPreferences.TOKEN);
         if (token != null) {
             getUserInfoByAccessToken(token);
-        }
+        }*/
 
         list = new ArrayList<String>();
         servicioLlenar = (ServicioWebLlenar) new ServicioWebLlenar().execute();
@@ -553,16 +569,15 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
                 Log.d("sexo", lista.get(3));
                 if (!lista.get(11).equals("")) {
                     Picasso.get().load(lista.get(11)).into(fotoPerfil);
-                    fotoTag = lista.get(11);
                 } else {
-                    if (lista.get(3).equals("Mujer")) {
+                    if (lista.get(3).equals("Mujeres")) {
                         fotoPerfil.setImageResource(R.drawable.girl);
 
                     } else {
                         fotoPerfil.setImageResource(R.drawable.boy);
                     }
-                    fotoTag = "";
                 }
+                fotoTag = lista.get(11);
                 sexo = lista.get(3);
 
             } else {
@@ -595,7 +610,7 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
 
     public void logout() {
         btnIG.setText("Vincular");
-        if (sexo.equals("Mujer")) {
+        if (sexo.equals("Mujeres")) {
             fotoPerfil.setImageResource(R.drawable.girl);
 
         } else {
@@ -633,14 +648,14 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
     }
     String wantPermission = Manifest.permission.READ_PHONE_STATE;
     private static final int PERMISSION_REQUEST_CODE = 1;
-    private String getPhoneNumber() {
+    /*private String getPhoneNumber() {
         TelephonyManager phoneMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, wantPermission) != PackageManager.PERMISSION_GRANTED) {
             return "";
         }
         return phoneMgr.getLine1Number();
 
-    }
+    }*/
 
     private class RequestInstagramAPI extends AsyncTask<Void, String, String> {
 
@@ -717,5 +732,16 @@ public class EditarPerfil extends AppCompatActivity implements AuthenticationLis
                 toast.show();
             }
         }
+    }
+
+    @Override
+    public void onBackPressed (){
+        if(flag==null){
+            Intent itemintent = new Intent(EditarPerfil.this, Principal.class);
+            EditarPerfil.this.startActivity(itemintent);
+        }else{
+
+        }
+
     }
 }

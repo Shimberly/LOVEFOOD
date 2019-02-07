@@ -32,17 +32,7 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.navigationView);
         nav.setOnNavigationItemSelectedListener(this);
-        String flag=getIntent().getStringExtra("primero");
-        //Log.d("FLAG", flag);
-        if (flag!=null){
-            Log.d("FLAG entro", flag);
-            Bundle args = new Bundle();
-            args.putString("titulo", "BIENVENIDO A LOVEFOOD");
-            args.putString("texto", "¡No te olvides registrar tus datos! Muy pronto estarán todas las funcionalidades.");
-            ProblemaConexion f=new ProblemaConexion();
-            f.setArguments(args);
-            f.show(getSupportFragmentManager(), "ProblemaConexión");
-        }
+
         setInitialFragment();
 
     }

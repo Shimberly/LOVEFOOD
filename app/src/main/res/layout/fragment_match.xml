@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text=" Ten un poco de paciencia.Ya estamos buscando a tu pareja de comida ideal."
+        android:text=" Ten un poco de paciencia. Ya estamos buscando a tu pareja de comida ideal."
         android:textSize="18sp"
         android:textColor="#000"
         android:layout_weight=".10"

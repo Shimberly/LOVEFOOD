@@ -37,6 +37,8 @@ import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import static com.webbi.redes.lovefood.Login.PREFS_KEY;
+
 public class PerfilFragment extends Fragment {
     private static final String TAG = "AsyncTaskActivity";
 
@@ -291,7 +293,7 @@ public class PerfilFragment extends Fragment {
         protected void onPostExecute(List<String> lista) {
             super.onPostExecute(lista);
             Log.d(TAG, "onPostExecute");
-            if (lista!=null){
+            if (lista.size()>0){
                 Log.d("lista", String.valueOf(lista.size()));
 
                 txtNombre.setText(lista.get(0)+" "+lista.get(1));
@@ -329,7 +331,7 @@ public class PerfilFragment extends Fragment {
                 if(!lista.get(11).equals("")){
                     Picasso.get().load(lista.get(11)).into(fotoPerfil);
                 }else{
-                    if (lista.get(3).equals("Mujer")){
+                    if (lista.get(3).equals("Mujeres")){
                         fotoPerfil.setImageResource(R.drawable.girl);
 
                     }else{
@@ -377,6 +379,11 @@ public class PerfilFragment extends Fragment {
                 ProblemaConexion f=new ProblemaConexion();
                 f.setArguments(args);
                 f.show(getFragmentManager(), "ProblemaConexión");
+                SharedPreferences settings = getActivity().getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.clear();
+                editor.commit();
+                getActivity().finish();
                 Intent intent = new Intent(getActivity(), Login.class);
                 startActivity(intent);
             }

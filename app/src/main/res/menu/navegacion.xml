@@ -3,19 +3,19 @@
 
     <item
         android:id="@+id/match"
-        android:title=""
+        android:title="Match"
         android:icon="@drawable/home"
         android:enabled="true"/>
 
     <item
         android:id="@+id/encuesta"
-        android:title=""
+        android:title="Encuesta"
         android:enabled="true"
         android:icon="@drawable/like"/>
 
     <item
         android:id="@+id/perfil"
-        android:title=""
+        android:title="Perfil"
         android:icon="@drawable/avatar" />
 
 </menu>

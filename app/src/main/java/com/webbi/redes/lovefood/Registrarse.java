@@ -231,7 +231,7 @@ public class Registrarse extends AppCompatActivity {
             stringMap.put("apellido", String.valueOf(txtApellido.getText()));
             stringMap.put("correo", String.valueOf(txtCorreo.getText()));
             stringMap.put("clave", String.valueOf(txtPass.getText()));
-            stringMap.put("sexo", String.valueOf(genero.getText()));
+            stringMap.put("sexo", String.valueOf(genero.getTag()));
             stringMap.put("fecha_nacimiento", String.valueOf(txtEdad.getText()));
             String requestBody = Utils.buildPostParameters(stringMap);
             try {
@@ -333,7 +333,7 @@ public class Registrarse extends AppCompatActivity {
             Log.d(TAG, "onPostExecute");
             if (nombre!=null){
                 guardarValor(Registrarse.this,"idusuario", String.valueOf(nombre));
-                Intent itemintent = new Intent(Registrarse.this, Principal.class);
+                Intent itemintent = new Intent(Registrarse.this, EditarPerfil.class);
                 itemintent.putExtra("primero","true");
                 Registrarse.this.startActivity(itemintent);
 
