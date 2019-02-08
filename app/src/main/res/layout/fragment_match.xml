@@ -1,161 +1,759 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_weight="1"
-    tools:context=".MatchFragment"
-    android:layout_marginVertical="70dp">
+    android:layout_marginVertical="70dp"
+    tools:context=".MatchFragment">
 
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:theme="@style/AppTheme.WhiteAccent"
-        android:focusable="true"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:visibility="gone">
-    </ProgressBar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:theme="@style/AppTheme.WhiteAccent"
+            android:focusable="true"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone">
+        </ProgressBar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/match1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MATCH #1"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:textColor="#C72727" />
+
 
     <TextView
-        android:id="@+id/txtNombre"
+        android:id="@+id/txtNombre1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="15dp"
         android:gravity="center"
-        android:text=" Ten un poco de paciencia. Ya estamos buscando a tu pareja de comida ideal."
         android:textSize="18sp"
         android:textColor="#000"
         android:layout_weight=".10"
         android:textFontWeight="Bold"/>
 
-
-
-    <!--<ImageView
-        android:id="@+id/imagematch"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginVertical="8dp"
-        android:layout_weight=".15"
-        android:src="@drawable/corazon" />
-
     <TextView
-        android:id="@+id/txtNombre"
-        android:layout_width="match_parent"
+        android:id="@+id/txtEdad1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Yander Santana"
-        android:textSize="24sp"
-        android:textColor="#000"
-        android:layout_weight=".10"
-        android:textFontWeight="Bold"/>
-        -->
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:padding="5px"
+        android:textColor="#C72727"
+        android:layout_weight=".05"
+        android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txtCorreo1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:padding="5px"
+            android:textColor="#797979"
+            android:layout_weight=".05"
+            android:textSize="14sp" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView1"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="10dp"
         android:layout_weight=".40"
-        android:src="@drawable/espmatch" />
+        android:src="@drawable/boy" />
 
-    <!--
-    <TextView
-        android:id="@+id/txtDescripcion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Hola, me gusta salir mucho a comer parrilladas y asados. Si me agregas te pago la primera cita."
-        android:textSize="16sp"
-        android:textColor="#000"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:layout_weight=".25"
-        android:background="@drawable/btnborder"/>
-
-    <TextView
-        android:id="@+id/txtLugar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Guayaquil, Ecuador"
-        android:textColor="#000"
-        android:layout_marginTop="10dp"
-        android:layout_weight=".5"
-        android:textSize="17sp" />
-    <TextView
-        android:id="@+id/txtEstudio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="ESPOL"
-        android:textColor="#000"
-        android:textFontWeight="Bold"
-        android:layout_weight=".5"
-        android:textSize="18sp" />
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight=".10"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingHorizontal="30dp"
-        android:paddingVertical="5dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        <TextView
+            android:id="@+id/txtUniversidad1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#000"
+            android:textFontWeight="Bold"
+            android:layout_weight=".5"
+            android:textSize="18sp" />
 
 
-        <Button
-            android:id="@+id/btnFb"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginHorizontal="8dp"
-            android:background="@drawable/fb"
-            android:padding="8dp"
-            android:onClick="accionfb"/>
+        <TextView
+            android:id="@+id/txtCiudad1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#000"
+            android:tag="txtCiudad1"
+            android:layout_marginTop="10dp"
+            android:layout_weight=".5"
+            android:textSize="17sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnIg1"
+                android:layout_width="30dp"
+                android:tag="btnIg1"
+                android:layout_height="30dp"
+                android:background="@drawable/instagram"
+                android:onClick="accionig"
+                android:layout_marginLeft="30dp"/>
+
+            <ImageView
+                android:id="@+id/imagematch1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_weight=".15"
+                android:src="@drawable/corazon" />
+
+            <Button
+                android:id="@+id/btnWa1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:tag="btnWa1"
+                android:background="@drawable/msj"
+                android:layout_marginRight="30dp"
+                android:onClick="accionmsj"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtDescripcion1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:padding="10dp"
+            android:layout_weight=".25"
+            android:background="@drawable/btnborder"/>
+
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="25dp"
+            android:layout_gravity="center"
+            android:layout_height="1dp"
+            android:background="#C72727"/>
 
 
-        <Button
-            android:id="@+id/btnIg"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginHorizontal="8dp"
-            android:background="@drawable/instagram"
-            android:padding="8dp"
-            android:onClick="accionig"/>
-
-        <Button
-            android:id="@+id/btnMsj"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginHorizontal="8dp"
-            android:background="@drawable/msj"
-            android:padding="8dp"
-            android:onClick="accionmsj"/>
-
-        <Button
-            android:id="@+id/btnUb"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginHorizontal="8dp"
-            android:background="@drawable/ubicacion"
-            android:padding="8dp"
-            android:onClick="acciongeo"/>
     </LinearLayout>
-    -->
-</LinearLayout>
+
+    //MATCH 2
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/match2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MATCH #2"
+            android:layout_marginTop="20dp"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:textColor="#C72727" />
+
+        <TextView
+            android:id="@+id/txtNombre2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:layout_weight=".10"
+            android:textFontWeight="Bold"/>
+
+        <TextView
+            android:id="@+id/txtEdad2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
+            android:padding="5px"
+            android:textColor="#C72727"
+            android:layout_weight=".05"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txtCorreo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:padding="5px"
+            android:textColor="#797979"
+            android:layout_weight=".05"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight=".40"
+            android:src="@drawable/boy" />
+
+        <TextView
+            android:id="@+id/txtUniversidad2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#000"
+            android:textFontWeight="Bold"
+            android:layout_weight=".5"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/txtCiudad2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#000"
+            android:tag="txtCiudad2"
+            android:layout_marginTop="10dp"
+            android:layout_weight=".5"
+            android:textSize="17sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnIg2"
+                android:tag="btnIg2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/instagram"
+                android:onClick="accionig"
+                android:layout_marginLeft="30dp"/>
+
+            <ImageView
+                android:id="@+id/imagematch2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_weight=".15"
+                android:src="@drawable/corazon" />
+
+            <Button
+                android:id="@+id/btnWa2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/msj"
+                android:tag="btnWa2"
+                android:layout_marginRight="30dp"
+                android:onClick="accionmsj"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtDescripcion2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:padding="10dp"
+            android:layout_weight=".25"
+            android:background="@drawable/btnborder"/>
+
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_gravity="center"
+            android:layout_height="1dp"
+            android:background="#C72727"/>
+    </LinearLayout>
+
+        //MATCH 3
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/match3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MATCH #3"
+                android:layout_marginTop="20dp"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:textColor="#C72727" />
+
+            <TextView
+                android:id="@+id/txtNombre3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:layout_weight=".10"
+                android:textFontWeight="Bold"/>
+
+            <TextView
+                android:id="@+id/txtEdad3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center_horizontal"
+                android:padding="5px"
+                android:textColor="#C72727"
+                android:layout_weight=".05"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtCorreo3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:padding="5px"
+                android:textColor="#797979"
+                android:layout_weight=".05"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight=".40"
+                android:src="@drawable/boy" />
+
+            <TextView
+                android:id="@+id/txtUniversidad3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="#000"
+                android:textFontWeight="Bold"
+                android:layout_weight=".5"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/txtCiudad3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="#000"
+                android:tag="txtCiudad3"
+                android:layout_marginTop="10dp"
+                android:layout_weight=".5"
+                android:textSize="17sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btnIg3"
+                    android:layout_width="30dp"
+                    android:tag="btnIg3"
+                    android:layout_height="30dp"
+                    android:background="@drawable/instagram"
+                    android:onClick="accionig"
+                    android:layout_marginLeft="30dp"/>
+
+                <ImageView
+                    android:id="@+id/imagematch3"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight=".15"
+                    android:src="@drawable/corazon" />
+
+                <Button
+                    android:id="@+id/btnWa3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:tag="btnWa3"
+                    android:background="@drawable/msj"
+                    android:layout_marginRight="30dp"
+                    android:onClick="accionmsj"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtDescripcion3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:padding="10dp"
+                android:layout_weight=".25"
+                android:background="@drawable/btnborder"/>
+
+            <View
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:layout_gravity="center"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+        </LinearLayout>
+
+        //MATCH 4
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/match4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MATCH #4"
+                android:layout_marginTop="20dp"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:textColor="#C72727" />
+
+            <TextView
+                android:id="@+id/txtNombre4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text=" Yander Santana."
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:layout_weight=".10"
+                android:textFontWeight="Bold"/>
+
+            <TextView
+                android:id="@+id/txtEdad4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center_horizontal"
+                android:padding="5px"
+                android:text=" 22"
+                android:textColor="#C72727"
+                android:layout_weight=".05"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtCorreo4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:padding="5px"
+                android:textColor="#797979"
+                android:text=" ymsntana@gmail.com"
+                android:layout_weight=".05"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/foto4"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight=".40"
+                android:src="@drawable/boy" />
+
+            <TextView
+                android:id="@+id/txtUniversidad4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="ESPOL"
+                android:textColor="#000"
+                android:textFontWeight="Bold"
+                android:layout_weight=".5"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/txtCiudad4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:tag="txtCiudad4"
+                android:textColor="#000"
+                android:layout_marginTop="10dp"
+                android:layout_weight=".5"
+                android:textSize="17sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btnIg4"
+                    android:layout_width="30dp"
+                    android:tag="btnIg4"
+                    android:layout_height="30dp"
+                    android:background="@drawable/instagram"
+                    android:onClick="accionig"
+                    android:layout_marginLeft="30dp"/>
+
+                <ImageView
+                    android:id="@+id/imagematch4"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight=".15"
+                    android:src="@drawable/corazon" />
+
+                <Button
+                    android:id="@+id/btnWa4"
+                    android:layout_width="30dp"
+                    android:tag="btnWa4"
+                    android:layout_height="30dp"
+                    android:background="@drawable/msj"
+                    android:layout_marginRight="30dp"
+                    android:onClick="accionmsj"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtDescripcion4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Hola, me gusta salir mucho a comer parrilladas y asados. Si me agregas te pago la primera cita."
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:padding="10dp"
+                android:layout_weight=".25"
+                android:background="@drawable/btnborder"/>
+
+            <View
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:layout_gravity="center"
+                android:layout_height="1dp"
+                android:background="#C72727"/>
+        </LinearLayout>
+
+        //MATCH 3
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/match5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MATCH #5"
+                android:layout_marginTop="20dp"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:textColor="#C72727" />
+
+            <TextView
+                android:id="@+id/txtNombre5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text=" Yander Santana."
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:layout_weight=".10"
+                android:textFontWeight="Bold"/>
+
+            <TextView
+                android:id="@+id/txtEdad5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center_horizontal"
+                android:padding="5px"
+                android:text=" 22"
+                android:textColor="#C72727"
+                android:layout_weight=".05"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtCorreo5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:padding="5px"
+                android:textColor="#797979"
+                android:text=" ymsntana@gmail.com"
+                android:layout_weight=".05"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/foto5"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight=".40"
+                android:src="@drawable/boy" />
+
+            <TextView
+                android:id="@+id/txtUniversidad5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="ESPOL"
+                android:textColor="#000"
+                android:textFontWeight="Bold"
+                android:layout_weight=".5"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/txtCiudad5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:tag="txtCiudad5"
+                android:text="De: Guayaquil"
+                android:textColor="#000"
+                android:layout_marginTop="10dp"
+                android:layout_weight=".5"
+                android:textSize="17sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btnIg5"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:tag="btnIg5"
+                    android:background="@drawable/instagram"
+                    android:onClick="accionig"
+                    android:layout_marginLeft="30dp"/>
+
+                <ImageView
+                    android:id="@+id/imagematch5"
+                    android:layout_width="80dp"
+                    android:tag="imagematch5"
+                    android:layout_height="80dp"
+                    android:layout_weight=".15"
+                    android:src="@drawable/corazon" />
+
+                <Button
+                    android:id="@+id/btnWa5"
+                    android:layout_width="30dp"
+                    android:tag="btnWa5"
+                    android:layout_height="30dp"
+                    android:background="@drawable/msj"
+                    android:layout_marginRight="30dp"
+                    android:onClick="accionmsj"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtDescripcion5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:tag="txtDescripcion5"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:padding="10dp"
+                android:layout_weight=".25"
+                android:background="@drawable/btnborder"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

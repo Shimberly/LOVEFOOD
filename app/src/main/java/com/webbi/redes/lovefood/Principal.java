@@ -18,6 +18,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import static com.webbi.redes.lovefood.Login.PREFS_KEY;
 
@@ -134,42 +136,45 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
         }
         return false;
     }
-    public void accionfb(View v){
-
-        String urlPage = "https://www.facebook.com/lobesna?lang=es";
-
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
-
-    }
-
-    public void acciontw(View v){
-
-        String urlPage = "https://twitter.com/YANDERSANTANA96?lang=es";
-
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
-    }
-
 
     public void accionmsj(View v){
-
         try {
-            String text = "This is a test";// Replace with your message.
+            String text = "¡Hola, me saliste de match en LOVEFOOD!";// Replace with your message.
 
-            String toNumber = "593992937424"; // Replace with mobile phone number without +Sign or leading zeros.
+            Button btn=findViewById(v.getId());
+            Log.d("Numero: ", String.valueOf(btn.getHint()));
+            if(!String.valueOf(btn.getHint()).equals("")) {
+                Integer numero= Integer.valueOf(String.valueOf(btn.getHint()));
+                String toNumber = "593"+numero; // Replace with mobile phone number without +Sign or leading zeros.
+                Log.d("Numero: ", toNumber);
+
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+toNumber +"&text="+text));
+                startActivity(intent);
+            }else{
+                Toast.makeText(this, "No tiene número",
+                        Toast.LENGTH_LONG).show();
+            }
 
 
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+toNumber +"&text="+text));
-            startActivity(intent);
         }
         catch (Exception e){
             e.printStackTrace();
         }
     }
-    public void acciongeo(View v){
 
-        Intent itemintent = new Intent(Principal.this, LocalizarAmigo.class);
-        startActivity(itemintent);
+    public void accionig(View v){
+        Button btn=findViewById(v.getId());
+        String ig= String.valueOf(btn.getHint());
+        if(!ig.equals("")){
+            String urlPage = "https://www.instagram.com/"+ig;
+            Log.d("link ig",urlPage);
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
+        }else{
+            Toast.makeText(this, "No tiene instagram",
+                    Toast.LENGTH_LONG).show();
+        }
+
     }
 
 }

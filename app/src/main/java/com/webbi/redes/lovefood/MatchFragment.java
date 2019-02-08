@@ -1,9 +1,11 @@
 package com.webbi.redes.lovefood;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -177,28 +179,10 @@ public class MatchFragment extends Fragment {
                 listaMatch.add(jsonarray.getJSONObject(3));
                 listaMatch.add(jsonarray.getJSONObject(4));
 
-                /*respuestas.add(jsonobject.getString("sexo"));
-                respuestas.add(jsonobject.getString("preferencia"));
-                respuestas.add(jsonobject.getString("rspverde"));
-                respuestas.add(jsonobject.getString("rspdesayunosalado"));
-                respuestas.add(jsonobject.getString("rspdesayunodulce"));
-                respuestas.add(jsonobject.getString("rspalmuerzo"));
-                respuestas.add(jsonobject.getString("rspmarisco"));
-                respuestas.add(jsonobject.getString("rspsopa"));
-                respuestas.add(jsonobject.getString("rspcena"));
-                respuestas.add(jsonobject.getString("rspcomidatipicacosta"));
-                respuestas.add(jsonobject.getString("rspcomidatipicasierra"));
-                respuestas.add(jsonobject.getString("rspcomidatipicaoriente"));
-                respuestas.add(jsonobject.getString("rspproteina"));
-                respuestas.add(jsonobject.getString("rsppostres"));
-                respuestas.add(jsonobject.getString("rspsaboresdulces"));
-                respuestas.add(jsonobject.getString("rspbebida"));
-                respuestas.add(jsonobject.getString("rspcomidaextranjera"));
-                respuestas.add(jsonobject.getString("rspcomidarapida"));*/
-
-
             } catch (JSONException e) {
                 e.printStackTrace();
+            } finally {
+
             }
             return listaMatch;
         }
@@ -211,13 +195,13 @@ public class MatchFragment extends Fragment {
                 Log.d("lista", String.valueOf(listaMatch.size()));
                 progressBar.setVisibility(View.GONE);
 
-                for (int i=0;i<listaMatch.size();i++){
-                    txtNombre= (TextView) view.findViewWithTag("txtNombre"+(i+1));
-                    txtEdad= (TextView) view.findViewWithTag("txtEdad"+(i+1));
-                    txtCorreo= (TextView) view.findViewWithTag("txtCorreo"+(i+1));
-                    txtUniversidad= (TextView) view.findViewWithTag("txtUniversidad"+(i+1));
+                for (int i=0;i<5;i++){
+                    txtNombre= (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtNombre+(i+1))));
+                    txtEdad= (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtEdad+(i+1))));
+                    txtCorreo= (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtCorreo+(i+1))));
+                    txtUniversidad= (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtUniversidad+(i+1))));
                     txtCiudad= (TextView) view.findViewWithTag("txtCiudad"+(i+1));
-                    txtDescripcion= (TextView) view.findViewWithTag("txtDescripcion"+(i+1));
+                    txtDescripcion= (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtDescripcion+(i+1))));
                     btnIg=(Button) view.findViewWithTag("btnIg"+(i+1));
                     btnWa=(Button) view.findViewWithTag("btnWa"+(i+1));
                     try {
@@ -238,7 +222,7 @@ public class MatchFragment extends Fragment {
                             txtEdad.setText(String.valueOf(listaMatch.get(i).getString("fecha_nacimiento")));
                         }
                         txtCorreo.setText(listaMatch.get(i).getString("correo"));
-                        txtUniversidad.setText(listaMatch.get(i).getString("universidad"));
+                        txtUniversidad.setText("Universidad "+listaMatch.get(i).getString("universidad"));
                         txtCiudad.setText(listaMatch.get(i).getString("ciudad"));
                         txtDescripcion.setText(listaMatch.get(i).getString("descripcion"));
                         btnIg.setHint(listaMatch.get(i).getString("instagram"));
@@ -247,11 +231,6 @@ public class MatchFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }
-
-
-
-
-
 
                 Bundle args = new Bundle();
                 args.putString("titulo", "¡Matchs localizados!");
@@ -265,7 +244,7 @@ public class MatchFragment extends Fragment {
                     v.vibrate(VibrationEffect.createOneShot(600, VibrationEffect.DEFAULT_AMPLITUDE));
                 } else {
                     //deprecated in API 26
-                    v.vibrate(600);
+                    v.vibrate(800);
                 }
             }else{
                 Log.d("Login fail", "Login fail:"+listaMatch);
@@ -278,4 +257,6 @@ public class MatchFragment extends Fragment {
             }
         }
     }
+
+
 }
