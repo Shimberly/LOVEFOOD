@@ -172,7 +172,7 @@ public class MatchFragment extends Fragment {
                 f.show(getFragmentManager(), "ProblemaConexión");
                 servicioMatch.cancel(true);
             }
-            Log.d("ResponseText", "data:" + responseText);
+            //Log.d("ResponseText", "data:" + responseText);
             try {
                 JSONArray jsonarray = new JSONArray(responseText);
                 Log.d("Recibiendo","ENTRO");
@@ -194,7 +194,7 @@ public class MatchFragment extends Fragment {
         protected void onPostExecute(List<JSONObject> listaMatch) {
             super.onPostExecute(listaMatch);
             Log.d("PostExecute", "onPostExecute");
-            if (listaMatch!=null){
+            if (listaMatch.size()>0){
                 Log.d("lista", String.valueOf(listaMatch.size()));
                 progressBar.setVisibility(View.GONE);
 

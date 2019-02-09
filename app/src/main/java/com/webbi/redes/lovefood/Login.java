@@ -123,7 +123,7 @@ public class Login extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            Logear.setEnabled(false);
+            //Logear.setEnabled(false);
         }
         @Override
         protected String doInBackground(Integer... params) {
@@ -170,14 +170,14 @@ public class Login extends AppCompatActivity {
                 ProblemaConexion f=new ProblemaConexion();
                 f.setArguments(args);
                 f.show(getSupportFragmentManager(), "ProblemaConexión");
-                Logear.setEnabled(true);
+                //Logear.setEnabled(true);
 
                 servicio.cancel(true);
 
             }
             //Call ServerData() method to call webservice and store result in response
             //  response = service.ServerData(path, postDataParams);
-            Log.d(TAG, "data:" + responseText);
+            //Log.d(TAG, "data:" + responseText);
             try {
                 JSONArray jsonarray = new JSONArray(responseText);
 
@@ -210,7 +210,7 @@ public class Login extends AppCompatActivity {
         protected void onPostExecute(String nombre) {
             super.onPostExecute(nombre);
             Logear.setEnabled(true);
-            Log.d(TAG, "onPostExecute");
+            //-Log.d(TAG, "onPostExecute");
             if (nombre!=null){
                 Intent itemintent = new Intent(Login.this, Principal.class);
                 Login.this.startActivity(itemintent);

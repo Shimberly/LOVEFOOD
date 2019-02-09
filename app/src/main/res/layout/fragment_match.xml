@@ -85,7 +85,7 @@
         android:tag="foto1"
         android:layout_gravity="center"
         android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginVertical="20dp"
         android:layout_weight=".40"
         android:src="@drawable/boy" />
 
@@ -117,6 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_marginVertical="15dp"
             android:orientation="horizontal"
             android:gravity="center">
 
@@ -235,7 +236,7 @@
             android:layout_gravity="center"
             android:tag="foto2"
             android:layout_marginHorizontal="25dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginVertical="20dp"
             android:layout_weight=".40"
             android:src="@drawable/boy" />
 
@@ -265,6 +266,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_marginVertical="15dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="horizontal"
@@ -382,7 +384,7 @@
                 android:layout_gravity="center"
                 android:tag="foto3"
                 android:layout_marginHorizontal="25dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginVertical="20dp"
                 android:layout_weight=".40"
                 android:src="@drawable/boy" />
 
@@ -413,6 +415,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginVertical="15dp"
                 android:layout_weight="1"
                 android:orientation="horizontal"
                 android:gravity="center">
@@ -495,7 +498,6 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:gravity="center"
-                android:text=" Yander Santana."
                 android:textSize="18sp"
                 android:textColor="#000"
                 android:layout_weight=".10"
@@ -508,7 +510,6 @@
                 android:layout_marginTop="5dp"
                 android:layout_gravity="center_horizontal"
                 android:padding="5px"
-                android:text=" 22"
                 android:textColor="#C72727"
                 android:layout_weight=".05"
                 android:textSize="14sp" />
@@ -532,7 +533,7 @@
                 android:tag="foto4"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="25dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginVertical="20dp"
                 android:layout_weight=".40"/>
 
             <TextView
@@ -541,7 +542,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="ESPOL"
                 android:textColor="#000"
                 android:textFontWeight="Bold"
                 android:layout_weight=".5"
@@ -563,6 +563,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginVertical="15dp"
                 android:layout_weight="1"
                 android:orientation="horizontal"
                 android:gravity="center">
@@ -645,7 +646,6 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:gravity="center"
-                android:text=" Yander Santana."
                 android:textSize="18sp"
                 android:textColor="#000"
                 android:layout_weight=".10"
@@ -658,7 +658,6 @@
                 android:layout_marginTop="5dp"
                 android:layout_gravity="center_horizontal"
                 android:padding="5px"
-                android:text=" 22"
                 android:textColor="#C72727"
                 android:layout_weight=".05"
                 android:textSize="14sp" />
@@ -681,7 +680,7 @@
                 android:layout_height="200dp"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="25dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginVertical="20dp"
                 android:layout_weight=".40"/>
 
             <TextView
@@ -690,7 +689,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="ESPOL"
                 android:textColor="#000"
                 android:textFontWeight="Bold"
                 android:layout_weight=".5"
@@ -712,6 +710,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginVertical="15dp"
                 android:layout_weight="1"
                 android:orientation="horizontal"
                 android:gravity="center">
