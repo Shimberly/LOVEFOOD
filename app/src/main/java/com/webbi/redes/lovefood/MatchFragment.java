@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import org.json.JSONArray;
@@ -56,6 +57,8 @@ public class MatchFragment extends Fragment {
     TextView txtDescripcion;
     Button btnWa;
     Button btnIg;
+    ImageView foto;
+    ImageView coin;
 
     View view;
     public MatchFragment() {}
@@ -204,6 +207,8 @@ public class MatchFragment extends Fragment {
                     txtDescripcion= (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtDescripcion+(i+1))));
                     btnIg=(Button) view.findViewWithTag("btnIg"+(i+1));
                     btnWa=(Button) view.findViewWithTag("btnWa"+(i+1));
+                    coin=(ImageView) view.findViewWithTag("imagematch"+(i+1));
+                    foto=(ImageView) view.findViewWithTag("foto"+(i+1));
                     try {
                         txtNombre.setText(listaMatch.get(i).getString("nombre"));
                         DateTimeFormatter fmt = null;
@@ -225,8 +230,64 @@ public class MatchFragment extends Fragment {
                         txtUniversidad.setText("Universidad "+listaMatch.get(i).getString("universidad"));
                         txtCiudad.setText(listaMatch.get(i).getString("ciudad"));
                         txtDescripcion.setText(listaMatch.get(i).getString("descripcion"));
-                        btnIg.setHint(listaMatch.get(i).getString("instagram"));
-                        btnWa.setHint(listaMatch.get(i).getString("numero"));
+                        btnIg.setText(listaMatch.get(i).getString("instagram"));
+                        btnWa.setText(listaMatch.get(i).getString("numero"));
+                        if(listaMatch.get(i).getString("sexo").equals("Mujeres")){
+                            foto.setImageResource(R.drawable.girl);
+                        }else{
+                            foto.setImageResource(R.drawable.boy);
+                        }
+                        switch (listaMatch.get(i).getString("coincidencias")){
+                            case "1":
+                                coin.setImageResource(R.drawable.corazon1);
+                                break;
+                            case "2":
+                                coin.setImageResource(R.drawable.corazon2);
+                                break;
+                            case "3":
+                                coin.setImageResource(R.drawable.corazon3);
+                                break;
+                            case "4":
+                                coin.setImageResource(R.drawable.corazon4);
+                                break;
+                            case "5":
+                                coin.setImageResource(R.drawable.corazon5);
+                                break;
+                            case "6":
+                                coin.setImageResource(R.drawable.corazon6);
+                                break;
+                            case "7":
+                                coin.setImageResource(R.drawable.corazon7);
+                                break;
+                            case "8":
+                                coin.setImageResource(R.drawable.corazon8);
+                                break;
+                            case "9":
+                                coin.setImageResource(R.drawable.corazon9);
+                                break;
+                            case "10":
+                                coin.setImageResource(R.drawable.corazon10);
+                                break;
+                            case "11":
+                                coin.setImageResource(R.drawable.corazon11);
+                                break;
+                            case "12":
+                                coin.setImageResource(R.drawable.corazon12);
+                                break;
+                            case "13":
+                                coin.setImageResource(R.drawable.corazon13);
+                                break;
+                            case "14":
+                                coin.setImageResource(R.drawable.corazon14);
+                                break;
+                            case "15":
+                                coin.setImageResource(R.drawable.corazon15);
+                                break;
+                            case "16":
+                                coin.setImageResource(R.drawable.corazon16);
+                                break;
+                        }
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

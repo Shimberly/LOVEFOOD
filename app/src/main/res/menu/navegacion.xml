@@ -4,14 +4,14 @@
     <item
         android:id="@+id/match"
         android:title="Match"
-        android:icon="@drawable/home"
+        android:icon="@drawable/like"
         android:enabled="true"/>
 
     <item
         android:id="@+id/encuesta"
         android:title="Encuesta"
         android:enabled="true"
-        android:icon="@drawable/like"/>
+        android:icon="@drawable/encuesta"/>
 
     <item
         android:id="@+id/perfil"

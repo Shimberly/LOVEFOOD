@@ -40,6 +40,7 @@ public class Login extends AppCompatActivity {
     ServicioWeb servicio;
     String nombre;
     Button Logear;
+    TextView IrCreditos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,14 +58,23 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        TextView IrAOlvidarPass = (TextView) findViewById(R.id.btnOlvidarPass);
+        /*TextView IrAOlvidarPass = (TextView) findViewById(R.id.btnOlvidarPass);
         IrAOlvidarPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new DialogoRecuperacion().show(getSupportFragmentManager(), "SimpleDialog");
             }
-        });
+        });*/
 
+
+        IrCreditos = (TextView) findViewById(R.id.txtCreditos);
+        IrCreditos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent itemintent = new Intent(Login.this, Creditos.class);
+                Login.this.startActivity(itemintent);
+            }
+        });
         Logear = (Button) findViewById(R.id.btnLogin);
         Logear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -236,4 +246,5 @@ public class Login extends AppCompatActivity {
         Pattern pattern = Patterns.EMAIL_ADDRESS;
         return pattern.matcher(email).matches();
     }
+
 }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_weight="1"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:orientation="vertical"
+    tools:context=".Creditos">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#C72727"
+            app:popupTheme="@style/PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="200dp"
+        android:layout_marginVertical="30dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/webbi" />
+    <TextView
+        android:id="@+id/txtWebbi"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="#000"
+        android:layout_weight=".30"
+        android:textSize="30sp"
+        android:text="WEBBI" />
+
+
+    <TextView
+        android:id="@+id/txtDescripcionWebbi"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="#000"
+        android:layout_weight=".30"
+        android:textSize="16sp"
+        android:text="Empresa de diseño y desarrollo de sitios web y aplicaciones móviles." />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginVertical="15dp"
+        android:layout_weight=".20"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnCorreo"
+            android:layout_width="30dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="25dp"
+            android:textSize="0px"
+            android:tag="btnIg5"
+            android:background="@drawable/mail"
+            android:layout_marginLeft="30dp"/>
+
+        <Button
+            android:id="@+id/btnUbi"
+            android:layout_width="30dp"
+            android:textSize="0px"
+            android:tag="btnWa5"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:background="@drawable/place"
+            android:layout_marginRight="30dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

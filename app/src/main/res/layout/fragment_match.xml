@@ -79,9 +79,10 @@
             android:textSize="14sp" />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/foto1"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:tag="foto1"
         android:layout_gravity="center"
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="10dp"
@@ -124,23 +125,25 @@
                 android:layout_width="30dp"
                 android:tag="btnIg1"
                 android:layout_height="30dp"
-                android:background="@drawable/instagram"
+                android:textSize="0px"
+                android:background="@drawable/instagramlogo"
                 android:onClick="accionig"
                 android:layout_marginLeft="30dp"/>
 
             <ImageView
                 android:id="@+id/imagematch1"
                 android:layout_width="80dp"
+                android:tag="imagematch1"
                 android:layout_height="80dp"
-                android:layout_weight=".15"
-                android:src="@drawable/corazon" />
+                android:layout_weight=".15" />
 
             <Button
                 android:id="@+id/btnWa1"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:tag="btnWa1"
-                android:background="@drawable/msj"
+                android:textSize="0px"
+                android:background="@drawable/whatsapplogo"
                 android:layout_marginRight="30dp"
                 android:onClick="accionmsj"/>
 
@@ -226,10 +229,11 @@
             android:textSize="14sp" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/foto2"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
+            android:tag="foto2"
             android:layout_marginHorizontal="25dp"
             android:layout_marginTop="10dp"
             android:layout_weight=".40"
@@ -271,7 +275,8 @@
                 android:tag="btnIg2"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@drawable/instagram"
+                android:textSize="0px"
+                android:background="@drawable/instagramlogo"
                 android:onClick="accionig"
                 android:layout_marginLeft="30dp"/>
 
@@ -279,14 +284,15 @@
                 android:id="@+id/imagematch2"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_weight=".15"
-                android:src="@drawable/corazon" />
+                android:tag="imagematch2"
+                android:layout_weight=".15"/>
 
             <Button
                 android:id="@+id/btnWa2"
                 android:layout_width="30dp"
+                android:textSize="0px"
                 android:layout_height="30dp"
-                android:background="@drawable/msj"
+                android:background="@drawable/whatsapplogo"
                 android:tag="btnWa2"
                 android:layout_marginRight="30dp"
                 android:onClick="accionmsj"/>
@@ -370,10 +376,11 @@
                 android:textSize="14sp" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/foto3"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
+                android:tag="foto3"
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight=".40"
@@ -414,8 +421,9 @@
                     android:id="@+id/btnIg3"
                     android:layout_width="30dp"
                     android:tag="btnIg3"
+                    android:textSize="0px"
                     android:layout_height="30dp"
-                    android:background="@drawable/instagram"
+                    android:background="@drawable/instagramlogo"
                     android:onClick="accionig"
                     android:layout_marginLeft="30dp"/>
 
@@ -423,15 +431,16 @@
                     android:id="@+id/imagematch3"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_weight=".15"
-                    android:src="@drawable/corazon" />
+                    android:tag="imagematch3"
+                    android:layout_weight=".15"/>
 
                 <Button
                     android:id="@+id/btnWa3"
                     android:layout_width="30dp"
+                    android:textSize="0px"
                     android:layout_height="30dp"
                     android:tag="btnWa3"
-                    android:background="@drawable/msj"
+                    android:background="@drawable/whatsapplogo"
                     android:layout_marginRight="30dp"
                     android:onClick="accionmsj"/>
 
@@ -520,11 +529,11 @@
                 android:id="@+id/foto4"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
+                android:tag="foto4"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight=".40"
-                android:src="@drawable/boy" />
+                android:layout_weight=".40"/>
 
             <TextView
                 android:id="@+id/txtUniversidad4"
@@ -562,8 +571,9 @@
                     android:id="@+id/btnIg4"
                     android:layout_width="30dp"
                     android:tag="btnIg4"
+                    android:textSize="0px"
                     android:layout_height="30dp"
-                    android:background="@drawable/instagram"
+                    android:background="@drawable/instagramlogo"
                     android:onClick="accionig"
                     android:layout_marginLeft="30dp"/>
 
@@ -572,14 +582,15 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_weight=".15"
-                    android:src="@drawable/corazon" />
+                    android:tag="imagematch4"/>
 
                 <Button
                     android:id="@+id/btnWa4"
                     android:layout_width="30dp"
+                    android:textSize="0px"
                     android:tag="btnWa4"
                     android:layout_height="30dp"
-                    android:background="@drawable/msj"
+                    android:background="@drawable/whatsapplogo"
                     android:layout_marginRight="30dp"
                     android:onClick="accionmsj"/>
 
@@ -591,7 +602,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Hola, me gusta salir mucho a comer parrilladas y asados. Si me agregas te pago la primera cita."
                 android:textSize="16sp"
                 android:textColor="#000"
                 android:layout_marginHorizontal="25dp"
@@ -661,19 +671,18 @@
                 android:gravity="center"
                 android:padding="5px"
                 android:textColor="#797979"
-                android:text=" ymsntana@gmail.com"
                 android:layout_weight=".05"
                 android:textSize="14sp" />
 
             <ImageView
                 android:id="@+id/foto5"
                 android:layout_width="200dp"
+                android:tag="foto5"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight=".40"
-                android:src="@drawable/boy" />
+                android:layout_weight=".40"/>
 
             <TextView
                 android:id="@+id/txtUniversidad5"
@@ -695,7 +704,6 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:tag="txtCiudad5"
-                android:text="De: Guayaquil"
                 android:textColor="#000"
                 android:layout_marginTop="10dp"
                 android:layout_weight=".5"
@@ -712,8 +720,9 @@
                     android:id="@+id/btnIg5"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:textSize="0px"
                     android:tag="btnIg5"
-                    android:background="@drawable/instagram"
+                    android:background="@drawable/instagramlogo"
                     android:onClick="accionig"
                     android:layout_marginLeft="30dp"/>
 
@@ -722,15 +731,15 @@
                     android:layout_width="80dp"
                     android:tag="imagematch5"
                     android:layout_height="80dp"
-                    android:layout_weight=".15"
-                    android:src="@drawable/corazon" />
+                    android:layout_weight=".15"/>
 
                 <Button
                     android:id="@+id/btnWa5"
                     android:layout_width="30dp"
+                    android:textSize="0px"
                     android:tag="btnWa5"
                     android:layout_height="30dp"
-                    android:background="@drawable/msj"
+                    android:background="@drawable/whatsapplogo"
                     android:layout_marginRight="30dp"
                     android:onClick="accionmsj"/>
 

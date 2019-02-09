@@ -142,9 +142,9 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
             String text = "¡Hola, me saliste de match en LOVEFOOD!";// Replace with your message.
 
             Button btn=findViewById(v.getId());
-            Log.d("Numero: ", String.valueOf(btn.getHint()));
-            if(!String.valueOf(btn.getHint()).equals("")) {
-                Integer numero= Integer.valueOf(String.valueOf(btn.getHint()));
+            Log.d("Numero: ", String.valueOf(btn.getText()));
+            if(!String.valueOf(btn.getText()).equals("")) {
+                Integer numero= Integer.valueOf(String.valueOf(btn.getText()));
                 String toNumber = "593"+numero; // Replace with mobile phone number without +Sign or leading zeros.
                 Log.d("Numero: ", toNumber);
 
@@ -165,7 +165,7 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
 
     public void accionig(View v){
         Button btn=findViewById(v.getId());
-        String ig= String.valueOf(btn.getHint());
+        String ig= String.valueOf(btn.getText());
         if(!ig.equals("")){
             String urlPage = "https://www.instagram.com/"+ig;
             Log.d("link ig",urlPage);

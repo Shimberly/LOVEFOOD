@@ -33,6 +33,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     //implementation 'br.com.simplepass:loading-button-android:1.7.2'
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+    implementation 'com.google.android.gms:play-services-location:7.0.0'
 
 
 }
