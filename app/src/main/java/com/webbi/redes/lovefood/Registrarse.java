@@ -333,7 +333,7 @@ public class Registrarse extends AppCompatActivity {
             Log.d(TAG, "onPostExecute");
             if (nombre!=null){
                 guardarValor(Registrarse.this,"idusuario", String.valueOf(nombre));
-                Intent itemintent = new Intent(Registrarse.this, EditarPerfil.class);
+                Intent itemintent = new Intent(Registrarse.this, tutorial1.class);
                 itemintent.putExtra("primero","true");
                 Registrarse.this.startActivity(itemintent);
 
