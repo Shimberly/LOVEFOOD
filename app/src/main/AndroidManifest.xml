@@ -60,7 +60,12 @@
         <activity
             android:name=".EditarPerfil"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".Creditos"
+        <activity
+            android:name=".Creditos"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".tutorial1" />
+        <activity android:name=".tutorial2" />
+        <activity android:name=".tutorial3"></activity>
     </application>
+
 </manifest>
