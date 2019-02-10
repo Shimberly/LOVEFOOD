@@ -24,7 +24,7 @@ import android.widget.Toast;
 import static com.webbi.redes.lovefood.Login.PREFS_KEY;
 
 public class Principal extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
-
+    MenuItem itemActivo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,25 +34,35 @@ public class Principal extends AppCompatActivity implements BottomNavigationView
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.navigationView);
         nav.setOnNavigationItemSelectedListener(this);
+        nav.getMenu().getItem(2).setChecked(true);
+        //nav.setCheckedItem(R.id.nav_item);
+        itemActivo=nav.getMenu().getItem(2);
 
         setInitialFragment();
 
     }
     @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;
-        switch (item.getItemId()){
-            case R.id.match:
-                fragment= new MatchFragment();
-                break;
-            case R.id.encuesta:
-                fragment= new EncuestaFragment();
-                break;
-            case R.id.perfil:
-                fragment= new PerfilFragment();
-                break;
+        if(itemActivo==item){
+            //itemActivo=item;
+        }else{
+            switch (item.getItemId()){
+                case R.id.match:
+                    fragment= new MatchFragment();
+                    break;
+                case R.id.encuesta:
+                    fragment= new EncuestaFragment();
+                    break;
+                case R.id.perfil:
+                    fragment= new PerfilFragment();
+                    break;
 
-        };
-        replaceFragment(fragment);
+            };
+            itemActivo=item;
+            replaceFragment(fragment);
+        }
+
+
         return true;
     }
 

@@ -26,13 +26,6 @@ public class ProblemaConexion extends DialogFragment {
                             public void onClick(DialogInterface dialog, int which) {
                                 // Acciones
                             }
-                        })
-                .setNegativeButton("CANCELAR",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Acciones
-                            }
                         });
 
         return builder.create();

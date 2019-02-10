@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -66,6 +67,7 @@ public class PerfilFragment extends Fragment {
     View view;
     String nombre;
     List<String> list;
+    Boolean error;
     public PerfilFragment() {
     }
 
@@ -157,7 +159,11 @@ public class PerfilFragment extends Fragment {
 
     private class ServicioWeb extends AsyncTask<Integer, Integer, List<String>> {
 
-
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            error=false;
+        }
 
         @Override
         protected List<String> doInBackground(Integer... params) {
@@ -196,21 +202,7 @@ public class PerfilFragment extends Fragment {
 
             try {
                 responseText = response.toString();
-            } catch (Exception e) {
-                e.printStackTrace();
-                Bundle args = new Bundle();
-                args.putString("titulo", "Advertencia");
-                args.putString("texto", "Problema al conectar con el servidor de LOVEFOOD");
-                ProblemaConexion f=new ProblemaConexion();
-                f.setArguments(args);
-                f.show(getFragmentManager(), "ProblemaConexión");
-                servicio.cancel(true);
-            }
-            //Call ServerData() method to call webservice and store result in response
-            //  response = service.ServerData(path, postDataParams);
-            Log.d(TAG, "data:" + responseText);
-            JSONObject jsonobjectU=null;
-            try {
+                JSONObject jsonobjectU=null;
                 JSONArray jsonarray = new JSONArray(responseText);
 
                 jsonobjectU = jsonarray.getJSONObject(0);
@@ -219,12 +211,13 @@ public class PerfilFragment extends Fragment {
                 list.add(jsonobjectU.getString("correo"));
                 list.add(jsonobjectU.getString("sexo"));
                 list.add(jsonobjectU.getString("fecha_nacimiento"));
-
-
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
+                error=true;
+
             }
-//INFORMACION
+
+            //INFORMACION
             try {
                 url=new URL(pathI);
                 nombre="";
@@ -255,21 +248,7 @@ public class PerfilFragment extends Fragment {
 
             try {
                 responseText = response.toString();
-            } catch (Exception e) {
-                e.printStackTrace();
-                Bundle args = new Bundle();
-                args.putString("titulo", "Advertencia");
-                args.putString("texto", "Problema al conectar con el servidor de LOVEFOOD");
-                ProblemaConexion f=new ProblemaConexion();
-                f.setArguments(args);
-                f.show(getFragmentManager(), "ProblemaConexión");
-                servicio.cancel(true);
-            }
-            //Call ServerData() method to call webservice and store result in response
-            //  response = service.ServerData(path, postDataParams);
-            Log.d(TAG, "data:" + responseText);
-            JSONObject jsonobjectI=null;
-            try {
+                JSONObject jsonobjectI=null;
                 JSONArray jsonarray = new JSONArray(responseText);
 
                 jsonobjectI = jsonarray.getJSONObject(0);
@@ -280,10 +259,9 @@ public class PerfilFragment extends Fragment {
                 list.add(jsonobjectI.getString("preferencia"));
                 list.add(jsonobjectI.getString("numero"));
                 list.add(jsonobjectI.getString("foto"));
-
-
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
+                error=true;
             }
             return list;
         }
@@ -293,101 +271,106 @@ public class PerfilFragment extends Fragment {
         protected void onPostExecute(List<String> lista) {
             super.onPostExecute(lista);
             Log.d(TAG, "onPostExecute");
-            if (lista.size()>0){
-                Log.d("lista", String.valueOf(lista.size()));
+            if(error){
+                Toast.makeText(getActivity(), "¡Problemas con el servidor!",
+                        Toast.LENGTH_LONG).show();
+                servicio.cancel(true);
+            }else{
+                if (lista.size()>0){
+                    Log.d("lista", String.valueOf(lista.size()));
 
-                txtNombre.setText(lista.get(0)+" "+lista.get(1));
-                txtCorreo.setText(""+lista.get(2));
-                if(lista.get(5).isEmpty()){
-                    txtUniversidad.setText("Universidad");
-                }else {
-                    txtUniversidad.setText("Universidad: " + lista.get(5));
-                }
-                if(lista.get(6).isEmpty()){
-                    txtCiudad.setText("Ciudad");
-                }else {
-                    txtCiudad.setText("Vivo en: " + lista.get(6));;
-                }
-                if(lista.get(7).isEmpty()){
-                    txtDescripcion.setText("Escribe algo sobre ti");
-                }else {
-                    txtDescripcion.setText("" + lista.get(7));
-                }
-                if(lista.get(8).isEmpty()){
-                    txtInstagram.setText("Usuario IG");
-                }else {
-                    txtInstagram.setText("" + lista.get(8));
-                }
-                if(lista.get(9).isEmpty()){
-                    txtInteres.setText("Interés en ... ");
-                }else {
-                    txtInteres.setText("Interés en " + lista.get(9));
-                }
-                if(lista.get(10).isEmpty()){
-                    txtNumero.setText("Número");
-                }else {
-                    txtNumero.setText("" + lista.get(10));
-                }
-                if(!lista.get(11).equals("")){
-                    Picasso.get().load(lista.get(11)).into(fotoPerfil);
-                }else{
-                    if (lista.get(3).equals("Mujeres")){
-                        fotoPerfil.setImageResource(R.drawable.girl);
-
+                    txtNombre.setText(lista.get(0)+" "+lista.get(1));
+                    txtCorreo.setText(""+lista.get(2));
+                    if(lista.get(5).isEmpty()){
+                        txtUniversidad.setText("Universidad");
+                    }else {
+                        txtUniversidad.setText("Universidad: " + lista.get(5));
+                    }
+                    if(lista.get(6).isEmpty()){
+                        txtCiudad.setText("Ciudad");
+                    }else {
+                        txtCiudad.setText("Vivo en: " + lista.get(6));;
+                    }
+                    if(lista.get(7).isEmpty()){
+                        txtDescripcion.setText("Escribe algo sobre ti");
+                    }else {
+                        txtDescripcion.setText("" + lista.get(7));
+                    }
+                    if(lista.get(8).isEmpty()){
+                        txtInstagram.setText("Usuario IG");
+                    }else {
+                        txtInstagram.setText("" + lista.get(8));
+                    }
+                    if(lista.get(9).isEmpty()){
+                        txtInteres.setText("Interés en ... ");
+                    }else {
+                        txtInteres.setText("Interés en " + lista.get(9));
+                    }
+                    if(lista.get(10).isEmpty()){
+                        txtNumero.setText("Número");
+                    }else {
+                        txtNumero.setText("" + lista.get(10));
+                    }
+                    if(!lista.get(11).equals("")){
+                        Picasso.get().load(lista.get(11)).into(fotoPerfil);
                     }else{
-                        fotoPerfil.setImageResource(R.drawable.boy);
+                        if (lista.get(3).equals("Mujeres")){
+                            fotoPerfil.setImageResource(R.drawable.girl);
+
+                        }else{
+                            fotoPerfil.setImageResource(R.drawable.boy);
+                        }
+
+                    }
+                    Log.d("instagram",lista.get(8));
+                    Log.d("sexo",lista.get(3));
+                  /*  try {
+                        AppPreferences appPreferences = null;
+                        appPreferences = new AppPreferences(getContext());
+                        Picasso.get().load(appPreferences.getString(AppPreferences.PROFILE_PIC)).into(fotoPerfil);
+                    } catch (Exception e) {
+                        if (lista.get(3).equals("Mujer")){
+                            fotoPerfil.setImageResource(R.drawable.girl);
+                        }else{
+                            fotoPerfil.setImageResource(R.drawable.boy);
+                        }
+                    }*/
+
+
+                    DateTimeFormatter fmt = null;
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                        fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                        LocalDate fechaNac = LocalDate.parse(lista.get(4), fmt);
+                        LocalDate ahora = LocalDate.now();
+
+                        Period periodo = Period.between(fechaNac, ahora);
+                        System.out.printf("Tu edad es: %s años, %s meses y %s días",
+                                periodo.getYears(), periodo.getMonths(), periodo.getDays());
+                        Log.d("edad", String.valueOf(periodo.getYears()));
+
+                        txtEdad.setText(String.valueOf(periodo.getYears()));
+                    }else{
+                        txtEdad.setText(String.valueOf(lista.get(4)));
                     }
 
-                }
-                Log.d("instagram",lista.get(8));
-                Log.d("sexo",lista.get(3));
-              /*  try {
-                    AppPreferences appPreferences = null;
-                    appPreferences = new AppPreferences(getContext());
-                    Picasso.get().load(appPreferences.getString(AppPreferences.PROFILE_PIC)).into(fotoPerfil);
-                } catch (Exception e) {
-                    if (lista.get(3).equals("Mujer")){
-                        fotoPerfil.setImageResource(R.drawable.girl);
+
                     }else{
-                        fotoPerfil.setImageResource(R.drawable.boy);
-                    }
-                }*/
-
-
-                DateTimeFormatter fmt = null;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                    fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                    LocalDate fechaNac = LocalDate.parse(lista.get(4), fmt);
-                    LocalDate ahora = LocalDate.now();
-
-                    Period periodo = Period.between(fechaNac, ahora);
-                    System.out.printf("Tu edad es: %s años, %s meses y %s días",
-                            periodo.getYears(), periodo.getMonths(), periodo.getDays());
-                    Log.d("edad", String.valueOf(periodo.getYears()));
-
-                    txtEdad.setText(String.valueOf(periodo.getYears()));
-                }else{
-                    txtEdad.setText(String.valueOf(lista.get(4)));
+                    Log.d(TAG, "Login fail:" + nombre);
+                    Bundle args = new Bundle();
+                    args.putString("titulo", "Advertencia");
+                    args.putString("texto", "No se pudo cargar los datos");
+                    ProblemaConexion f=new ProblemaConexion();
+                    f.setArguments(args);
+                    f.show(getFragmentManager(), "ProblemaConexión");
+                    SharedPreferences settings = getActivity().getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.clear();
+                    editor.commit();
+                    getActivity().finish();
+                    Intent intent = new Intent(getActivity(), Login.class);
+                    startActivity(intent);
                 }
-
-
-                }else{
-                Log.d(TAG, "Login fail:" + nombre);
-                Bundle args = new Bundle();
-                args.putString("titulo", "Advertencia");
-                args.putString("texto", "No se pudo cargar los datos");
-                ProblemaConexion f=new ProblemaConexion();
-                f.setArguments(args);
-                f.show(getFragmentManager(), "ProblemaConexión");
-                SharedPreferences settings = getActivity().getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = settings.edit();
-                editor.clear();
-                editor.commit();
-                getActivity().finish();
-                Intent intent = new Intent(getActivity(), Login.class);
-                startActivity(intent);
             }
-
         }
 
     }

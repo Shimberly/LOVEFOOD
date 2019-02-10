@@ -67,7 +67,7 @@ public class EncuestaFragment extends Fragment {
     Button guardarP;
     String nombre;
     Integer idusuario;
-
+    Boolean error;
     //private ProgressBar progressBar;
 
     Boolean existe=false;
@@ -222,7 +222,7 @@ public class EncuestaFragment extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             llenarRespuestas = new ArrayList<String>();
-
+            error=false;
         }
 
         @Override
@@ -261,20 +261,6 @@ public class EncuestaFragment extends Fragment {
 
             try {
                 responseText = response.toString();
-            } catch (Exception e) {
-                e.printStackTrace();
-                Bundle args = new Bundle();
-                args.putString("titulo", "Advertencia");
-                args.putString("texto", "Problema al conectar con el servidor de LOVEFOOD");
-                ProblemaConexion f=new ProblemaConexion();
-                f.setArguments(args);
-                f.show(getFragmentManager(), "ProblemaConexión");
-                servicioLeer.cancel(true);
-            }
-            //Call ServerData() method to call webservice and store result in response
-            //  response = service.ServerData(path, postDataParams);
-            Log.d(TAG, "data:" + responseText);
-            try {
                 JSONArray jsonarray = new JSONArray(responseText);
 
                 for (int i=0;i<jsonarray.length();i++){
@@ -302,10 +288,13 @@ public class EncuestaFragment extends Fragment {
                     }else{
                     }
                 }
-
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
+                error=true;
             }
+            //Call ServerData() method to call webservice and store result in response
+            //  response = service.ServerData(path, postDataParams);
+            Log.d(TAG, "data:" + responseText);
             return llenarRespuestas;
         }
 
@@ -314,22 +303,27 @@ public class EncuestaFragment extends Fragment {
             super.onPostExecute(lista);
             Log.d(TAG, "onPostExecute");
             Log.d("lista", String.valueOf(lista));
-            if (lista.size()>1){
-                Log.d(TAG, "existe");
-                existe=true;
-                Log.d("listaPreguntas size", String.valueOf(listaPreguntas.size()));
+            if(error){
+                Toast.makeText(getActivity(), "¡Problemas con el servidor!",
+                        Toast.LENGTH_LONG).show();
+                servicioLeer.cancel(true);
+            }else{
+                if (lista.size()>1){
+                    Log.d(TAG, "existe");
+                    existe=true;
+                    Log.d("listaPreguntas size", String.valueOf(listaPreguntas.size()));
 
-                //Log.d("listaPreguntas size", String.valueOf(porfa.getText()));
-                for (int i=0;i<listaPreguntas.size();i++) {
-                    //Resources res = getResources();
-                    //int id = res.getIdentifier("Tor", "id", getContext().getPackageName());
-                    RadioButton porfa= view.findViewWithTag(lista.get(i));
-                    if(porfa!=null){
-                        listaPreguntas.get(i).check(porfa.getId());
-                    }
-                    //view.findViewsWithText(porfa,"sd",0);
-                    //int count = listaPreguntas.get(i).getChildCount();
-                    //ArrayList<RadioButton> listOfRadioButtons = new ArrayList<RadioButton>();
+                    //Log.d("listaPreguntas size", String.valueOf(porfa.getText()));
+                    for (int i=0;i<listaPreguntas.size();i++) {
+                        //Resources res = getResources();
+                        //int id = res.getIdentifier("Tor", "id", getContext().getPackageName());
+                        RadioButton porfa= view.findViewWithTag(lista.get(i));
+                        if(porfa!=null){
+                            listaPreguntas.get(i).check(porfa.getId());
+                        }
+                        //view.findViewsWithText(porfa,"sd",0);
+                        //int count = listaPreguntas.get(i).getChildCount();
+                        //ArrayList<RadioButton> listOfRadioButtons = new ArrayList<RadioButton>();
                     /*for (int j=0;j<count;j++) {
                         View o = listaPreguntas.get(i).getChildAt(j);
                         if (o instanceof RadioButton) {
@@ -339,13 +333,15 @@ public class EncuestaFragment extends Fragment {
                             }
                         }
                     }*/
-                }
+                    }
 
-                //radioGroup.check(((RadioButton)radioGroup.getChildAt(0)).getId());
-            }else{
-                Log.d(TAG, "no existe");
-                existe=false;
+                    //radioGroup.check(((RadioButton)radioGroup.getChildAt(0)).getId());
+                }else{
+                    Log.d(TAG, "no existe");
+                    existe=false;
+                }
             }
+
 
         }
 
@@ -433,19 +429,15 @@ public class EncuestaFragment extends Fragment {
             if (nombre=="ok"){
                 Toast.makeText(getActivity(), "¡Se guardaron correctamente tus respuestas!",
                         Toast.LENGTH_LONG).show();
-                Fragment fragment= new MatchFragment();
+                /*Fragment fragment= new MatchFragment();
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.mainFrame, fragment);
-                fragmentTransaction.commit();
+                fragmentTransaction.commit();*/
             }else{
                 guardarP.setEnabled(true);
                 Log.d(TAG, "Registro fail:" + nombre);
-                Bundle args = new Bundle();
-                args.putString("titulo", "Advertencia");
-                args.putString("texto", "No se pudo registrar tus respuestas");
-                ProblemaConexion f=new ProblemaConexion();
-                f.setArguments(args);
-                f.show(getFragmentManager(), "ProblemaConexión");
+                Toast.makeText(getActivity(), "¡No se pudieron guardar tus respuestas!",
+                        Toast.LENGTH_LONG).show();
             }
 
         }
@@ -596,10 +588,10 @@ public class EncuestaFragment extends Fragment {
                 f.show(getFragmentManager(), "ProblemaConexión");*/
                 Toast.makeText(getActivity(), "¡Se actualizaron correctamente tus respuestas!",
                         Toast.LENGTH_LONG).show();
-                Fragment fragment= new MatchFragment();
+                /*Fragment fragment= new MatchFragment();
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.mainFrame, fragment);
-                fragmentTransaction.commit();
+                fragmentTransaction.commit();*/
 
             }else{
                 guardarP.setEnabled(true);

@@ -4,18 +4,17 @@
     <item
         android:id="@+id/match"
         android:title="Match"
-        android:icon="@drawable/like"
-        android:enabled="true"/>
+        android:icon="@drawable/like"/>
 
     <item
         android:id="@+id/encuesta"
         android:title="Encuesta"
-        android:enabled="true"
         android:icon="@drawable/encuesta"/>
 
     <item
         android:id="@+id/perfil"
         android:title="Perfil"
-        android:icon="@drawable/avatar" />
+        android:icon="@drawable/avatar"
+        android:checked="true"/>
 
 </menu>
