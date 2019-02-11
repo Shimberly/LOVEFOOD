@@ -208,7 +208,7 @@ public class MatchFragment extends Fragment {
 
             }else {
                 if (sinEncuesta) {
-                    Toast.makeText(getActivity(), "¡Te falta llenar los datoa de tu perfil o la encuesta!",
+                    Toast.makeText(getActivity(), "¡Te falta llenar los datos de tu perfil o la encuesta!",
                             Toast.LENGTH_LONG).show();
 
                 }else {
