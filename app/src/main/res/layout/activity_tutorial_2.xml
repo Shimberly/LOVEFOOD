@@ -9,23 +9,14 @@
     android:orientation="vertical"
     tools:context=".tutorial2">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
-
-        <ImageView
+    <ImageView
             android:id="@+id/foto1"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="65dp"
             android:layout_weight=".40"
             android:src="@drawable/pantallatres" />
-
-
-    </LinearLayout>
-
 
     <TextView
         android:id="@+id/txt"
@@ -33,7 +24,7 @@
         android:layout_height="47dp"
         android:layout_gravity="center"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:layout_marginRight="15dp"
         android:layout_weight=".5"
         android:gravity="center"
@@ -47,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="40dp"
         android:layout_marginVertical="60dp"
-        android:layout_marginTop="20dp"
+
         android:layout_weight=".10"
         android:background="#C72727"
         android:onClick="accionPantalla"
