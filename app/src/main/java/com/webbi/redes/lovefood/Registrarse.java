@@ -283,19 +283,12 @@ public class Registrarse extends AppCompatActivity {
             }
             try {
                 responseText = response.toString();
-            } catch (Exception e) {
-            }
-            try {
                 JSONArray jsonarray = new JSONArray(responseText);
 
                 for (int i=0;i<jsonarray.length();i++){
                     JSONObject jsonobject = jsonarray.getJSONObject(0);
                     idusuario = jsonobject.getString("id");
                 }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            try {
                 URL url=new URL("https://lovefoodservices.herokuapp.com/generarinformacion/"+Integer.valueOf(idusuario));
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(15000);
@@ -315,10 +308,6 @@ public class Registrarse extends AppCompatActivity {
                     }
                     in.close();
                 }
-            } catch(Exception e){
-                e.printStackTrace();
-            }
-            try {
                 responseText = response.toString();
                 nombre=idusuario;
             } catch (Exception e) {
