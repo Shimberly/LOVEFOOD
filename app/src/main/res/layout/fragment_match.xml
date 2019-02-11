@@ -86,8 +86,7 @@
         android:layout_gravity="center"
         android:layout_marginHorizontal="25dp"
         android:layout_marginVertical="20dp"
-        android:layout_weight=".40"
-        android:src="@drawable/boy" />
+        android:layout_weight=".40"/>
 
         <TextView
             android:id="@+id/txtUniversidad1"
@@ -237,8 +236,7 @@
             android:tag="foto2"
             android:layout_marginHorizontal="25dp"
             android:layout_marginVertical="20dp"
-            android:layout_weight=".40"
-            android:src="@drawable/boy" />
+            android:layout_weight=".40"/>
 
         <TextView
             android:id="@+id/txtUniversidad2"
@@ -385,8 +383,7 @@
                 android:tag="foto3"
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginVertical="20dp"
-                android:layout_weight=".40"
-                android:src="@drawable/boy" />
+                android:layout_weight=".40"/>
 
             <TextView
                 android:id="@+id/txtUniversidad3"

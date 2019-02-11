@@ -12,9 +12,11 @@ import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -50,7 +52,7 @@ public class MatchFragment extends Fragment {
     Integer idusuario;
     String pathUserR;
     private ProgressBar progressBar;
-
+    JSONArray jsonarray;
     TextView txtNombre;
     TextView txtEdad;
     TextView txtCorreo;
@@ -63,7 +65,7 @@ public class MatchFragment extends Fragment {
     ImageView coin;
     BottomNavigationView nav;
     View view;
-
+    Boolean sinEncuesta;
     Boolean error;
     public MatchFragment() {}
     @Override
@@ -136,6 +138,7 @@ public class MatchFragment extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             error=false;
+            sinEncuesta=false;
             //nav.getMenu().getItem(1).setEnabled(false);
         }
 
@@ -171,8 +174,14 @@ public class MatchFragment extends Fragment {
 
             try {
                 responseText = response.toString();
-                JSONArray jsonarray = new JSONArray(responseText);
+                jsonarray = new JSONArray(responseText);
                 Log.d("Recibiendo","ENTRO");
+            } catch (Exception e) {
+                e.printStackTrace();
+                error=true;
+
+            }
+            try {
                 listaMatch.add(jsonarray.getJSONObject(0));
                 listaMatch.add(jsonarray.getJSONObject(1));
                 listaMatch.add(jsonarray.getJSONObject(2));
@@ -180,9 +189,10 @@ public class MatchFragment extends Fragment {
                 listaMatch.add(jsonarray.getJSONObject(4));
             } catch (Exception e) {
                 e.printStackTrace();
-                error=true;
+                sinEncuesta=true;
 
             }
+
             return listaMatch;
         }
 
@@ -195,132 +205,139 @@ public class MatchFragment extends Fragment {
                 Toast.makeText(getActivity(), "¡Problemas con el servidor!",
                         Toast.LENGTH_LONG).show();
                 servicioMatch.cancel(true);
+
             }else {
-                try {
+                if (sinEncuesta) {
+                    Toast.makeText(getActivity(), "¡Te falta llenar los datos de tu perfil o la encuesta!",
+                            Toast.LENGTH_LONG).show();
 
-                    if (listaMatch.size() > 0) {
-                        Log.d("lista", String.valueOf(listaMatch.size()));
+                }else {
+                    try {
+
+                        if (listaMatch.size() > 0) {
+                            Log.d("lista", String.valueOf(listaMatch.size()));
 
 
-                        for (int i = 0; i < 5; i++) {
-                            txtNombre = (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtNombre + (i + 1))));
-                            txtEdad = (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtEdad + (i + 1))));
-                            txtCorreo = (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtCorreo + (i + 1))));
-                            txtUniversidad = (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtUniversidad + (i + 1))));
-                            txtCiudad = (TextView) view.findViewWithTag("txtCiudad" + (i + 1));
-                            txtDescripcion = (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtDescripcion + (i + 1))));
-                            btnIg = (Button) view.findViewWithTag("btnIg" + (i + 1));
-                            btnWa = (Button) view.findViewWithTag("btnWa" + (i + 1));
-                            coin = (ImageView) view.findViewWithTag("imagematch" + (i + 1));
-                            foto = (ImageView) view.findViewWithTag("foto" + (i + 1));
-                            try {
-                                txtNombre.setText(listaMatch.get(i).getString("nombre"));
-                                DateTimeFormatter fmt = null;
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                                    LocalDate fechaNac = LocalDate.parse(listaMatch.get(i).getString("fecha_nacimiento"), fmt);
-                                    LocalDate ahora = LocalDate.now();
+                            for (int i = 0; i < 5; i++) {
+                                txtNombre = (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtNombre + (i + 1))));
+                                txtEdad = (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtEdad + (i + 1))));
+                                txtCorreo = (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtCorreo + (i + 1))));
+                                txtUniversidad = (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtUniversidad + (i + 1))));
+                                txtCiudad = (TextView) view.findViewWithTag("txtCiudad" + (i + 1));
+                                txtDescripcion = (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtDescripcion + (i + 1))));
+                                btnIg = (Button) view.findViewWithTag("btnIg" + (i + 1));
+                                btnWa = (Button) view.findViewWithTag("btnWa" + (i + 1));
+                                coin = (ImageView) view.findViewWithTag("imagematch" + (i + 1));
+                                foto = (ImageView) view.findViewWithTag("foto" + (i + 1));
+                                try {
+                                    txtNombre.setText(listaMatch.get(i).getString("nombre"));
+                                    DateTimeFormatter fmt = null;
+                                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                        fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                                        LocalDate fechaNac = LocalDate.parse(listaMatch.get(i).getString("fecha_nacimiento"), fmt);
+                                        LocalDate ahora = LocalDate.now();
 
-                                    Period periodo = Period.between(fechaNac, ahora);
-                                    System.out.printf("Tu edad es: %s años, %s meses y %s días",
-                                            periodo.getYears(), periodo.getMonths(), periodo.getDays());
-                                    Log.d("edad", String.valueOf(periodo.getYears()));
+                                        Period periodo = Period.between(fechaNac, ahora);
+                                        System.out.printf("Tu edad es: %s años, %s meses y %s días",
+                                                periodo.getYears(), periodo.getMonths(), periodo.getDays());
+                                        Log.d("edad", String.valueOf(periodo.getYears()));
 
-                                    txtEdad.setText(String.valueOf(periodo.getYears()));
-                                } else {
-                                    txtEdad.setText(String.valueOf(listaMatch.get(i).getString("fecha_nacimiento")));
+                                        txtEdad.setText(String.valueOf(periodo.getYears()));
+                                    } else {
+                                        txtEdad.setText(String.valueOf(listaMatch.get(i).getString("fecha_nacimiento")));
+                                    }
+                                    txtCorreo.setText(listaMatch.get(i).getString("correo"));
+                                    txtUniversidad.setText("Universidad " + listaMatch.get(i).getString("universidad"));
+                                    txtCiudad.setText(listaMatch.get(i).getString("ciudad"));
+                                    txtDescripcion.setText(listaMatch.get(i).getString("descripcion"));
+                                    btnIg.setText(listaMatch.get(i).getString("instagram"));
+                                    btnWa.setText(listaMatch.get(i).getString("numero"));
+                                    if (listaMatch.get(i).getString("sexo").equals("Mujeres")) {
+                                        foto.setImageResource(R.drawable.girl);
+                                    } else {
+                                        foto.setImageResource(R.drawable.boy);
+                                    }
+                                    switch (listaMatch.get(i).getString("coincidencias")) {
+                                        case "1":
+                                            coin.setImageResource(R.drawable.corazon1);
+                                            break;
+                                        case "2":
+                                            coin.setImageResource(R.drawable.corazon2);
+                                            break;
+                                        case "3":
+                                            coin.setImageResource(R.drawable.corazon3);
+                                            break;
+                                        case "4":
+                                            coin.setImageResource(R.drawable.corazon4);
+                                            break;
+                                        case "5":
+                                            coin.setImageResource(R.drawable.corazon5);
+                                            break;
+                                        case "6":
+                                            coin.setImageResource(R.drawable.corazon6);
+                                            break;
+                                        case "7":
+                                            coin.setImageResource(R.drawable.corazon7);
+                                            break;
+                                        case "8":
+                                            coin.setImageResource(R.drawable.corazon8);
+                                            break;
+                                        case "9":
+                                            coin.setImageResource(R.drawable.corazon9);
+                                            break;
+                                        case "10":
+                                            coin.setImageResource(R.drawable.corazon10);
+                                            break;
+                                        case "11":
+                                            coin.setImageResource(R.drawable.corazon11);
+                                            break;
+                                        case "12":
+                                            coin.setImageResource(R.drawable.corazon12);
+                                            break;
+                                        case "13":
+                                            coin.setImageResource(R.drawable.corazon13);
+                                            break;
+                                        case "14":
+                                            coin.setImageResource(R.drawable.corazon14);
+                                            break;
+                                        case "15":
+                                            coin.setImageResource(R.drawable.corazon15);
+                                            break;
+                                        case "16":
+                                            coin.setImageResource(R.drawable.corazon16);
+                                            break;
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
                                 }
-                                txtCorreo.setText(listaMatch.get(i).getString("correo"));
-                                txtUniversidad.setText("Universidad " + listaMatch.get(i).getString("universidad"));
-                                txtCiudad.setText(listaMatch.get(i).getString("ciudad"));
-                                txtDescripcion.setText(listaMatch.get(i).getString("descripcion"));
-                                btnIg.setText(listaMatch.get(i).getString("instagram"));
-                                btnWa.setText(listaMatch.get(i).getString("numero"));
-                                if (listaMatch.get(i).getString("sexo").equals("Mujeres")) {
-                                    foto.setImageResource(R.drawable.girl);
-                                } else {
-                                    foto.setImageResource(R.drawable.boy);
-                                }
-                                switch (listaMatch.get(i).getString("coincidencias")) {
-                                    case "1":
-                                        coin.setImageResource(R.drawable.corazon1);
-                                        break;
-                                    case "2":
-                                        coin.setImageResource(R.drawable.corazon2);
-                                        break;
-                                    case "3":
-                                        coin.setImageResource(R.drawable.corazon3);
-                                        break;
-                                    case "4":
-                                        coin.setImageResource(R.drawable.corazon4);
-                                        break;
-                                    case "5":
-                                        coin.setImageResource(R.drawable.corazon5);
-                                        break;
-                                    case "6":
-                                        coin.setImageResource(R.drawable.corazon6);
-                                        break;
-                                    case "7":
-                                        coin.setImageResource(R.drawable.corazon7);
-                                        break;
-                                    case "8":
-                                        coin.setImageResource(R.drawable.corazon8);
-                                        break;
-                                    case "9":
-                                        coin.setImageResource(R.drawable.corazon9);
-                                        break;
-                                    case "10":
-                                        coin.setImageResource(R.drawable.corazon10);
-                                        break;
-                                    case "11":
-                                        coin.setImageResource(R.drawable.corazon11);
-                                        break;
-                                    case "12":
-                                        coin.setImageResource(R.drawable.corazon12);
-                                        break;
-                                    case "13":
-                                        coin.setImageResource(R.drawable.corazon13);
-                                        break;
-                                    case "14":
-                                        coin.setImageResource(R.drawable.corazon14);
-                                        break;
-                                    case "15":
-                                        coin.setImageResource(R.drawable.corazon15);
-                                        break;
-                                    case "16":
-                                        coin.setImageResource(R.drawable.corazon16);
-                                        break;
-                                }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
                             }
-                        }
 
-                        Bundle args = new Bundle();
-                        args.putString("titulo", "¡Matchs localizados!");
-                        args.putString("texto", "No tengas miedo de encontrar el amor. ¡Escríbeles!");
-                        ProblemaConexion f = new ProblemaConexion();
-                        f.setArguments(args);
-                        f.show(getFragmentManager(), "ProblemaConexión");
-                        Vibrator v = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-                        // Vibrate for 500 milliseconds
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            v.vibrate(VibrationEffect.createOneShot(600, VibrationEffect.DEFAULT_AMPLITUDE));
+                            Bundle args = new Bundle();
+                            args.putString("titulo", "¡Matchs localizados!");
+                            args.putString("texto", "No tengas miedo de encontrar el amor. ¡Escríbeles!");
+                            ProblemaConexion f = new ProblemaConexion();
+                            f.setArguments(args);
+                            f.show(getFragmentManager(), "ProblemaConexión");
+                            Vibrator v = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+                            // Vibrate for 500 milliseconds
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                v.vibrate(VibrationEffect.createOneShot(600, VibrationEffect.DEFAULT_AMPLITUDE));
+                            } else {
+                                //deprecated in API 26
+                                v.vibrate(800);
+                            }
                         } else {
-                            //deprecated in API 26
-                            v.vibrate(800);
+                            Log.d("Login fail", "Login fail:" + listaMatch);
+                            Toast.makeText(getActivity(), "¡No se pudieron cargar los datos!",
+                                    Toast.LENGTH_LONG).show();
+                            servicioMatch.cancel(true);
                         }
-                    } else {
-                        Log.d("Login fail", "Login fail:" + listaMatch);
-                        Toast.makeText(getActivity(), "¡No se pudieron cargar los datos!",
-                                Toast.LENGTH_LONG).show();
-                        servicioMatch.cancel(true);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        //nav.getMenu().getItem(1).setEnabled(true);
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    //nav.getMenu().getItem(1).setEnabled(true);
                 }
             }
         }

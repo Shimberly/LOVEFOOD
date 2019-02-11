@@ -233,7 +233,7 @@
                  android:layout_marginHorizontal="15dp"
                  android:textColorHint="#797979"
                  android:layout_weight=".50"
-                 android:hint="Usuario instagram"
+                 android:hint="Usuario (opcional)"
                  android:textColor="#000"
                  android:textSize="16sp" />
              <!--<Button
