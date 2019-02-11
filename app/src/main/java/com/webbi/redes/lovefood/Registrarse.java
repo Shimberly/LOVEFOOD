@@ -334,7 +334,7 @@ public class Registrarse extends AppCompatActivity {
             if (nombre!=null){
                 guardarValor(Registrarse.this,"idusuario", String.valueOf(nombre));
                 Intent itemintent = new Intent(Registrarse.this, tutorial1.class);
-                itemintent.putExtra("primero","true");
+
                 Registrarse.this.startActivity(itemintent);
 
             }else{

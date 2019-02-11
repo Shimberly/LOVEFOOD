@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class tutorial1 extends AppCompatActivity implements View.OnClickListener{
+public class tutorial1 extends AppCompatActivity{
 
     Button btn;
     Intent itemintent;
@@ -14,16 +14,11 @@ public class tutorial1 extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial_1);
-        btn = (Button) findViewById(R.id.btn);
-
-        btn.setOnClickListener(this);
 
     }
 
-
-    @Override
-    public void onClick(View v) {
-        itemintent = new Intent(tutorial1.this, tutorial3.class);
+    public void accionPantalla(View view){
+        itemintent = new Intent(tutorial1.this, tutorial2.class);
         startActivity(itemintent);
     }
 }

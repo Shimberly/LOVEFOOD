@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class tutorial3 extends AppCompatActivity implements View.OnClickListener {
+public class tutorial3 extends AppCompatActivity{
 
     Button btn;
     Intent itemintent3;
@@ -16,17 +16,12 @@ public class tutorial3 extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial_3);
 
-        btn = (Button) findViewById(R.id.btn);
-
-        btn.setOnClickListener(this);
-
     }
 
 
-
-    @Override
-    public void onClick(View v) {
+    public void accionPantalla(View v) {
         itemintent3 = new Intent(tutorial3.this, EditarPerfil.class);
+        itemintent3.putExtra("primero","true");
         startActivity(itemintent3);
     }
 }

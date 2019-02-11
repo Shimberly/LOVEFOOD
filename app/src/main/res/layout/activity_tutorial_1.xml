@@ -62,7 +62,7 @@
         android:layout_marginTop="20dp"
         android:layout_weight=".10"
         android:background="#C72727"
-        android:onClick="onClick"
+        android:onClick="accionPantalla"
         android:text="Siguiente"
         android:textColor="#FFF"
         android:textSize="16sp" />

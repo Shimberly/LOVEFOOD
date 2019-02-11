@@ -190,6 +190,7 @@ public class MatchFragment extends Fragment {
         protected void onPostExecute(List<JSONObject> listaMatch) {
             super.onPostExecute(listaMatch);
             Log.d("PostExecute", "onPostExecute");
+            progressBar.setVisibility(View.GONE);
             if(error){
                 Toast.makeText(getActivity(), "¡Problemas con el servidor!",
                         Toast.LENGTH_LONG).show();
@@ -199,7 +200,7 @@ public class MatchFragment extends Fragment {
 
                     if (listaMatch.size() > 0) {
                         Log.d("lista", String.valueOf(listaMatch.size()));
-                        progressBar.setVisibility(View.GONE);
+
 
                         for (int i = 0; i < 5; i++) {
                             txtNombre = (TextView) view.findViewById(Integer.parseInt(String.valueOf(R.id.txtNombre + (i + 1))));
